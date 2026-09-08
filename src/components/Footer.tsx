@@ -250,13 +250,13 @@ export const Footer: React.FC = () => {
                 <li className="flex items-start gap-2.5">
                   <Phone className="w-4 h-4 text-[#D98E3A] shrink-0 mt-0.5" />
                   <a href="tel:+18005408324" className="hover:text-white transition-colors">
-                    +1 (800) 540-TECH
+                    +919690941439
                   </a>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <Mail className="w-4 h-4 text-[#D98E3A] shrink-0 mt-0.5" />
-                  <a href="mailto:contact@drtechei.com" className="hover:text-white transition-colors truncate">
-                    contact@drtechei.com
+                  <a href="mailto:wearedrtechie@gmail.com" className="hover:text-white transition-colors truncate">
+                    wearedrtechie@gmail.com
                   </a>
                 </li>
                 <li className="flex items-start gap-2.5">

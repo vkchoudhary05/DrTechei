@@ -218,7 +218,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
                 title="Call DrTechei IT Solutions"
               >
                 <PhoneCall className="w-3.5 h-3.5 text-[#D98E3A]" />
-                <span>+1 (800) 540-TECH</span>
+                <span>+919690941439</span>
               </a>
 
               {/* High-Impact Project Quote Button */}
@@ -352,14 +352,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
                     className="flex items-center gap-2 text-[#111622] hover:text-[#D98E3A]"
                   >
                     <PhoneCall className="w-3.5 h-3.5 text-[#D98E3A]" />
-                    <span>+1 (800) 540-TECH</span>
+                    <span>+919690941439</span>
                   </a>
                   <a
-                    href="mailto:contact@drtechei.com"
+                    href="mailto:wearedrtechie@gmail.com"
                     className="flex items-center gap-2 text-slate-600 hover:text-[#2D2575]"
                   >
                     <span className="w-3.5 h-3.5 text-center font-mono text-[10px] text-[#D98E3A]">@</span>
-                    <span className="truncate">contact@drtechei.com</span>
+                    <span className="truncate">wearedrtechie@gmail.com</span>
                   </a>
                 </div>
               </div>

@@ -157,8 +157,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({ preselectedService = '
                   </div>
                   <div>
                     <p className="text-xs font-semibold text-slate-400">Direct Inquiries & RFPs</p>
-                    <a href="mailto:contact@drtechei.com" className="text-sm font-bold text-white hover:text-[#F2BC7B] transition-colors">
-                      contact@drtechei.com
+                    <a href="mailto:wearedrtechie@gmail.com" className="text-sm font-bold text-white hover:text-[#F2BC7B] transition-colors">
+                      wearedrtechie@gmail.com
                     </a>
                   </div>
                 </div>
@@ -170,7 +170,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ preselectedService = '
                   <div>
                     <p className="text-xs font-semibold text-slate-400">Toll-Free Client Line</p>
                     <a href="tel:+18005408324" className="text-sm font-bold text-white hover:text-[#F2BC7B] transition-colors">
-                      +1 (800) 540-TECH
+                      +919690941439
                     </a>
                     <span className="block text-[11px] text-slate-400">+1 (555) 378-3243 (Intl)</span>
                   </div>
