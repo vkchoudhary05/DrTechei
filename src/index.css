@@ -99,3 +99,76 @@
   background-size: 24px 24px, 48px 48px;
   background-position: 0 0, 12px 12px;
 }
+
+/* Continuous Infinite Marquee Slider Animations */
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 32s linear infinite;
+}
+
+.animate-marquee-left:hover {
+  animation-play-state: paused;
+}
+
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marquee-right 36s linear infinite;
+}
+
+.animate-marquee-right:hover {
+  animation-play-state: paused;
+}
+
+/* Micro animations for Contact and Mail Icons */
+@keyframes phone-ring {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  10%, 30%, 50% {
+    transform: rotate(-14deg) scale(1.08);
+  }
+  20%, 40% {
+    transform: rotate(14deg) scale(1.08);
+  }
+  60% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.animate-phone-ring {
+  animation: phone-ring 3s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+@keyframes mail-float {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-2.5px) scale(1.05);
+  }
+}
+
+.animate-mail-float {
+  animation: mail-float 2.5s ease-in-out infinite;
+}

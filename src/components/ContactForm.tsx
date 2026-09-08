@@ -168,11 +168,11 @@ export const ContactForm: React.FC<ContactFormProps> = ({ preselectedService = '
                     <Phone className="w-4 h-4" />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-slate-400">Toll-Free Client Line</p>
+                    <p className="text-xs font-semibold text-slate-400">Direct Client Line</p>
                     <a href="tel:+18005408324" className="text-sm font-bold text-white hover:text-[#F2BC7B] transition-colors">
                       +919690941439
                     </a>
-                    <span className="block text-[11px] text-slate-400">+1 (555) 378-3243 (Intl)</span>
+                    <span className="block text-[11px] text-slate-400">Direct senior technical consultation</span>
                   </div>
                 </div>
 
@@ -181,11 +181,22 @@ export const ContactForm: React.FC<ContactFormProps> = ({ preselectedService = '
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-slate-400">Headquarters</p>
-                    <p className="text-sm font-bold text-white">
-                      San Francisco, California
-                    </p>
-                    <span className="block text-[11px] text-slate-400">Distributed Global Digital Offices</span>
+                    <p className="text-xs font-semibold text-slate-400">Global Engineering Offices</p>
+                    <div className="space-y-1.5 mt-1">
+                      <div className="text-sm font-bold text-white flex items-center gap-1.5">
+                        <span>🇮🇳</span>
+                        <span>Delhi NCR, India</span>
+                      </div>
+                      <div className="text-sm font-bold text-white flex items-center gap-1.5">
+                        <span>🇫🇮</span>
+                        <span>Finland</span>
+                      </div>
+                      <div className="text-sm font-bold text-white flex items-center gap-1.5">
+                        <span>🇮🇪</span>
+                        <span>Ireland</span>
+                      </div>
+                    </div>
+                    <span className="block text-[11px] text-slate-400 mt-1.5">Global European & Asian Engineering Hubs</span>
                   </div>
                 </div>
 
@@ -309,7 +320,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ preselectedService = '
                         type="text"
                         value={formData.fullName}
                         onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                        placeholder="John Doe"
+                        placeholder="Please enter your full Name"
                         className={`w-full px-4 py-2.5 rounded-xl text-sm border bg-slate-50/50 focus:bg-white transition-all outline-none ${
                           errors.fullName
                             ? 'border-rose-400 focus:ring-2 focus:ring-rose-200'
@@ -334,7 +345,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ preselectedService = '
                         type="email"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="john@example.com"
+                        placeholder="Please enter your email address"
                         className={`w-full px-4 py-2.5 rounded-xl text-sm border bg-slate-50/50 focus:bg-white transition-all outline-none ${
                           errors.email
                             ? 'border-rose-400 focus:ring-2 focus:ring-rose-200'
@@ -361,7 +372,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ preselectedService = '
                         type="tel"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder="+1 (555) 000-0000"
+                        placeholder="Please enter your phone number"
                         className="w-full px-4 py-2.5 rounded-xl text-sm border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-[#2D2575] focus:ring-2 focus:ring-[#EEEDFA] transition-all outline-none"
                       />
                     </div>
@@ -376,7 +387,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ preselectedService = '
                         type="text"
                         value={formData.companyName}
                         onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                        placeholder="Acme Corporation"
+                        placeholder="Please enter your company name"
                         className="w-full px-4 py-2.5 rounded-xl text-sm border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-[#2D2575] focus:ring-2 focus:ring-[#EEEDFA] transition-all outline-none"
                       />
                     </div>

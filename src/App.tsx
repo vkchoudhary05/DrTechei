@@ -104,14 +104,14 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans selection:bg-[#D98E3A]/20 selection:text-[#2D2575]">
+    <div className="min-h-screen flex flex-col bg-[#FAFBFD] text-slate-900 font-sans selection:bg-[#D98E3A]/20 selection:text-[#2D2575]">
       {/* 1. Global Responsive & Accessible Sticky Navbar */}
       <Navbar
         onOpenQuoteModal={() => setIsQuoteModalOpen(true)}
       />
 
-      {/* 2. Main Page Render Zone (with paddingTop for fixed header) */}
-      <main className="flex-grow pt-16 sm:pt-20">
+      {/* 2. Main Page Render Zone (sitting flush at top on home for seamless hero blend) */}
+      <main className={`flex-grow ${currentPage === 'home' ? 'pt-0' : 'pt-[56px] sm:pt-[64px]'}`}>
         <div key={currentPage} className="animate-in fade-in duration-200">
           {renderActivePage()}
         </div>

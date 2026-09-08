@@ -1,17 +1,12 @@
 import React from 'react';
 import { Hero } from '../components/Hero';
+import { ContinuousSlider } from '../components/ContinuousSlider';
 import { TrustValueStrip } from '../components/TrustValueStrip';
 import { Services } from '../components/Services';
-import { Technologies } from '../components/Technologies';
-import { WhyChooseUs } from '../components/WhyChooseUs';
-import { Process } from '../components/Process';
-import { Portfolio } from '../components/Portfolio';
 import { CaseStudyResults } from '../components/CaseStudyResults';
-import { About } from '../components/About';
+import { WhyChooseUs } from '../components/WhyChooseUs';
 import { Testimonials } from '../components/Testimonials';
-import { FAQSection } from '../components/FAQSection';
 import { CTA } from '../components/CTA';
-import { ContactForm } from '../components/ContactForm';
 import { useRouter } from '../context/RouterContext';
 import { ServiceItem, PortfolioProject } from '../types';
 
@@ -42,53 +37,39 @@ export const HomePage: React.FC<HomePageProps> = ({
 
   return (
     <div className="space-y-0">
-      {/* 1. Hero Section */}
+      {/* 1. High-Impact Hero Section with Live Diagnostic Dial */}
       <Hero onStartProject={handleStartProject} onViewWork={handleViewWork} />
 
-      {/* 2. Trust / Value Metric Strip */}
+      {/* 2. Continuous Running Marquee Slider (Edge Stack & Guarantees) */}
+      <ContinuousSlider onLearnMore={() => navigate('technologies')} />
+
+      {/* 3. Authoritative Proof & Scale Metric Strip */}
       <TrustValueStrip />
 
-      {/* 3. Services Section */}
+      {/* 4. Core Solutions (Scrollable Grid Left-to-Right with all 8 Specialized Services) */}
       <Services
         onSelectService={onSelectService}
         onOpenQuoteWithService={(serviceName) => {
           onSelectServiceForContact(serviceName);
           navigate('contact');
         }}
+        onViewAll={() => navigate('services')}
       />
 
-      {/* 4. Technologies Section */}
-      <Technologies />
-
-      {/* 5. Why Choose DrTechei */}
-      <WhyChooseUs onStartProject={handleStartProject} />
-
-      {/* 6. Process Section (How We Work) */}
-      <Process onStartProject={handleStartProject} />
-
-      {/* 7. Portfolio Section */}
-      <Portfolio onSelectProject={onSelectProject} />
-
-      {/* 8. Case Study / Before-After Benchmarks */}
+      {/* 5. Measurable Impact & Before/After Speed Benchmarks */}
       <CaseStudyResults />
 
-      {/* 9. About Section */}
-      <About />
+      {/* 6. Why Industry Leaders Choose DrTechei (The Senior Engineering Advantage) */}
+      <WhyChooseUs onStartProject={handleStartProject} />
 
-      {/* 10. Testimonials */}
-      <Testimonials />
+      {/* 7. Verified Client Feedback & Reviews */}
+      <Testimonials onStartProject={handleStartProject} />
 
-      {/* 11. FAQ & Architecture */}
-      <FAQSection />
-
-      {/* 12. Strategic High-Impact CTA */}
+      {/* 8. High-Converting Strategic CTA (Direct Quote Modal & Discovery Call) */}
       <CTA
         onOpenQuoteModal={onOpenQuoteModal}
         onTalkToUs={() => navigate('contact')}
       />
-
-      {/* 13. Direct Project Inquiry Form */}
-      <ContactForm preselectedService={preselectedService} />
     </div>
   );
 };

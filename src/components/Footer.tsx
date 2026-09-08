@@ -2,7 +2,21 @@ import React, { useState } from 'react';
 import { Logo } from './Logo';
 import { useRouter } from '../context/RouterContext';
 import { PageRoute } from '../types/router';
-import { Mail, Phone, MapPin, ArrowUp, ShieldCheck, FileText, X } from 'lucide-react';
+import { 
+  Mail, 
+  Phone, 
+  MapPin, 
+  ArrowUp, 
+  ShieldCheck, 
+  FileText, 
+  X,
+  Instagram,
+  Facebook,
+  Linkedin,
+  Twitter,
+  Github,
+  Youtube
+} from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const { navigate } = useRouter();
@@ -40,6 +54,75 @@ export const Footer: React.FC = () => {
               <div className="pt-2 flex items-center gap-3 text-xs">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#D98E3A] animate-pulse" />
                 <span className="text-slate-300 font-medium">Accepting New Client Projects for Q3/Q4</span>
+              </div>
+
+              {/* Social Channels Strip */}
+              <div className="pt-2">
+                <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2.5">
+                  Follow & Connect With Us
+                </p>
+                <div className="flex flex-wrap items-center gap-2">
+                  <a
+                    href="https://instagram.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Follow DrTechei on Instagram"
+                    className="w-9 h-9 rounded-xl bg-[#141B28] hover:bg-[#D98E3A] text-slate-400 hover:text-white border border-[#232C3D] hover:border-[#D98E3A] flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105 group"
+                    title="Instagram"
+                  >
+                    <Instagram className="w-4 h-4" />
+                  </a>
+                  <a
+                    href="https://facebook.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Follow DrTechei on Facebook"
+                    className="w-9 h-9 rounded-xl bg-[#141B28] hover:bg-[#1877F2] text-slate-400 hover:text-white border border-[#232C3D] hover:border-[#1877F2] flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105 group"
+                    title="Facebook"
+                  >
+                    <Facebook className="w-4 h-4" />
+                  </a>
+                  <a
+                    href="https://linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Connect with DrTechei on LinkedIn"
+                    className="w-9 h-9 rounded-xl bg-[#141B28] hover:bg-[#0A66C2] text-slate-400 hover:text-white border border-[#232C3D] hover:border-[#0A66C2] flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105 group"
+                    title="LinkedIn"
+                  >
+                    <Linkedin className="w-4 h-4" />
+                  </a>
+                  <a
+                    href="https://x.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Follow DrTechei on X / Twitter"
+                    className="w-9 h-9 rounded-xl bg-[#141B28] hover:bg-white text-slate-400 hover:text-black border border-[#232C3D] hover:border-white flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105 group"
+                    title="Twitter / X"
+                  >
+                    <Twitter className="w-4 h-4" />
+                  </a>
+                  <a
+                    href="https://github.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="View DrTechei Open Source on GitHub"
+                    className="w-9 h-9 rounded-xl bg-[#141B28] hover:bg-[#24292F] text-slate-400 hover:text-white border border-[#232C3D] hover:border-slate-500 flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105 group"
+                    title="GitHub"
+                  >
+                    <Github className="w-4 h-4" />
+                  </a>
+                  <a
+                    href="https://youtube.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Watch DrTechei Architecture Breakdowns on YouTube"
+                    className="w-9 h-9 rounded-xl bg-[#141B28] hover:bg-[#FF0000] text-slate-400 hover:text-white border border-[#232C3D] hover:border-[#FF0000] flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105 group"
+                    title="YouTube"
+                  >
+                    <Youtube className="w-4 h-4" />
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -241,12 +324,18 @@ export const Footer: React.FC = () => {
               </ul>
             </div>
 
-            {/* Contact & Hours Column */}
+            {/* Contact & Offices Column */}
             <div className="col-span-2 md:col-span-2 space-y-3">
               <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">
-                Direct Contact
+                Global Offices
               </h4>
               <ul className="space-y-3 text-xs">
+                <li className="flex items-start gap-2.5">
+                  <Mail className="w-4 h-4 text-[#D98E3A] shrink-0 mt-0.5" />
+                  <a href="mailto:wearedrtechie@gmail.com" className="hover:text-white transition-colors truncate font-semibold text-slate-200">
+                    wearedrtechie@gmail.com
+                  </a>
+                </li>
                 <li className="flex items-start gap-2.5">
                   <Phone className="w-4 h-4 text-[#D98E3A] shrink-0 mt-0.5" />
                   <a href="tel:+18005408324" className="hover:text-white transition-colors">
@@ -254,14 +343,21 @@ export const Footer: React.FC = () => {
                   </a>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <Mail className="w-4 h-4 text-[#D98E3A] shrink-0 mt-0.5" />
-                  <a href="mailto:wearedrtechie@gmail.com" className="hover:text-white transition-colors truncate">
-                    wearedrtechie@gmail.com
-                  </a>
-                </li>
-                <li className="flex items-start gap-2.5">
                   <MapPin className="w-4 h-4 text-[#D98E3A] shrink-0 mt-0.5" />
-                  <span>San Francisco, CA & Global Remote</span>
+                  <div className="space-y-1.5">
+                    <div className="flex items-center gap-1.5 text-slate-200 font-medium">
+                      <span>🇮🇳</span>
+                      <span>India (Delhi NCR)</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 text-slate-200 font-medium">
+                      <span>🇫🇮</span>
+                      <span>Finland (Helsinki)</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 text-slate-200 font-medium">
+                      <span>🇮🇪</span>
+                      <span>Ireland (Dublin)</span>
+                    </div>
+                  </div>
                 </li>
               </ul>
 
