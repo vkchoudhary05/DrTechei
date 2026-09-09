@@ -190,7 +190,11 @@ export const Logo: React.FC<LogoProps> = ({
             Dr
           </span>
           <span 
-            className="font-black bg-gradient-to-r from-[#2D2575] via-[#4338CA] to-[#D98E3A] bg-clip-text text-transparent ml-0.5"
+            className={`font-black ml-0.5 ${
+              isDark
+                ? 'bg-gradient-to-r from-[#FBD79A] via-[#E29A45] to-[#D98E3A] bg-clip-text text-transparent'
+                : 'bg-gradient-to-r from-[#2D2575] via-[#4338CA] to-[#D98E3A] bg-clip-text text-transparent'
+            }`}
             style={{ fontSize: `${Math.max(16, iconSize * 0.54)}px` }}
           >
             Techei

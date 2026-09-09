@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Logo } from './Logo';
 import { useRouter } from '../context/RouterContext';
+import { useHeroTheme } from '../context/HeroThemeContext';
 import { PageRoute } from '../types/router';
 import { motion, AnimatePresence } from 'motion/react';
 import {
@@ -34,12 +35,15 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
   const { currentPage, navigate } = useRouter();
+  const { isDark: isHeroDark } = useHeroTheme();
   const isHomePage = currentPage === 'home';
   const [isScrolled, setIsScrolled] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [showMailTooltip, setShowMailTooltip] = useState(false);
   const [showContactTooltip, setShowContactTooltip] = useState(false);
+
+  const isHeroDarkTop = false;
 
   // Track window scroll for seamless top hero blend and sticky scroller transition
   useEffect(() => {
@@ -167,33 +171,34 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
         id="main-navbar"
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out ${
           isScrolled
-            ? 'bg-white/95 backdrop-blur-xl shadow-xs py-2 sm:py-2.5 border-b border-slate-200/90'
-            : isHomePage
-              ? 'bg-transparent py-3 sm:py-4 border-b border-transparent shadow-none'
-              : 'bg-white/95 backdrop-blur-md py-2.5 sm:py-3.5 border-b border-slate-200/70 shadow-2xs'
+            ? 'bg-white/95 backdrop-blur-xl shadow-md py-2 sm:py-2.5 border-b border-slate-200/90'
+            : 'bg-white/95 backdrop-blur-md py-2.5 sm:py-3 border-b border-slate-200/80 shadow-xs'
         }`}
       >
+        {/* Colorful Brand Top Gradient Accent Strip */}
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#2D2575] via-[#6366F1] to-[#D98E3A]" />
+
         <div className="max-w-7xl 2xl:max-w-[1536px] mx-auto px-3 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
           <div className="flex items-center justify-between gap-2 sm:gap-4">
 
-            {/* LEFT ZONE: Brand Logo ONLY (Clean & Prominent) */}
+            {/* LEFT ZONE: Brand Logo (Clean, Crisp & Prominent) */}
             <div className="flex items-center shrink-0">
               <button
                 type="button"
                 onClick={() => handleNavigate('home')}
-                className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D98E3A] rounded-lg transition-transform hover:opacity-95 text-left cursor-pointer"
+                className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D98E3A] rounded-lg transition-transform hover:scale-[1.02] text-left cursor-pointer"
                 aria-label="DrTechei IT Solutions Home"
               >
                 <div className="hidden sm:block">
-                  <Logo iconSize={36} showSubtitle={true} variant="auto" />
+                  <Logo iconSize={38} showSubtitle={true} variant="auto" />
                 </div>
                 <div className="sm:hidden">
-                  <Logo iconSize={30} showSubtitle={true} variant="auto" />
+                  <Logo iconSize={32} showSubtitle={true} variant="auto" />
                 </div>
               </button>
             </div>
 
-            {/* CENTER ZONE: Clean Desktop Navigation Links */}
+            {/* CENTER ZONE: Colorful Desktop Navigation Links */}
             <nav
               aria-label="Desktop Primary Navigation"
               className="hidden lg:flex items-center gap-1 xl:gap-1.5 2xl:gap-2"
@@ -205,17 +210,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
                     key={item.route}
                     type="button"
                     onClick={() => handleNavigate(item.route)}
-                    className={`relative px-3 py-1.5 text-xs xl:text-[13px] 2xl:text-sm font-semibold rounded-lg transition-colors cursor-pointer ${
+                    className={`relative px-3.5 py-1.5 text-xs xl:text-[13px] 2xl:text-sm font-semibold rounded-lg transition-all duration-150 cursor-pointer ${
                       isActive
-                        ? 'text-[#2D2575] font-bold bg-[#EEEDFA]'
-                        : 'text-slate-600 hover:text-[#2D2575] hover:bg-slate-100/70'
+                        ? 'text-white font-bold bg-[#2D2575] shadow-sm shadow-[#2D2575]/25'
+                        : 'text-slate-700 hover:text-[#2D2575] hover:bg-[#EEEDFA]/70'
                     }`}
                   >
                     {item.name}
                     {isActive && (
                       <motion.div
                         layoutId="activeNavIndicator"
-                        className="absolute bottom-0 left-2 right-2 h-0.5 bg-[#D98E3A] rounded-full"
+                        className="absolute -bottom-1 left-3 right-3 h-0.5 bg-[#D98E3A] rounded-full"
                       />
                     )}
                   </button>
@@ -223,10 +228,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
               })}
             </nav>
 
-            {/* RIGHT ZONE: Animated Mail Icon + Animated Contact Icon + Quote Button + Animated Menu Icon (RIGHT SIDE ONLY) */}
+            {/* RIGHT ZONE: Animated Mail + Contact + Colorful Quote Button + Animated Menu Icon */}
             <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
 
-              {/* 1. ANIMATED MAIL ICON WITH HOVER/CLICK POPOVER */}
+              {/* 1. ANIMATED MAIL ICON WITH COLOR ACCENT & TOOLTIP */}
               <div className="relative">
                 <motion.button
                   id="navbar-mail-btn"
@@ -238,16 +243,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
                   onClick={() => {
                     window.location.href = 'mailto:wearedrtechie@gmail.com';
                   }}
-                  className={`relative h-8 w-8 sm:h-9 sm:w-9 flex items-center justify-center rounded-lg sm:rounded-xl border transition-all cursor-pointer group shrink-0 ${
-                    !isScrolled && isHomePage
-                      ? 'border-transparent bg-transparent hover:bg-slate-100/70 text-[#2D2575] hover:text-[#D98E3A] shadow-none'
-                      : 'border-slate-200/90 bg-white hover:bg-[#EEEDFA]/50 text-[#2D2575] hover:text-[#D98E3A] hover:border-[#D98E3A]/60 shadow-2xs'
-                  }`}
+                  className="relative h-8 w-8 sm:h-9 sm:w-9 flex items-center justify-center rounded-lg sm:rounded-xl border border-[#2D2575]/20 bg-[#FAFBFD] hover:bg-[#EEEDFA] text-[#2D2575] hover:text-[#D98E3A] transition-all cursor-pointer group shrink-0 shadow-2xs"
                   aria-label="Send direct email to wearedrtechie@gmail.com"
                   title="Email DrTechei: wearedrtechie@gmail.com"
                 >
                   <div className="animate-mail-float">
-                    <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:scale-110" />
+                    <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:scale-110 text-[#2D2575] group-hover:text-[#D98E3A]" />
                   </div>
 
                   {/* Pulsing Unread Notification Dot */}
@@ -296,7 +297,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
                         </button>
                         <a
                           href="mailto:wearedrtechie@gmail.com"
-                          className="py-1 px-2 rounded-lg bg-[#2D2575] text-white text-[11px] font-bold hover:bg-[#1A1448] transition-colors"
+                          className="py-1 px-2.5 rounded-lg bg-[#2D2575] text-white text-[11px] font-bold hover:bg-[#1A1448] transition-colors"
                         >
                           Compose
                         </a>
@@ -306,7 +307,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
                 </AnimatePresence>
               </div>
 
-              {/* 2. ANIMATED CONTACT / CALL ICON */}
+              {/* 2. ANIMATED CONTACT / CALL ICON WITH WARM COLOR */}
               <div className="relative">
                 <motion.button
                   id="navbar-contact-btn"
@@ -316,16 +317,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
                   onMouseEnter={() => setShowContactTooltip(true)}
                   onMouseLeave={() => setShowContactTooltip(false)}
                   onClick={() => handleNavigate('contact')}
-                  className={`relative h-8 w-8 sm:h-9 sm:w-9 flex items-center justify-center rounded-lg sm:rounded-xl border transition-all cursor-pointer group shrink-0 ${
-                    !isScrolled && isHomePage
-                      ? 'border-transparent bg-transparent hover:bg-[#FDF7EF] text-[#D98E3A] hover:text-[#B26E20] shadow-none'
-                      : 'border-slate-200/90 bg-white hover:bg-[#FDF7EF] text-[#D98E3A] hover:text-[#B26E20] hover:border-[#D98E3A]/60 shadow-2xs'
-                  }`}
+                  className="relative h-8 w-8 sm:h-9 sm:w-9 flex items-center justify-center rounded-lg sm:rounded-xl border border-[#D98E3A]/30 bg-[#FDF7EF] hover:bg-[#FCEFD9] text-[#D98E3A] hover:text-[#B26E20] transition-all cursor-pointer group shrink-0 shadow-2xs"
                   aria-label="Contact senior engineering team"
                   title="Direct Engineering Call"
                 >
                   <div className="animate-phone-ring">
-                    <PhoneCall className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:scale-110" />
+                    <PhoneCall className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:scale-110 text-[#D98E3A]" />
                   </div>
 
                   {/* Pulsing Online Badge Dot */}
@@ -349,7 +346,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
                         <span className="text-emerald-600 font-semibold">Available</span>
                       </div>
                       <div className="text-xs font-bold text-[#111622]">
-                        +919690941439
+                        +1 (800) 540-TECH
                       </div>
                       <p className="text-[11px] text-slate-500 mt-1">
                         Free 15-minute technical discovery with senior architects.
@@ -378,42 +375,38 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
                 </AnimatePresence>
               </div>
 
-              {/* 3. SLEEK ESTIMATE QUOTE BUTTON (SHOWN ON SM+ SCREENS TO PREVENT MOBILE CLUTTER) */}
+              {/* 3. VIBRANT ESTIMATE QUOTE BUTTON WITH COLOR GRADIENT */}
               <motion.button
                 id="navbar-quote-btn"
                 type="button"
                 whileTap={{ scale: 0.93 }}
-                whileHover={{ scale: 1.03 }}
+                whileHover={{ scale: 1.04 }}
                 onClick={onOpenQuoteModal}
-                className="hidden sm:inline-flex group relative items-center justify-center gap-1.5 h-8 sm:h-9 px-2.5 sm:px-3.5 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#D98E3A] via-[#E29D4B] to-[#B26E20] hover:from-[#E29D4B] hover:to-[#9E5F17] shadow-xs hover:shadow-md hover:shadow-[#D98E3A]/30 transition-all cursor-pointer ring-1 ring-white/30 shrink-0"
+                className="hidden sm:inline-flex group relative items-center justify-center gap-1.5 h-8 sm:h-9 px-3 sm:px-4 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#D98E3A] via-[#E29D4B] to-[#C07724] hover:from-[#E29D4B] hover:to-[#A8631B] shadow-sm shadow-[#D98E3A]/30 hover:shadow-md hover:shadow-[#D98E3A]/40 transition-all cursor-pointer ring-1 ring-white/30 shrink-0"
               >
-                <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-100 shrink-0" />
+                <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-100 shrink-0 group-hover:rotate-12 transition-transform" />
                 <span>Get Quote</span>
               </motion.button>
 
-              {/* 4. ANIMATED MENU ICON (ONLY ON RIGHT SIDE AS REQUESTED) */}
+              {/* 4. ANIMATED MENU ICON (CLICK OPENS UPPER TO LOWER) */}
               <motion.button
                 id="navbar-right-menu-btn"
                 type="button"
                 whileTap={{ scale: 0.92 }}
-                whileHover={{ scale: 1.06 }}
+                whileHover={{ scale: 1.05 }}
                 onClick={() => setDrawerOpen(true)}
-                className={`inline-flex items-center justify-center gap-1 sm:gap-1.5 h-8 sm:h-9 px-2 sm:px-3 rounded-lg sm:rounded-xl border transition-all cursor-pointer group shrink-0 ${
-                  !isScrolled && isHomePage
-                    ? 'border-transparent bg-transparent hover:bg-slate-100/70 text-[#2D2575] hover:text-[#111622] shadow-none'
-                    : 'border-slate-200/90 bg-white/95 hover:bg-[#EEEDFA]/50 text-[#2D2575] hover:text-[#111622] hover:border-[#2D2575]/40 shadow-2xs'
-                }`}
-                aria-label="Open navigation menu"
+                className="inline-flex items-center justify-center gap-1 sm:gap-1.5 h-8 sm:h-9 px-2.5 sm:px-3 rounded-lg sm:rounded-xl border border-[#2D2575]/25 bg-gradient-to-b from-white to-[#FAFBFD] hover:bg-[#EEEDFA] text-[#2D2575] hover:text-[#111622] transition-all cursor-pointer group shrink-0 shadow-2xs"
+                aria-label="Open navigation menu from top to bottom"
                 aria-expanded={drawerOpen}
                 title="Open Navigation Menu"
               >
-                {/* 3-Bar Animated Micro-Hamburger */}
+                {/* 3-Bar Animated Micro-Hamburger with Color Highlights */}
                 <div className="flex flex-col gap-0.5 sm:gap-1 items-end justify-center w-3.5 sm:w-4 h-3.5 sm:h-4">
-                  <span className="w-3.5 sm:w-4 h-0.5 rounded-full transition-all duration-200 bg-[#D98E3A] group-hover:bg-[#2D2575]" />
-                  <span className="w-2.5 sm:w-3 h-0.5 rounded-full transition-all duration-200 bg-[#2D2575] group-hover:bg-[#D98E3A]" />
-                  <span className="w-2 sm:w-2.5 h-0.5 rounded-full transition-all duration-200 bg-[#D98E3A] group-hover:bg-[#2D2575]" />
+                  <span className="w-3.5 sm:w-4 h-0.5 rounded-full bg-[#D98E3A] group-hover:bg-[#2D2575] transition-colors" />
+                  <span className="w-2.5 sm:w-3 h-0.5 rounded-full bg-[#2D2575] group-hover:bg-[#D98E3A] transition-colors" />
+                  <span className="w-2 sm:w-2.5 h-0.5 rounded-full bg-[#D98E3A] group-hover:bg-[#2D2575] transition-colors" />
                 </div>
-                <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider hidden sm:inline text-[#2D2575]">
+                <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#2D2575]">
                   Menu
                 </span>
               </motion.button>
@@ -423,10 +416,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
         </div>
       </header>
 
-      {/* FULL-POWER NAVIGATION MENU DRAWER WITH FLUID ANIMATION (OPENS FROM RIGHT SIDE) */}
+      {/* FULL-POWER NAVIGATION MENU: OPENS UPPER TO LOWER (TOP TO BOTTOM) ON BOTH MOBILE & DESKTOP */}
       <AnimatePresence>
         {drawerOpen && (
-          <div className="fixed inset-0 z-50">
+          <div className="fixed inset-0 z-50 overflow-hidden flex flex-col justify-start">
             {/* Backdrop Blur Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -438,177 +431,269 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
               aria-hidden="true"
             />
 
-            {/* Slide-out Menu Panel from the RIGHT SIDE with Spring Animation */}
+            {/* UPPER-TO-LOWER DROP-DOWN SHEET (SLIDES FROM TOP DOWNWARDS) */}
             <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 28, stiffness: 260 }}
-              className="fixed top-0 right-0 bottom-0 w-[90vw] max-w-md bg-white shadow-2xl z-50 flex flex-col overflow-hidden border-l border-slate-200"
+              initial={{ y: '-100%', opacity: 0.5 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: '-100%', opacity: 0 }}
+              transition={{ type: 'spring', damping: 26, stiffness: 220 }}
+              className="relative w-full max-h-[92vh] bg-white shadow-2xl z-50 flex flex-col overflow-hidden border-b-4 border-[#D98E3A] rounded-b-2xl sm:rounded-b-3xl"
             >
-              {/* Drawer Top Header */}
-              <div className="p-4 sm:p-5 border-b border-slate-100 bg-[#FAFBFD] flex items-center justify-between">
+              {/* Top Accent Gradient Header Line */}
+              <div className="h-1.5 w-full bg-gradient-to-r from-[#2D2575] via-[#4338CA] via-[#D98E3A] to-[#E29D4B]" />
+
+              {/* Drawer Top Bar */}
+              <div className="px-4 sm:px-8 py-3.5 sm:py-4 border-b border-slate-200/80 bg-[#FAFBFD] flex items-center justify-between">
                 <button
                   type="button"
                   onClick={() => handleNavigate('home')}
-                  className="focus:outline-none cursor-pointer"
+                  className="focus:outline-none cursor-pointer flex items-center gap-2"
                 >
-                  <Logo iconSize={32} showSubtitle={true} />
+                  <Logo iconSize={36} showSubtitle={true} />
                 </button>
 
-                <motion.button
-                  type="button"
-                  whileTap={{ scale: 0.9 }}
-                  whileHover={{ scale: 1.1, rotate: 90 }}
-                  onClick={() => setDrawerOpen(false)}
-                  className="p-2 rounded-xl text-slate-500 hover:text-[#111622] hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-[#D98E3A] cursor-pointer"
-                  aria-label="Close navigation menu"
-                >
-                  <X className="w-5 h-5" />
-                </motion.button>
-              </div>
-
-              {/* Global Offices & Live Status Strip inside Drawer */}
-              <div className="px-4 py-2.5 bg-gradient-to-r from-[#EEEDFA] to-[#FAFBFD] border-b border-[#D1CDF4]/60 flex items-center justify-between text-xs">
-                <div className="flex items-center gap-1.5 text-[#2D2575] font-semibold text-[11px]">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-                  <span>Global Hubs: 🇮🇳 Delhi • 🇫🇮 Finland • 🇮🇪 Ireland</span>
-                </div>
-                <span className="text-[10px] font-mono font-bold text-[#D98E3A] uppercase tracking-wider">
-                  Live Intake Open
-                </span>
-              </div>
-
-              {/* Quick Contact Bar inside Drawer with Animated Direct Triggers */}
-              <div className="px-4 py-2.5 bg-slate-50 border-b border-slate-200/80 flex items-center justify-between text-xs gap-2">
-                <a
-                  href="mailto:wearedrtechie@gmail.com"
-                  className="flex items-center gap-1.5 font-bold text-[#2D2575] hover:text-[#D98E3A] transition-colors truncate max-w-[190px]"
-                  title="Direct Architect Inbox"
-                >
-                  <Mail className="w-3.5 h-3.5 text-[#D98E3A] shrink-0" />
-                  <span className="truncate text-[11px]">wearedrtechie@gmail.com</span>
-                </a>
-                <a
-                  href="tel:+18005408324"
-                  className="flex items-center gap-1 font-bold text-[#111622] hover:text-[#D98E3A] transition-colors shrink-0 text-[11px]"
-                >
-                  <PhoneCall className="w-3.5 h-3.5 text-[#D98E3A]" />
-                  <span>+919690941439</span>
-                </a>
-              </div>
-
-              {/* Scrollable Navigation Items */}
-              <div className="flex-1 overflow-y-auto px-3.5 sm:px-4 py-4 space-y-4">
-                <div>
-                  <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-2 mb-2 flex items-center justify-between">
-                    <span>Navigation</span>
-                    <span className="text-[10px] font-normal text-slate-400">Select view</span>
+                <div className="flex items-center gap-3">
+                  <div className="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-medium text-emerald-700">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span>Live Intake Open • 24h Response</span>
                   </div>
 
-                  <nav className="space-y-1">
-                    {allMenuPages.map((item) => {
-                      const isActive = currentPage === item.route;
-                      const IconComponent = item.icon;
+                  <motion.button
+                    type="button"
+                    whileTap={{ scale: 0.9 }}
+                    whileHover={{ scale: 1.1, rotate: 90 }}
+                    onClick={() => setDrawerOpen(false)}
+                    className="p-2 rounded-xl text-slate-500 hover:text-[#111622] hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-[#D98E3A] cursor-pointer"
+                    aria-label="Close navigation menu"
+                  >
+                    <X className="w-5 h-5" />
+                  </motion.button>
+                </div>
+              </div>
 
-                      return (
-                        <button
-                          key={item.route}
-                          type="button"
-                          onClick={() => handleNavigate(item.route)}
-                          className={`w-full flex items-start gap-3 p-2.5 rounded-xl text-left transition-all cursor-pointer ${
-                            isActive
-                              ? 'bg-[#EEEDFA] text-[#2D2575] font-bold shadow-2xs border-l-4 border-[#D98E3A]'
-                              : 'text-slate-700 hover:bg-slate-50 hover:text-[#2D2575]'
-                          }`}
-                        >
-                          <div
-                            className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5 transition-colors ${
+              {/* Responsive Scrollable Content Grid (Multi-Column on Desktop, Stacked on Mobile) */}
+              <div className="flex-1 overflow-y-auto px-4 sm:px-8 py-6">
+                <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8">
+                  
+                  {/* COLUMN 1 (md:col-span-4): Main Pages Navigation */}
+                  <div className="md:col-span-5 lg:col-span-4">
+                    <div className="text-[11px] font-bold text-slate-400 uppercase tracking-widest px-2 mb-3 flex items-center justify-between">
+                      <span className="text-[#2D2575]">Core Navigation</span>
+                      <span className="text-slate-400 font-normal">Explore Pages</span>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-1.5">
+                      {allMenuPages.slice(0, 6).map((item) => {
+                        const isActive = currentPage === item.route;
+                        const IconComponent = item.icon;
+
+                        return (
+                          <button
+                            key={item.route}
+                            type="button"
+                            onClick={() => handleNavigate(item.route)}
+                            className={`w-full flex items-start gap-3 p-2.5 rounded-xl text-left transition-all cursor-pointer ${
                               isActive
-                                ? 'bg-[#2D2575] text-white'
-                                : 'bg-slate-100 text-slate-600'
+                                ? 'bg-[#EEEDFA] text-[#2D2575] font-bold shadow-2xs border-l-4 border-[#D98E3A]'
+                                : 'text-slate-700 hover:bg-slate-50 hover:text-[#2D2575]'
                             }`}
                           >
-                            <IconComponent className="w-4 h-4" />
-                          </div>
-
-                          <div className="flex-grow min-w-0">
-                            <div className="flex items-center justify-between gap-1">
-                              <span className="text-xs font-bold text-[#111622]">
-                                {item.name}
-                              </span>
-                              {item.badge && (
-                                <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-[#FDF7EF] text-[#A8631B] border border-[#F2BC7B]/60">
-                                  {item.badge}
-                                </span>
-                              )}
+                            <div
+                              className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5 transition-colors ${
+                                isActive
+                                  ? 'bg-[#2D2575] text-white'
+                                  : 'bg-[#EEEDFA]/60 text-[#2D2575]'
+                              }`}
+                            >
+                              <IconComponent className="w-4 h-4" />
                             </div>
-                            <p className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">
-                              {item.desc}
-                            </p>
-                          </div>
-                        </button>
-                      );
-                    })}
-                  </nav>
-                </div>
 
-                {/* Global Engineering Centers Detail inside Drawer */}
-                <div className="p-3.5 rounded-2xl bg-[#FAFBFD] border border-slate-200/80 text-xs space-y-2.5">
-                  <div className="flex items-center gap-2 text-[#2D2575] font-bold">
-                    <Clock className="w-3.5 h-3.5 text-[#D98E3A]" />
-                    <span>Global Engineering Hubs</span>
-                  </div>
-                  
-                  <div className="space-y-1.5 pt-1 text-xs">
-                    <div className="flex items-center gap-2 text-slate-700">
-                      <span>🇮🇳</span>
-                      <span className="font-semibold">India: Delhi NCR R&D Center</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-slate-700">
-                      <span>🇫🇮</span>
-                      <span className="font-semibold">Finland: Helsinki Digital Hub</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-slate-700">
-                      <span>🇮🇪</span>
-                      <span className="font-semibold">Ireland: Dublin Enterprise Hub</span>
+                            <div className="flex-grow min-w-0">
+                              <div className="flex items-center justify-between gap-1">
+                                <span className="text-xs font-bold text-[#111622]">
+                                  {item.name}
+                                </span>
+                                {item.badge && (
+                                  <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-[#FDF7EF] text-[#A8631B] border border-[#F2BC7B]/60">
+                                    {item.badge}
+                                  </span>
+                                )}
+                              </div>
+                              <p className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">
+                                {item.desc}
+                              </p>
+                            </div>
+                          </button>
+                        );
+                      })}
                     </div>
                   </div>
 
-                  <div className="pt-2 border-t border-slate-200/70 flex flex-col gap-1.5 text-xs font-semibold">
-                    <div className="flex items-center justify-between">
-                      <span className="text-slate-500 text-[11px]">Turnaround:</span>
-                      <span className="text-emerald-700 font-bold text-[11px]">24 business hours</span>
+                  {/* COLUMN 2 (md:col-span-4): Secondary Pages & All CMS Platforms */}
+                  <div className="md:col-span-4 lg:col-span-4">
+                    <div className="text-[11px] font-bold text-slate-400 uppercase tracking-widest px-2 mb-3 flex items-center justify-between">
+                      <span className="text-[#2D2575]">Agency Info &amp; Reviews</span>
+                      <span className="text-slate-400 font-normal">Trust &amp; SLAs</span>
                     </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-slate-500 text-[11px]">IP Ownership:</span>
-                      <span className="text-[#2D2575] font-bold text-[11px]">100% Day One Transfer</span>
+
+                    <div className="space-y-1.5">
+                      {allMenuPages.slice(6).map((item) => {
+                        const isActive = currentPage === item.route;
+                        const IconComponent = item.icon;
+
+                        return (
+                          <button
+                            key={item.route}
+                            type="button"
+                            onClick={() => handleNavigate(item.route)}
+                            className={`w-full flex items-start gap-3 p-2.5 rounded-xl text-left transition-all cursor-pointer ${
+                              isActive
+                                ? 'bg-[#EEEDFA] text-[#2D2575] font-bold shadow-2xs border-l-4 border-[#D98E3A]'
+                                : 'text-slate-700 hover:bg-slate-50 hover:text-[#2D2575]'
+                            }`}
+                          >
+                            <div
+                              className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5 transition-colors ${
+                                isActive
+                                  ? 'bg-[#2D2575] text-white'
+                                  : 'bg-slate-100 text-slate-600'
+                              }`}
+                            >
+                              <IconComponent className="w-4 h-4" />
+                            </div>
+
+                            <div className="flex-grow min-w-0">
+                              <div className="flex items-center justify-between gap-1">
+                                <span className="text-xs font-bold text-[#111622]">
+                                  {item.name}
+                                </span>
+                                {item.badge && (
+                                  <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-[#FDF7EF] text-[#A8631B] border border-[#F2BC7B]/60">
+                                    {item.badge}
+                                  </span>
+                                )}
+                              </div>
+                              <p className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">
+                                {item.desc}
+                              </p>
+                            </div>
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {/* Fast CMS Badges Strip */}
+                    <div className="mt-4 p-3 rounded-xl bg-gradient-to-br from-[#FAFBFD] to-[#EEEDFA]/30 border border-slate-200">
+                      <div className="text-[10px] font-bold uppercase tracking-wider text-[#2D2575] mb-2">
+                        Supported CMS Platforms:
+                      </div>
+                      <div className="flex flex-wrap gap-1.5 text-[10px] font-medium text-slate-700">
+                        <span className="px-2 py-0.5 rounded bg-white border border-slate-200 font-semibold text-[#2D2575]">WordPress</span>
+                        <span className="px-2 py-0.5 rounded bg-white border border-slate-200 font-semibold text-emerald-700">Shopify Plus</span>
+                        <span className="px-2 py-0.5 rounded bg-white border border-slate-200 font-semibold text-rose-700">Sanity.io</span>
+                        <span className="px-2 py-0.5 rounded bg-white border border-slate-200 font-semibold text-indigo-700">Strapi</span>
+                        <span className="px-2 py-0.5 rounded bg-white border border-slate-200 font-semibold text-blue-700">Webflow</span>
+                        <span className="px-2 py-0.5 rounded bg-white border border-slate-200 font-semibold text-purple-700">WooCommerce</span>
+                        <span className="px-2 py-0.5 rounded bg-white border border-slate-200 font-semibold text-zinc-800">Payload</span>
+                        <span className="px-2 py-0.5 rounded bg-white border border-slate-200 font-semibold text-sky-700">Drupal</span>
+                      </div>
                     </div>
                   </div>
+
+                  {/* COLUMN 3 (md:col-span-4): Global Offices & Fast Action Strip */}
+                  <div className="md:col-span-3 lg:col-span-4 flex flex-col justify-between space-y-4">
+                    <div className="p-4 rounded-2xl bg-gradient-to-br from-[#FAFBFD] via-white to-[#EEEDFA]/40 border border-slate-200/90 text-xs space-y-3">
+                      <div className="flex items-center justify-between text-[#2D2575] font-bold">
+                        <div className="flex items-center gap-2">
+                          <Clock className="w-4 h-4 text-[#D98E3A]" />
+                          <span>Global Delivery Hubs</span>
+                        </div>
+                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-semibold">
+                          Active Now
+                        </span>
+                      </div>
+
+                      <div className="space-y-2 text-xs">
+                        <div className="flex items-center gap-2 text-slate-700">
+                          <span className="text-sm">🇮🇳</span>
+                          <span className="font-semibold">India: Delhi NCR R&amp;D Center</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-slate-700">
+                          <span className="text-sm">🇫🇮</span>
+                          <span className="font-semibold">Finland: Helsinki Digital Hub</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-slate-700">
+                          <span className="text-sm">🇮🇪</span>
+                          <span className="font-semibold">Ireland: Dublin Enterprise Hub</span>
+                        </div>
+                      </div>
+
+                      <div className="pt-2.5 border-t border-slate-200/80 space-y-1.5 text-[11px]">
+                        <div className="flex items-center justify-between text-slate-600">
+                          <span>SLA Turnaround:</span>
+                          <span className="text-emerald-700 font-bold">24 Business Hours</span>
+                        </div>
+                        <div className="flex items-center justify-between text-slate-600">
+                          <span>IP Ownership:</span>
+                          <span className="text-[#2D2575] font-bold">100% Day-One Transfer</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Direct Contact Links */}
+                    <div className="p-4 rounded-2xl bg-[#EEEDFA]/50 border border-[#2D2575]/15 space-y-2.5">
+                      <div className="text-xs font-bold text-[#2D2575]">
+                        Need Immediate Answers?
+                      </div>
+                      <div className="flex flex-col gap-2">
+                        <a
+                          href="mailto:wearedrtechie@gmail.com"
+                          className="flex items-center gap-2 text-xs font-semibold text-[#2D2575] hover:text-[#D98E3A] transition-colors"
+                        >
+                          <Mail className="w-4 h-4 text-[#D98E3A]" />
+                          <span>wearedrtechie@gmail.com</span>
+                        </a>
+                        <a
+                          href="tel:+18005408324"
+                          className="flex items-center gap-2 text-xs font-semibold text-[#111622] hover:text-[#D98E3A] transition-colors"
+                        >
+                          <PhoneCall className="w-4 h-4 text-[#D98E3A]" />
+                          <span>+1 (800) 540-TECH</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
 
-              {/* Drawer Bottom Action Buttons */}
-              <div className="p-3.5 sm:p-4 border-t border-slate-200 bg-white space-y-2">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setDrawerOpen(false);
-                    onOpenQuoteModal();
-                  }}
-                  className="w-full py-2.5 sm:py-3 px-4 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#D98E3A] via-[#E29D4B] to-[#B26E20] hover:from-[#E29D4B] hover:to-[#9E5F17] shadow-md shadow-[#D98E3A]/25 active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <Sparkles className="w-4 h-4 text-amber-100" />
-                  <span>Get Free Ballpark Quote</span>
-                </button>
+              {/* Drawer Bottom Action Buttons Strip */}
+              <div className="p-4 sm:p-5 border-t border-slate-200 bg-[#FAFBFD] flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div className="text-xs text-slate-500 font-medium hidden sm:block">
+                  Fast 15-minute engineering consults with zero sales pressure.
+                </div>
 
-                <button
-                  type="button"
-                  onClick={() => handleNavigate('contact')}
-                  className="w-full py-2 sm:py-2.5 px-4 rounded-xl text-xs font-bold text-center text-[#2D2575] bg-[#EEEDFA] hover:bg-[#EEEDFA]/80 transition-colors block cursor-pointer"
-                >
-                  Book 15-Min Discovery Call
-                </button>
+                <div className="flex items-center gap-3 w-full sm:w-auto">
+                  <button
+                    type="button"
+                    onClick={() => handleNavigate('contact')}
+                    className="flex-1 sm:flex-initial py-2.5 px-4 rounded-xl text-xs font-bold text-center text-[#2D2575] bg-white border border-[#2D2575]/20 hover:bg-[#EEEDFA] transition-colors cursor-pointer"
+                  >
+                    Book Discovery Call
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setDrawerOpen(false);
+                      onOpenQuoteModal();
+                    }}
+                    className="flex-1 sm:flex-initial py-2.5 px-5 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#D98E3A] via-[#E29D4B] to-[#B26E20] hover:from-[#E29D4B] hover:to-[#9E5F17] shadow-md shadow-[#D98E3A]/25 active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    <Sparkles className="w-3.5 h-3.5 text-amber-100" />
+                    <span>Get Free Quote</span>
+                  </button>
+                </div>
               </div>
             </motion.div>
           </div>

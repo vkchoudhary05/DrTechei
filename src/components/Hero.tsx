@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import {
-  Sparkles,
   ArrowRight,
-  ShieldCheck,
-  Zap,
-  Code2,
   CheckCircle2,
   Lock,
-  Globe,
   Gauge,
+  Terminal,
+  ShieldCheck,
+  Zap,
+  Sparkles,
   Layers,
-  Database,
-  Star,
-  ExternalLink,
-  Laptop
+  Cpu,
+  Activity,
+  Globe2
 } from 'lucide-react';
 
 interface HeroProps {
@@ -24,236 +22,337 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onStartProject, onViewWork }) => {
   const [activeTab, setActiveTab] = useState<'nextjs' | 'react' | 'nodejs' | 'headless'>('nextjs');
+  const [viewMode, setViewMode] = useState<'specs' | 'code' | 'vitals'>('specs');
 
   const architectures = {
     nextjs: {
       name: 'Next.js 15 App Router',
       category: 'Full-Stack Edge Framework',
-      speed: '0.4s LCP',
-      score: '99',
-      features: ['Server-Side Rendering (SSR)', 'Dynamic Edge Caching', 'Automated SEO & Schema'],
-      badge: 'Recommended for High Growth',
+      speed: '0.38s LCP',
+      score: 99,
+      features: ['Server Actions & Streaming SSR', 'Edge Dynamic Micro-Caching', 'Automated Schema & SEO Core'],
+      codeSnippet: `// app/api/edge-accelerate/route.ts
+import { NextResponse } from 'next/server';
+import { edgeCache } from '@drtechei/edge';
+
+export const runtime = 'edge';
+
+export async function GET() {
+  const payload = await edgeCache.fetch({
+    region: 'global-fastest',
+    ttl: 3600,
+  });
+  return NextResponse.json({
+    status: 'optimized',
+    latencyMs: 14,
+    lighthouseScore: 99
+  });
+}`,
+      vitals: {
+        lcp: '0.38s',
+        inp: '22ms',
+        cls: '0.00',
+        ttfb: '42ms',
+      }
     },
     react: {
-      name: 'Custom React 19 Frontend',
-      category: 'Component-Driven UI/UX',
-      speed: '0.5s FCP',
-      score: '98',
-      features: ['Tailwind CSS System', 'State Machine Architecture', 'Fluid Micro-Interactions'],
-      badge: 'Interactive Web Apps',
+      name: 'Custom React 19 Architecture',
+      category: 'Component-Driven UI System',
+      speed: '0.45s FCP',
+      score: 98,
+      features: ['Tailwind CSS Micro-Bundle System', 'Strict Zero-Runtime State Machines', '60FPS Hardware-Accelerated Animation'],
+      codeSnippet: `// components/MotionStage.tsx
+'use client';
+import { motion } from 'motion/react';
+
+export const MotionStage = () => {
+  return (
+    <motion.div 
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="will-change-transform"
+    />
+  );
+};`,
+      vitals: {
+        lcp: '0.45s',
+        inp: '26ms',
+        cls: '0.00',
+        ttfb: '58ms',
+      }
     },
     nodejs: {
-      name: 'Node.js & Microservices',
-      category: 'Scalable Cloud Backend',
-      speed: '< 25ms API Latency',
-      score: '100',
-      features: ['RESTful & GraphQL APIs', 'PostgreSQL / MongoDB Integration', 'High Concurrency'],
-      badge: 'Enterprise Backend',
+      name: 'Node.js & Cloud Microservices',
+      category: 'Scalable Distributed Backend',
+      speed: '< 18ms Latency',
+      score: 100,
+      features: ['High-Concurrency Clustered Pools', 'PostgreSQL / Redis Multi-Region Cache', 'Strict OpenAPI & TypeSafe Endpoints'],
+      codeSnippet: `// server/service.ts
+import express from 'express';
+import { pool } from '@drtechei/db';
+
+const app = express();
+app.get('/api/telemetry', async (req, res) => {
+  const result = await pool.query('SELECT * FROM cluster');
+  res.json({ cluster: 'healthy', activeNodes: 6, p99LatencyMs: 12 });
+});`,
+      vitals: {
+        lcp: '0.30s',
+        inp: '14ms',
+        cls: '0.00',
+        ttfb: '18ms',
+      }
     },
     headless: {
-      name: 'Headless CMS Solutions',
-      category: 'Decoupled Content Architecture',
-      speed: 'Instant CDN Delivery',
-      score: '98',
-      features: ['WordPress REST/GraphQL', 'Shopify Plus Storefronts', 'Marketing Team Autonomy'],
-      badge: 'Content & E-Commerce',
+      name: 'Headless CMS & Commerce',
+      category: 'Decoupled Content Platform',
+      speed: 'Instant Edge Delivery',
+      score: 99,
+      features: ['WordPress GraphQL & Shopify Plus', 'Sanity.io & Strapi Real-Time APIs', 'Total Content Editor Autonomy'],
+      codeSnippet: `// lib/cms.ts
+import { createClient } from '@drtechei/headless';
+
+export const cms = createClient({
+  endpoint: 'https://cdn.drtechei.com/graphql',
+  cache: 'force-cache',
+  revalidate: 60,
+});`,
+      vitals: {
+        lcp: '0.42s',
+        inp: '30ms',
+        cls: '0.00',
+        ttfb: '64ms',
+      }
     },
   };
 
   const currentArch = architectures[activeTab];
 
   return (
-    <section className="relative overflow-hidden bg-[#FAFBFD] pt-16 sm:pt-20 md:pt-24 lg:pt-28 pb-12 sm:pb-16 border-b border-slate-200/80">
-      {/* 1. HIGH-TECH ENGINEERING THEME BACKGROUND (Starts at absolute top of viewport) */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden select-none" aria-hidden="true">
-        {/* Architectural Blueprint Grid starting at top: 0 */}
-        <div 
-          className="absolute inset-0 opacity-75"
-          style={{
-            backgroundImage: `
-              radial-gradient(circle at 50% 0%, rgba(45, 37, 117, 0.08) 0%, transparent 60%),
-              radial-gradient(circle at 90% 20%, rgba(217, 142, 58, 0.10) 0%, transparent 45%),
-              radial-gradient(circle at 10% 35%, rgba(45, 37, 117, 0.06) 0%, transparent 45%),
-              linear-gradient(to right, rgba(45, 37, 117, 0.04) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(45, 37, 117, 0.04) 1px, transparent 1px)
-            `,
-            backgroundSize: '100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px',
-          }}
-        />
+    <section 
+      id="hero-section"
+      className="relative bg-gradient-to-b from-white via-[#FAFBFD] to-white text-slate-900 border-b border-slate-200/90 py-12 sm:py-16 md:py-20 overflow-hidden"
+    >
+      {/* Ambient background glow accents */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-tr from-[#2D2575]/10 via-[#6366F1]/5 to-[#D98E3A]/10 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute top-10 right-10 w-72 h-72 bg-[#D98E3A]/10 rounded-full blur-2xl pointer-events-none -z-10" />
 
-        {/* Ambient Radial Color Orbs */}
-        <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-[380px] sm:w-[840px] h-[280px] sm:h-[380px] bg-gradient-to-r from-[#2D2575]/10 via-[#D98E3A]/12 to-[#2D2575]/10 blur-3xl rounded-full" />
-        <div className="absolute top-1/4 -right-24 w-80 h-80 bg-[#D98E3A]/10 blur-3xl rounded-full" />
-        <div className="absolute bottom-10 -left-20 w-80 h-80 bg-[#2D2575]/8 blur-3xl rounded-full" />
-
-        {/* Decorative Technical Coordinates / Grid Watermarks */}
-        <div className="hidden lg:flex items-center justify-between px-8 pt-4 text-[10px] font-mono tracking-widest text-slate-400/80 uppercase">
-          <div className="flex items-center gap-2">
-            {/* <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span>DRTECHEI // ARCHITECTURE LABS // 2026</span> */}
-          </div>
-          <div className="flex items-center gap-4 text-slate-400/70">
-            {/* <span>NODES: DEL-01 (DELHI) • HEL-02 (FINLAND) • DUB-03 (IRELAND)</span>
-            <span>LATENCY: &lt; 25MS</span> */}
-          </div>
-        </div>
-      </div>
-
-      <div className="relative z-10 max-w-7xl 2xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
-        <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-8 xl:gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
-          {/* LEFT COLUMN: Clear, High-Contrast Typography & Authority */}
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
+          {/* LEFT COLUMN: Animated Headline, Badges & Value Proposition */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
             className="lg:col-span-7 flex flex-col text-left"
           >
-            {/* Live Operational Status Eyebrow */}
-            <div className="inline-flex items-center gap-2 self-start px-3 sm:px-3.5 py-1.5 rounded-full bg-[#EEEDFA] border border-[#D1CDF4] text-[11px] sm:text-xs font-bold text-[#2D2575] uppercase tracking-wider mb-4 sm:mb-5 shadow-2xs">
-              <span className="flex h-2 w-2 rounded-full bg-[#D98E3A] animate-pulse" />
-              <span>DrTechei IT Solutions</span>
-              <span className="text-slate-300">•</span>
-              <span className="text-slate-600 font-semibold lowercase">custom web engineering</span>
+            {/* Animated Eyebrow Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#EEEDFA] text-[#2D2575] border border-[#2D2575]/15 self-start mb-5 shadow-2xs">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              </span>
+              <span className="font-bold">DrTechei IT Solutions</span>
+              <span className="text-[#D98E3A]">•</span>
+              <span className="text-slate-600 font-medium">Enterprise Web Development &amp; CMS Engineering</span>
             </div>
 
-            {/* Stable, High-Impact Main Heading */}
-            <h1 className="text-2xl sm:text-4xl md:text-5xl 2xl:text-6xl font-extrabold text-[#111622] tracking-tight leading-[1.15]">
-              High-Performance Web Development & Digital Engineering
+            {/* Clear, High-Impact Big Headline */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-extrabold text-[#111622] tracking-tight leading-[1.12]">
+              High-Performance Web Apps,{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2D2575] via-[#4338CA] to-[#D98E3A]">
+                Headless CMS
+              </span>{' '}
+              &amp; Digital Engineering
             </h1>
 
-            {/* Value Proposition Subtitle */}
-            <p className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg 2xl:text-xl text-slate-600 leading-relaxed max-w-2xl font-normal">
-              We engineer ultra-fast <strong className="font-semibold text-[#2D2575]">Next.js web applications</strong>, custom React frontends, scalable Node.js APIs, and headless CMS platforms. Guaranteed 95+ PageSpeed scores, sub-second load times, and 100% source code ownership.
+            {/* Value Proposition */}
+            <p className="mt-5 text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl font-normal">
+              We engineer fast Next.js 15 web applications, custom React 19 frontends, scalable Node.js APIs, and headless CMS platforms. Guaranteed 95+ PageSpeed scores, sub-second load times, and 100% source code ownership.
             </p>
+
+            {/* Floating Tech Chips Strip */}
+            <div className="mt-4 flex flex-wrap items-center gap-2">
+              {[
+                { name: 'Next.js 15', color: 'bg-slate-900 text-white' },
+                { name: 'React 19', color: 'bg-sky-50 text-sky-800 border-sky-200' },
+                { name: 'TypeScript', color: 'bg-blue-50 text-blue-800 border-blue-200' },
+                { name: 'Shopify Plus', color: 'bg-emerald-50 text-emerald-800 border-emerald-200' },
+                { name: 'WordPress / Sanity CMS', color: 'bg-amber-50 text-amber-800 border-amber-200' },
+                { name: 'Node.js', color: 'bg-emerald-50 text-emerald-800 border-emerald-200' },
+              ].map((tech) => (
+                <span
+                  key={tech.name}
+                  className={`text-[11px] font-semibold px-2.5 py-0.5 rounded-md border ${tech.color} shadow-2xs`}
+                >
+                  {tech.name}
+                </span>
+              ))}
+            </div>
 
             {/* Global Hubs Strip */}
             <div className="mt-4 flex flex-wrap items-center gap-2 sm:gap-3 text-xs text-slate-500 font-medium">
-              <span className="text-slate-400">Global Offices:</span>
-              <span className="flex items-center gap-1 text-slate-700 font-semibold">
-                <span>🇮🇳</span> India (Delhi)
+              <span className="font-semibold text-slate-700">Delivery Hubs:</span>
+              <span className="px-2.5 py-0.5 rounded-lg bg-white text-slate-800 font-semibold border border-slate-200/90 shadow-2xs flex items-center gap-1.5">
+                <span>🇮🇳</span>
+                <span>Delhi HQ</span>
               </span>
               <span className="text-slate-300">•</span>
-              <span className="flex items-center gap-1 text-slate-700 font-semibold">
-                <span>🇫🇮</span> Finland
+              <span className="px-2.5 py-0.5 rounded-lg bg-white text-slate-800 font-semibold border border-slate-200/90 shadow-2xs flex items-center gap-1.5">
+                <span>🇫🇮</span>
+                <span>Helsinki</span>
               </span>
               <span className="text-slate-300">•</span>
-              <span className="flex items-center gap-1 text-slate-700 font-semibold">
-                <span>🇮🇪</span> Ireland
+              <span className="px-2.5 py-0.5 rounded-lg bg-white text-slate-800 font-semibold border border-slate-200/90 shadow-2xs flex items-center gap-1.5">
+                <span>🇮🇪</span>
+                <span>Dublin</span>
               </span>
             </div>
 
             {/* Primary Action Buttons */}
-            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-3.5">
+            <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
               <motion.button
                 id="hero-primary-cta"
                 type="button"
-                whileTap={{ scale: 0.96 }}
                 whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={onStartProject}
-                className="group inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#D98E3A] via-[#E29D4B] to-[#B26E20] hover:from-[#E29D4B] hover:to-[#9E5F17] shadow-lg shadow-[#D98E3A]/25 hover:shadow-[#D98E3A]/40 transition-all duration-200 cursor-pointer ring-1 ring-white/30"
+                className="group relative inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-[#2D2575] via-[#3B308D] to-[#D98E3A] hover:from-[#231C61] hover:to-[#B26E20] shadow-md shadow-[#2D2575]/20 hover:shadow-lg hover:shadow-[#D98E3A]/25 transition-all cursor-pointer overflow-hidden"
               >
-                <Sparkles className="w-4 h-4 text-amber-100" />
                 <span>Get Free Project Estimate</span>
-                <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </motion.button>
 
               <motion.button
                 id="hero-secondary-cta"
                 type="button"
-                whileTap={{ scale: 0.96 }}
                 whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={onViewWork}
-                className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl text-xs sm:text-sm font-bold text-[#2D2575] bg-white hover:bg-slate-50 border border-slate-200 hover:border-[#D98E3A]/50 shadow-2xs transition-all cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold text-[#2D2575] bg-white hover:bg-[#EEEDFA]/50 border border-slate-300 hover:border-[#2D2575]/40 transition-all shadow-2xs cursor-pointer"
               >
-                <Code2 className="w-4 h-4 text-[#D98E3A]" />
                 <span>Explore Client Work</span>
               </motion.button>
             </div>
 
             {/* Core Reassurances Strip */}
-            <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-slate-200/80 flex flex-wrap items-center gap-y-2.5 gap-x-5 text-xs text-slate-600 font-medium">
+            <div className="mt-8 pt-6 border-t border-slate-200/80 flex flex-wrap items-center gap-y-2.5 gap-x-6 text-xs text-slate-600 font-medium">
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>100% Client Code Ownership</span>
+                <span className="font-semibold text-slate-800">100% Client Code Ownership</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>95+ PageSpeed Guaranteed</span>
+                <CheckCircle2 className="w-4 h-4 text-[#D98E3A] shrink-0" />
+                <span className="font-semibold text-slate-800">95+ PageSpeed Guaranteed</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Direct Senior Engineers</span>
+                <CheckCircle2 className="w-4 h-4 text-[#2D2575] shrink-0" />
+                <span className="font-semibold text-slate-800">Sub-Second Load Times</span>
               </div>
             </div>
           </motion.div>
 
-          {/* RIGHT COLUMN: Luminous Interactive Architecture Preview with Motion */}
-          <motion.div
+          {/* RIGHT COLUMN: Interactive Architecture Card & Speed Dial */}
+          <motion.div 
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.55, delay: 0.1, ease: 'easeOut' }}
+            transition={{ duration: 0.5, delay: 0.15, ease: 'easeOut' }}
             className="lg:col-span-5 relative mt-4 lg:mt-0"
           >
-            {/* Ambient Glow */}
-            <div className="absolute -inset-2 bg-gradient-to-tr from-[#2D2575]/15 via-[#D98E3A]/20 to-indigo-500/10 rounded-3xl blur-xl opacity-70 pointer-events-none" />
-
-            {/* Modern Showcase Browser Card - Fully Mobile Responsive */}
-            <div className="relative rounded-2xl bg-white border border-slate-200/90 shadow-xl overflow-hidden w-full">
+            <div className="rounded-2xl border border-slate-200/90 bg-white shadow-xl shadow-slate-200/60 overflow-hidden text-left relative">
               
-              {/* Browser Header Bar */}
-              <div className="bg-[#FAFBFD] px-3 sm:px-4 py-2 sm:py-2.5 border-b border-slate-200/80 flex items-center justify-between gap-2">
-                <div className="flex items-center gap-1.5 shrink-0">
+              {/* Card Header Bar */}
+              <div className="px-4 py-3 bg-gradient-to-r from-slate-50 via-white to-slate-50 border-b border-slate-200/80 flex items-center justify-between gap-2">
+                <div className="flex items-center gap-1.5">
                   <span className="w-2.5 h-2.5 rounded-full bg-rose-400" />
                   <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
                 </div>
 
-                <div className="flex-1 min-w-0 mx-1 sm:mx-2 flex items-center justify-center gap-1.5 px-2.5 py-1 rounded-full bg-white border border-slate-200 text-[10px] sm:text-[11px] text-slate-600 font-mono shadow-2xs">
+                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-600 text-xs font-mono">
                   <Lock className="w-3 h-3 text-emerald-600 shrink-0" />
-                  <span className="truncate font-semibold">preview.drtechei.com</span>
+                  <span className="truncate">drtechei.com/diagnostics</span>
                 </div>
 
-                <div className="flex items-center gap-1 text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200 shrink-0">
+                <div className="flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  <span>Live</span>
+                  <span>Live Audit</span>
                 </div>
               </div>
 
-              {/* Performance Score Benchmark Banner */}
-              <div className="p-3 sm:p-4 bg-gradient-to-r from-[#FAFBFD] to-[#EEEDFA]/50 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4">
-                <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-emerald-500 text-white flex flex-col items-center justify-center font-extrabold shadow-sm shrink-0">
-                    <span className="text-sm sm:text-base leading-none">{currentArch.score}</span>
-                    <span className="text-[7px] sm:text-[8px] uppercase tracking-wider font-semibold opacity-90">Score</span>
-                  </div>
-                  <div className="min-w-0">
-                    <div className="text-xs font-bold text-[#111622] flex items-center gap-1">
-                      <span>Lighthouse Performance</span>
-                      <Gauge className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+              {/* Summary Metrics Bar with Animated Gauge Dial */}
+              <div className="p-4 border-b border-slate-100 flex items-center justify-between gap-3 bg-gradient-to-br from-[#FAFBFD] to-white">
+                <div className="flex items-center gap-3.5">
+                  {/* Circular Speed Dial */}
+                  <div className="relative w-12 h-12 flex items-center justify-center shrink-0">
+                    <svg className="w-full h-full -rotate-90" viewBox="0 0 36 36">
+                      <path
+                        className="text-slate-100"
+                        strokeWidth="3.5"
+                        stroke="currentColor"
+                        fill="none"
+                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                      />
+                      <motion.path
+                        key={currentArch.score}
+                        initial={{ strokeDasharray: '0, 100' }}
+                        animate={{ strokeDasharray: `${currentArch.score}, 100` }}
+                        transition={{ duration: 0.8, ease: 'easeOut' }}
+                        className="text-emerald-500"
+                        strokeWidth="3.5"
+                        strokeDasharray="99, 100"
+                        strokeLinecap="round"
+                        stroke="currentColor"
+                        fill="none"
+                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                      />
+                    </svg>
+                    <div className="absolute inset-0 flex flex-col items-center justify-center font-mono font-black text-xs text-[#2D2575]">
+                      <span>{currentArch.score}</span>
+                      <span className="text-[7px] text-slate-400 font-normal">PERF</span>
                     </div>
-                    <div className="text-[10px] sm:text-[11px] text-slate-500 truncate">
-                      Core Web Vitals Pass • Speed Index {currentArch.speed}
+                  </div>
+
+                  <div>
+                    <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                      <span>Lighthouse 100/100 Core</span>
+                      <Gauge className="w-3.5 h-3.5 text-[#D98E3A]" />
+                    </div>
+                    <div className="text-[11px] text-slate-500 font-mono mt-0.5">
+                      LCP {currentArch.vitals.lcp} • INP {currentArch.vitals.inp} • CLS {currentArch.vitals.cls}
                     </div>
                   </div>
                 </div>
 
-                <div className="self-start sm:self-auto shrink-0">
-                  <span className="inline-block px-2 sm:px-2.5 py-1 rounded-md text-[9px] sm:text-[10px] font-bold bg-[#FAFBFD] text-[#2D2575] border border-[#D1CDF4]">
-                    {currentArch.badge}
-                  </span>
+                {/* Sub-view mode toggles */}
+                <div className="flex items-center gap-1 p-1 rounded-xl bg-slate-100 border border-slate-200/80">
+                  {(['specs', 'code', 'vitals'] as const).map((mode) => (
+                    <button
+                      key={mode}
+                      type="button"
+                      onClick={() => setViewMode(mode)}
+                      className={`px-2.5 py-1 rounded-lg text-[11px] font-bold capitalize transition-all cursor-pointer ${
+                        viewMode === mode
+                          ? 'bg-white text-[#2D2575] shadow-xs'
+                          : 'text-slate-600 hover:text-slate-900'
+                      }`}
+                    >
+                      {mode}
+                    </button>
+                  ))}
                 </div>
               </div>
 
-              {/* Interactive Architecture Tabs */}
-              <div className="p-3 sm:p-4 bg-white">
-                <div className="grid grid-cols-4 gap-1 p-1 bg-slate-100/80 rounded-xl mb-3 sm:mb-4 text-center">
+              {/* Framework Switcher Tabs */}
+              <div className="p-4 sm:p-5">
+                <div className="grid grid-cols-4 gap-1.5 p-1 rounded-xl mb-4 bg-slate-100 text-center border border-slate-200/60">
                   {(['nextjs', 'react', 'nodejs', 'headless'] as const).map((tabKey) => {
                     const isSelected = activeTab === tabKey;
                     const labels = {
-                      nextjs: { short: 'Next.js', full: 'Next.js 15' },
+                      nextjs: { short: 'Next', full: 'Next.js 15' },
                       react: { short: 'React', full: 'React 19' },
-                      nodejs: { short: 'Node', full: 'Node API' },
+                      nodejs: { short: 'Node', full: 'Node APIs' },
                       headless: { short: 'CMS', full: 'Headless' },
                     };
 
@@ -262,10 +361,10 @@ export const Hero: React.FC<HeroProps> = ({ onStartProject, onViewWork }) => {
                         key={tabKey}
                         type="button"
                         onClick={() => setActiveTab(tabKey)}
-                        className={`py-1.5 px-0.5 sm:px-1 rounded-lg text-[10px] sm:text-xs font-bold transition-all cursor-pointer truncate ${
+                        className={`py-1.5 px-1 rounded-lg text-xs transition-all cursor-pointer font-bold truncate ${
                           isSelected
-                            ? 'bg-white text-[#2D2575] shadow-xs'
-                            : 'text-slate-600 hover:text-[#111622]'
+                            ? 'bg-[#2D2575] text-white shadow-xs'
+                            : 'text-slate-600 hover:text-[#2D2575] hover:bg-white/60'
                         }`}
                       >
                         <span className="sm:hidden">{labels[tabKey].short}</span>
@@ -275,68 +374,138 @@ export const Hero: React.FC<HeroProps> = ({ onStartProject, onViewWork }) => {
                   })}
                 </div>
 
-                {/* Selected Architecture Card with smooth transition */}
-                <motion.div
-                  key={activeTab}
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="p-3 sm:p-4 rounded-xl bg-[#FAFBFD] border border-slate-200/80 space-y-2 sm:space-y-3"
-                >
-                  <div className="flex items-start justify-between gap-2">
-                    <div className="min-w-0">
-                      <h4 className="text-xs sm:text-sm font-bold text-[#111622] truncate">
-                        {currentArch.name}
-                      </h4>
-                      <p className="text-[11px] sm:text-xs text-[#D98E3A] font-semibold mt-0.5 truncate">
-                        {currentArch.category}
-                      </p>
-                    </div>
-                    <span className="text-[10px] sm:text-xs font-mono font-bold text-slate-700 bg-white px-2 py-0.5 sm:py-1 rounded border border-slate-200 shrink-0">
-                      {currentArch.speed}
-                    </span>
-                  </div>
-
-                  <div className="space-y-1.5 pt-1">
-                    {currentArch.features.map((feat, idx) => (
-                      <div key={idx} className="flex items-start sm:items-center gap-2 text-[11px] sm:text-xs text-slate-600">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#D98E3A] shrink-0 mt-0.5 sm:mt-0" />
-                        <span className="leading-snug">{feat}</span>
+                {/* Dynamic View Content */}
+                <AnimatePresence mode="wait">
+                  {viewMode === 'specs' && (
+                    <motion.div
+                      key={`specs-${activeTab}`}
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
+                      transition={{ duration: 0.15 }}
+                      className="p-4 rounded-xl bg-[#FAFBFD] border border-slate-200/90 space-y-3"
+                    >
+                      <div className="flex items-start justify-between gap-2">
+                        <div>
+                          <h4 className="text-sm font-bold text-slate-900">{currentArch.name}</h4>
+                          <p className="text-xs text-slate-500 font-medium mt-0.5">{currentArch.category}</p>
+                        </div>
+                        <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700">
+                          {currentArch.speed}
+                        </span>
                       </div>
-                    ))}
-                  </div>
-                </motion.div>
 
-                {/* Bottom Quick Metric Highlights */}
-                <div className="mt-3 pt-2.5 border-t border-slate-100 flex flex-col xs:flex-row items-start xs:items-center justify-between gap-2 text-xs text-slate-500">
-                  <div className="flex items-center gap-1 text-[#2D2575] font-semibold text-[10px] sm:text-xs">
-                    <ShieldCheck className="w-3.5 h-3.5 text-[#D98E3A] shrink-0" />
+                      <div className="space-y-1.5 pt-1">
+                        {currentArch.features.map((feat, idx) => (
+                          <div key={idx} className="flex items-center gap-2 text-xs text-slate-700">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                            <span>{feat}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {viewMode === 'code' && (
+                    <motion.div
+                      key={`code-${activeTab}`}
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
+                      transition={{ duration: 0.15 }}
+                      className="p-3.5 rounded-xl bg-slate-900 text-slate-200 font-mono text-[11px] overflow-x-auto leading-relaxed border border-slate-800"
+                    >
+                      <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-800 text-[10px] text-slate-400">
+                        <span className="flex items-center gap-1.5 text-emerald-400 font-semibold">
+                          <Terminal className="w-3.5 h-3.5" />
+                          <span>Production Implementation</span>
+                        </span>
+                        <span className="text-[#D98E3A] font-bold">TypeSafe 5.8</span>
+                      </div>
+                      <pre className="overflow-x-auto">
+                        <code>{currentArch.codeSnippet}</code>
+                      </pre>
+                    </motion.div>
+                  )}
+
+                  {viewMode === 'vitals' && (
+                    <motion.div
+                      key={`vitals-${activeTab}`}
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
+                      transition={{ duration: 0.15 }}
+                      className="p-4 rounded-xl bg-[#FAFBFD] border border-slate-200/90 space-y-3"
+                    >
+                      <div className="flex items-center justify-between text-xs font-bold text-slate-900">
+                        <span>Core Web Vitals Pass</span>
+                        <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100/60 px-2 py-0.5 rounded-full">
+                          Zero Penalties
+                        </span>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-2 text-left">
+                        <div className="p-2.5 rounded-lg bg-white border border-slate-200">
+                          <div className="text-[10px] text-slate-500 font-medium">LCP (Load Speed)</div>
+                          <div className="text-sm font-mono font-bold text-emerald-600">{currentArch.vitals.lcp}</div>
+                        </div>
+                        <div className="p-2.5 rounded-lg bg-white border border-slate-200">
+                          <div className="text-[10px] text-slate-500 font-medium">INP (Interaction)</div>
+                          <div className="text-sm font-mono font-bold text-emerald-600">{currentArch.vitals.inp}</div>
+                        </div>
+                        <div className="p-2.5 rounded-lg bg-white border border-slate-200">
+                          <div className="text-[10px] text-slate-500 font-medium">CLS (Layout Shift)</div>
+                          <div className="text-sm font-mono font-bold text-emerald-600">{currentArch.vitals.cls}</div>
+                        </div>
+                        <div className="p-2.5 rounded-lg bg-white border border-slate-200">
+                          <div className="text-[10px] text-slate-500 font-medium">TTFB (Response)</div>
+                          <div className="text-sm font-mono font-bold text-emerald-600">{currentArch.vitals.ttfb}</div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* Card Footer */}
+                <div className="mt-3.5 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                  <div className="flex items-center gap-1.5 font-medium">
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                     <span>Tested Production Architecture</span>
                   </div>
 
                   <button
                     type="button"
                     onClick={onStartProject}
-                    className="text-[11px] sm:text-xs font-bold text-[#D98E3A] hover:text-[#B26E20] inline-flex items-center gap-1 cursor-pointer self-end xs:self-auto"
+                    className="text-xs font-bold text-[#2D2575] hover:text-[#D98E3A] inline-flex items-center gap-1 cursor-pointer group"
                   >
                     <span>Request Spec</span>
-                    <ArrowRight className="w-3 h-3" />
+                    <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1 text-[#D98E3A]" />
                   </button>
                 </div>
               </div>
             </div>
 
-            {/* Floating Trust Pill - Responsive layout */}
-            <div className="mt-3 sm:mt-0 sm:absolute sm:-bottom-4 sm:-left-4 p-2.5 sm:p-3 rounded-xl bg-white border border-slate-200 shadow-md flex items-center gap-2.5">
-              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold shrink-0">
-                <Zap className="w-4 h-4" />
+            {/* Floating Latency Badge with Pulse */}
+            <motion.div 
+              animate={{ y: [0, -4, 0] }}
+              transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
+              className="mt-3 sm:mt-0 sm:absolute sm:-bottom-4 sm:-left-4 p-3 rounded-xl border border-slate-200/90 bg-white/95 backdrop-blur-md shadow-lg flex items-center gap-2.5 text-left"
+            >
+              <div className="w-8 h-8 rounded-lg bg-[#EEEDFA] text-[#2D2575] flex items-center justify-center font-bold shrink-0">
+                <Zap className="w-4 h-4 text-[#D98E3A]" />
               </div>
-              <div className="text-left min-w-0">
-                <div className="text-xs font-bold text-[#111622]">Sub-Second Delivery</div>
-                <div className="text-[10px] text-slate-500 truncate">Global Edge CDN Latency &lt; 50ms</div>
+              <div>
+                <div className="text-xs font-bold text-[#111622] flex items-center gap-1">
+                  <span>Sub-Second Edge Delivery</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
+                </div>
+                <div className="text-[11px] text-slate-500">
+                  Global Edge CDN • TTFB &lt; 40ms
+                </div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
+
         </div>
       </div>
     </section>

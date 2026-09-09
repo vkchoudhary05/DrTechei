@@ -140,7 +140,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ preselectedService }) 
                     <div>
                       <div className="text-[11px] text-slate-500 font-medium">Toll-Free Senior Engineer Line</div>
                       <div className="font-bold text-[#111622] group-hover:text-[#D98E3A] transition-colors text-sm">
-                        +919690941439
+                        +1 (800) 540-TECH
                       </div>
                     </div>
                   </a>

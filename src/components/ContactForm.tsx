@@ -170,7 +170,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ preselectedService = '
                   <div>
                     <p className="text-xs font-semibold text-slate-400">Direct Client Line</p>
                     <a href="tel:+18005408324" className="text-sm font-bold text-white hover:text-[#F2BC7B] transition-colors">
-                      +919690941439
+                      +1 (800) 540-TECH
                     </a>
                     <span className="block text-[11px] text-slate-400">Direct senior technical consultation</span>
                   </div>
@@ -272,20 +272,20 @@ export const ContactForm: React.FC<ContactFormProps> = ({ preselectedService = '
 
           {/* Right Column: Custom Interactive Contact Form */}
           <div className="lg:col-span-7">
-            <div className="rounded-3xl bg-white p-6 sm:p-10 border border-slate-200/90 shadow-xl relative">
+            <div className="rounded-2xl sm:rounded-3xl bg-white p-4 sm:p-7 md:p-10 border border-slate-200/90 shadow-xl relative">
               {isSubmitted ? (
                 /* Submission Confirmation View */
-                <div className="text-center py-8 px-4 animate-in fade-in duration-300">
+                <div className="text-center py-6 sm:py-8 px-2 sm:px-4 animate-in fade-in duration-300">
                   <div className="w-16 h-16 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center mx-auto mb-5 shadow-sm">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
                   <span className="text-xs font-mono font-bold uppercase tracking-widest text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">
                     Inquiry Received Successfully
                   </span>
-                  <h3 className="text-2xl font-black text-slate-900 mt-3">
+                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 mt-3">
                     Thank You, {formData.fullName}!
                   </h3>
-                  <p className="mt-2 text-sm text-slate-600 max-w-md mx-auto">
+                  <p className="mt-2 text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
                     We've registered your project inquiry for <span className="font-semibold text-slate-900">{formData.serviceRequired}</span>. A senior solutions architect will review your requirements and reach out via <span className="font-semibold text-[#2D2575]">{formData.email}</span> within 24 hours.
                   </p>
 
@@ -296,10 +296,17 @@ export const ContactForm: React.FC<ContactFormProps> = ({ preselectedService = '
                     </p>
                   </div>
 
-                  <div className="mt-8 flex justify-center">
+                  <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-2.5">
+                    <a
+                      href={`mailto:wearedrtechie@gmail.com?subject=Project Inquiry Reference: ${referenceId}&body=Hello DrTechei Team,%0D%0A%0D%0AMy inquiry reference is ${referenceId}.%0D%0AEmail: ${formData.email}%0D%0AService: ${formData.serviceRequired}%0D%0A%0D%0ALooking forward to our discovery discussion.`}
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-[#2D2575] hover:bg-[#1E1752] transition-colors"
+                    >
+                      <Mail className="w-3.5 h-3.5 text-[#F2BC7B]" />
+                      <span>Email DrTechei Direct</span>
+                    </a>
                     <button
                       onClick={handleReset}
-                      className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-[#FDF7EF] hover:text-[#A8631B] transition-colors cursor-pointer"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-[#FDF7EF] hover:text-[#A8631B] transition-colors cursor-pointer"
                     >
                       <RefreshCw className="w-3.5 h-3.5" />
                       <span>Submit Another Inquiry</span>
@@ -308,8 +315,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({ preselectedService = '
                 </div>
               ) : (
                 /* The Contact Form */
-                <form onSubmit={handleSubmit} noValidate className="space-y-5">
-                  <div className="grid sm:grid-cols-2 gap-4">
+                <form onSubmit={handleSubmit} noValidate className="space-y-4 sm:space-y-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
                     {/* Full Name */}
                     <div>
                       <label htmlFor="contact-fullName" className="block text-xs font-bold text-slate-700 mb-1.5">
@@ -320,8 +327,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({ preselectedService = '
                         type="text"
                         value={formData.fullName}
                         onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                        placeholder="Please enter your full Name"
-                        className={`w-full px-4 py-2.5 rounded-xl text-sm border bg-slate-50/50 focus:bg-white transition-all outline-none ${
+                        placeholder="John Doe"
+                        className={`w-full px-3.5 sm:px-4 py-3 sm:py-2.5 rounded-xl text-base sm:text-sm border bg-slate-50/50 focus:bg-white transition-all outline-none ${
                           errors.fullName
                             ? 'border-rose-400 focus:ring-2 focus:ring-rose-200'
                             : 'border-slate-200 focus:border-[#2D2575] focus:ring-2 focus:ring-[#EEEDFA]'
@@ -345,8 +352,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({ preselectedService = '
                         type="email"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="Please enter your email address"
-                        className={`w-full px-4 py-2.5 rounded-xl text-sm border bg-slate-50/50 focus:bg-white transition-all outline-none ${
+                        placeholder="john@example.com"
+                        className={`w-full px-3.5 sm:px-4 py-3 sm:py-2.5 rounded-xl text-base sm:text-sm border bg-slate-50/50 focus:bg-white transition-all outline-none ${
                           errors.email
                             ? 'border-rose-400 focus:ring-2 focus:ring-rose-200'
                             : 'border-slate-200 focus:border-[#2D2575] focus:ring-2 focus:ring-[#EEEDFA]'
@@ -361,7 +368,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ preselectedService = '
                     </div>
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
                     {/* Phone Number */}
                     <div>
                       <label htmlFor="contact-phone" className="block text-xs font-bold text-slate-700 mb-1.5">
@@ -372,8 +379,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({ preselectedService = '
                         type="tel"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder="Please enter your phone number"
-                        className="w-full px-4 py-2.5 rounded-xl text-sm border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-[#2D2575] focus:ring-2 focus:ring-[#EEEDFA] transition-all outline-none"
+                        placeholder="+1 (555) 000-0000"
+                        className="w-full px-3.5 sm:px-4 py-3 sm:py-2.5 rounded-xl text-base sm:text-sm border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-[#2D2575] focus:ring-2 focus:ring-[#EEEDFA] transition-all outline-none"
                       />
                     </div>
 
@@ -387,13 +394,13 @@ export const ContactForm: React.FC<ContactFormProps> = ({ preselectedService = '
                         type="text"
                         value={formData.companyName}
                         onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                        placeholder="Please enter your company name"
-                        className="w-full px-4 py-2.5 rounded-xl text-sm border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-[#2D2575] focus:ring-2 focus:ring-[#EEEDFA] transition-all outline-none"
+                        placeholder="Acme Corporation"
+                        className="w-full px-3.5 sm:px-4 py-3 sm:py-2.5 rounded-xl text-base sm:text-sm border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-[#2D2575] focus:ring-2 focus:ring-[#EEEDFA] transition-all outline-none"
                       />
                     </div>
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
                     {/* Website URL */}
                     <div>
                       <label htmlFor="contact-website" className="block text-xs font-bold text-slate-700 mb-1.5">
@@ -405,7 +412,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ preselectedService = '
                         value={formData.websiteUrl}
                         onChange={(e) => setFormData({ ...formData, websiteUrl: e.target.value })}
                         placeholder="https://example.com"
-                        className="w-full px-4 py-2.5 rounded-xl text-sm border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-[#2D2575] focus:ring-2 focus:ring-[#EEEDFA] transition-all outline-none"
+                        className="w-full px-3.5 sm:px-4 py-3 sm:py-2.5 rounded-xl text-base sm:text-sm border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-[#2D2575] focus:ring-2 focus:ring-[#EEEDFA] transition-all outline-none"
                       />
                     </div>
 
@@ -418,7 +425,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ preselectedService = '
                         id="contact-service"
                         value={formData.serviceRequired}
                         onChange={(e) => setFormData({ ...formData, serviceRequired: e.target.value })}
-                        className="w-full px-4 py-2.5 rounded-xl text-sm border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-[#2D2575] focus:ring-2 focus:ring-[#EEEDFA] transition-all outline-none cursor-pointer"
+                        className="w-full px-3.5 sm:px-4 py-3 sm:py-2.5 rounded-xl text-base sm:text-sm border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-[#2D2575] focus:ring-2 focus:ring-[#EEEDFA] transition-all outline-none cursor-pointer"
                       >
                         {servicesList.map((srv) => (
                           <option key={srv} value={srv}>
@@ -434,13 +441,13 @@ export const ContactForm: React.FC<ContactFormProps> = ({ preselectedService = '
                     <label className="block text-xs font-bold text-slate-700 mb-2">
                       Estimated Investment Budget
                     </label>
-                    <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+                    <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-5 gap-2">
                       {budgetOptions.map((budget) => (
                         <button
                           key={budget}
                           type="button"
                           onClick={() => setFormData({ ...formData, budgetRange: budget })}
-                          className={`py-2 px-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                          className={`py-2.5 px-2 rounded-xl text-xs font-bold transition-all cursor-pointer min-h-[40px] flex items-center justify-center ${
                             formData.budgetRange === budget
                               ? 'bg-[#2D2575] text-white shadow-xs'
                               : 'bg-slate-100 text-slate-600 hover:bg-[#FDF7EF] hover:text-[#A8631B]'
@@ -463,7 +470,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ preselectedService = '
                       value={formData.projectDetails}
                       onChange={(e) => setFormData({ ...formData, projectDetails: e.target.value })}
                       placeholder="Please outline what your business is looking to build, your current technical setup, key deadlines, and goals..."
-                      className={`w-full p-4 rounded-xl text-sm border bg-slate-50/50 focus:bg-white transition-all outline-none resize-y ${
+                      className={`w-full p-3.5 sm:p-4 rounded-xl text-base sm:text-sm border bg-slate-50/50 focus:bg-white transition-all outline-none resize-y ${
                         errors.projectDetails
                           ? 'border-rose-400 focus:ring-2 focus:ring-rose-200'
                           : 'border-slate-200 focus:border-[#2D2575] focus:ring-2 focus:ring-[#EEEDFA]'
@@ -483,7 +490,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ preselectedService = '
                       id="contact-submit-btn"
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full flex items-center justify-center gap-2 py-4 px-6 rounded-xl text-sm font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#D98E3A] via-[#E29D4B] to-[#B26E20] hover:from-[#E29D4B] hover:to-[#9E5F17] shadow-lg shadow-[#D98E3A]/25 transition-all duration-200 active:scale-[0.99] disabled:opacity-70 cursor-pointer"
+                      className="w-full flex items-center justify-center gap-2 py-4 px-6 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#D98E3A] via-[#E29D4B] to-[#B26E20] hover:from-[#E29D4B] hover:to-[#9E5F17] shadow-lg shadow-[#D98E3A]/25 transition-all duration-200 active:scale-[0.99] disabled:opacity-70 cursor-pointer min-h-[48px]"
                     >
                       {isSubmitting ? (
                         <>

@@ -85,22 +85,94 @@ export const technologiesData: TechnologyItem[] = [
     badgeColor: 'from-indigo-600 to-blue-700'
   },
 
-  // CMS
+  // CMS & E-Commerce Platforms (Complete Suite)
   {
-    name: 'WordPress',
+    name: 'WordPress (Headless & Classic)',
     category: 'cms',
-    description: 'World leading CMS customized with modern themes and zero bloat.',
-    popularFor: 'Business & Publishing Sites',
+    description: 'Custom Gutenberg, REST API, and Headless WPGraphQL paired with Next.js.',
+    popularFor: 'Publishing, Corporate & Headless Blogs',
     iconType: 'wordpress',
     badgeColor: 'from-blue-800 to-sky-700'
   },
   {
-    name: 'Shopify',
+    name: 'Shopify & Shopify Plus',
     category: 'cms',
-    description: 'Premier e-commerce platform engineered for seamless transactions.',
-    popularFor: 'E-Commerce & High Volume Sales',
+    description: 'Custom Liquid themes, Storefront GraphQL API, and headless e-commerce builds.',
+    popularFor: 'High-Volume E-Commerce & DTC Brands',
     iconType: 'shopify',
     badgeColor: 'from-emerald-600 to-teal-700'
+  },
+  {
+    name: 'Sanity.io',
+    category: 'cms',
+    description: 'Real-time composable headless CMS with structured content and live previews.',
+    popularFor: 'Modern Headless Next.js Applications',
+    iconType: 'sanity',
+    badgeColor: 'from-rose-600 to-red-600'
+  },
+  {
+    name: 'Strapi',
+    category: 'cms',
+    description: 'Open-source Node.js headless CMS with customizable REST & GraphQL endpoints.',
+    popularFor: 'Self-Hosted APIs & Mobile Apps',
+    iconType: 'strapi',
+    badgeColor: 'from-indigo-600 to-purple-700'
+  },
+  {
+    name: 'Webflow',
+    category: 'cms',
+    description: 'Visual-first development with clean semantic code export and rapid client workflows.',
+    popularFor: 'Design-Driven Marketing Websites',
+    iconType: 'webflow',
+    badgeColor: 'from-blue-600 to-cyan-600'
+  },
+  {
+    name: 'Contentful',
+    category: 'cms',
+    description: 'Enterprise composable content platform powering omnichannel digital experiences.',
+    popularFor: 'Multi-Region Enterprise Architectures',
+    iconType: 'contentful',
+    badgeColor: 'from-blue-600 to-indigo-700'
+  },
+  {
+    name: 'WooCommerce',
+    category: 'cms',
+    description: 'Flexible open-source commerce platform built on WordPress with custom checkouts.',
+    popularFor: 'Scalable Product Catalogs & Subscriptions',
+    iconType: 'woocommerce',
+    badgeColor: 'from-purple-700 to-violet-800'
+  },
+  {
+    name: 'Payload CMS',
+    category: 'cms',
+    description: 'Next.js & TypeScript native headless CMS with zero config database migrations.',
+    popularFor: 'Full-Stack Next.js 15 Monorepos',
+    iconType: 'payload',
+    badgeColor: 'from-slate-900 to-zinc-800'
+  },
+  {
+    name: 'Ghost CMS',
+    category: 'cms',
+    description: 'Ultra-fast Node.js publication platform with built-in newsletters and memberships.',
+    popularFor: 'Sub-second Media & Journalism Portals',
+    iconType: 'ghost',
+    badgeColor: 'from-slate-800 to-blue-900'
+  },
+  {
+    name: 'Drupal',
+    category: 'cms',
+    description: 'Enterprise content management with granular taxonomy and decoupled JSON:API.',
+    popularFor: 'Government, Higher Ed & Complex Portals',
+    iconType: 'drupal',
+    badgeColor: 'from-sky-700 to-blue-800'
+  },
+  {
+    name: 'Magento / Adobe Commerce',
+    category: 'cms',
+    description: 'Heavyweight enterprise B2B and B2C commerce platform with deep ERP integrations.',
+    popularFor: 'Multi-Store B2B & Complex Wholesale',
+    iconType: 'magento',
+    badgeColor: 'from-orange-600 to-amber-700'
   },
   {
     name: 'Wix Studio',

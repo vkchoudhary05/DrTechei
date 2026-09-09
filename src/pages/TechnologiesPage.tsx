@@ -203,8 +203,8 @@ export const TechnologiesPage: React.FC<TechnologiesPageProps> = ({ onOpenQuoteM
         </div>
       </section>
 
-      {/* Interactive Technologies Grid */}
-      <Technologies />
+      {/* Interactive Technologies Grid & Architecture Console */}
+      <Technologies onOpenQuoteModal={onOpenQuoteModal} />
 
       {/* Technical Architecture Comparison Matrix */}
       <section className="py-16 sm:py-20 bg-white border-y border-slate-200/80">

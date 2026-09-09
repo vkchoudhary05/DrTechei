@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { RouterProvider, useRouter } from './context/RouterContext';
+import { HeroThemeProvider } from './context/HeroThemeContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { QuoteEstimatorModal } from './components/QuoteEstimatorModal';
@@ -110,9 +111,9 @@ function AppContent() {
         onOpenQuoteModal={() => setIsQuoteModalOpen(true)}
       />
 
-      {/* 2. Main Page Render Zone (sitting flush at top on home for seamless hero blend) */}
-      <main className={`flex-grow ${currentPage === 'home' ? 'pt-0' : 'pt-[56px] sm:pt-[64px]'}`}>
-        <div key={currentPage} className="animate-in fade-in duration-200">
+      {/* 2. Main Page Render Zone */}
+      <main className="flex-grow pt-[64px] sm:pt-[72px]">
+        <div key={currentPage} className="fade-in">
           {renderActivePage()}
         </div>
       </main>
@@ -151,7 +152,9 @@ function AppContent() {
 export default function App() {
   return (
     <RouterProvider>
-      <AppContent />
+      <HeroThemeProvider>
+        <AppContent />
+      </HeroThemeProvider>
     </RouterProvider>
   );
 }

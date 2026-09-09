@@ -1,17 +1,15 @@
 import React from 'react';
 import { Hero } from '../components/Hero';
 import { ContinuousSlider } from '../components/ContinuousSlider';
-import { TrustValueStrip } from '../components/TrustValueStrip';
 import { Services } from '../components/Services';
+import { CmsTechnologies } from '../components/CmsTechnologies';
 import { CaseStudyResults } from '../components/CaseStudyResults';
-import { WhyChooseUs } from '../components/WhyChooseUs';
-import { Testimonials } from '../components/Testimonials';
 import { CTA } from '../components/CTA';
 import { useRouter } from '../context/RouterContext';
 import { ServiceItem, PortfolioProject } from '../types';
 
 interface HomePageProps {
-  onOpenQuoteModal: () => void;
+  onOpenQuoteModal: (prefilledContext?: string) => void;
   onSelectService: (service: ServiceItem) => void;
   onSelectProject: (project: PortfolioProject) => void;
   preselectedService: string;
@@ -37,16 +35,13 @@ export const HomePage: React.FC<HomePageProps> = ({
 
   return (
     <div className="space-y-0">
-      {/* 1. High-Impact Hero Section with Live Diagnostic Dial */}
+      {/* 1. High-Impact Animated Hero with Live Performance Telemetry */}
       <Hero onStartProject={handleStartProject} onViewWork={handleViewWork} />
 
-      {/* 2. Continuous Running Marquee Slider (Edge Stack & Guarantees) */}
+      {/* 2. Running Continuous Marquee (Edge Stack & Verified Guarantees) */}
       <ContinuousSlider onLearnMore={() => navigate('technologies')} />
 
-      {/* 3. Authoritative Proof & Scale Metric Strip */}
-      <TrustValueStrip />
-
-      {/* 4. Core Solutions (Scrollable Grid Left-to-Right with all 8 Specialized Services) */}
+      {/* 3. Core Specialized Services (Essential Solutions Only) */}
       <Services
         onSelectService={onSelectService}
         onOpenQuoteWithService={(serviceName) => {
@@ -56,16 +51,19 @@ export const HomePage: React.FC<HomePageProps> = ({
         onViewAll={() => navigate('services')}
       />
 
-      {/* 5. Measurable Impact & Before/After Speed Benchmarks */}
+      {/* 4. Complete CMS Platform Technologies (WordPress, Shopify Plus, Sanity, Webflow, etc.) */}
+      <CmsTechnologies
+        onOpenQuoteModal={onOpenQuoteModal}
+        onSelectCms={(cmsName) => {
+          onSelectServiceForContact(`CMS Platform: ${cmsName}`);
+          navigate('contact');
+        }}
+      />
+
+      {/* 5. Measurable Impact & Verified Before/After Performance Proof */}
       <CaseStudyResults />
 
-      {/* 6. Why Industry Leaders Choose DrTechei (The Senior Engineering Advantage) */}
-      <WhyChooseUs onStartProject={handleStartProject} />
-
-      {/* 7. Verified Client Feedback & Reviews */}
-      <Testimonials onStartProject={handleStartProject} />
-
-      {/* 8. High-Converting Strategic CTA (Direct Quote Modal & Discovery Call) */}
+      {/* 6. High-Converting Action Banner (Direct Estimate & Free Consultation) */}
       <CTA
         onOpenQuoteModal={onOpenQuoteModal}
         onTalkToUs={() => navigate('contact')}
@@ -73,3 +71,4 @@ export const HomePage: React.FC<HomePageProps> = ({
     </div>
   );
 };
+

@@ -100,7 +100,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenQuoteModal }) => {
                   className="text-slate-700 hover:text-[#2D2575] font-semibold flex items-center gap-1 transition-colors"
                 >
                   <PhoneCall className="w-3.5 h-3.5 text-[#D98E3A]" />
-                  <span>+919690941439</span>
+                  <span>+1 (800) 540-TECH</span>
                 </a>
               </div>
 

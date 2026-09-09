@@ -56,7 +56,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onOpenQuoteModal }) => {
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold bg-[#2D2575] text-white hover:bg-[#201955] transition-colors"
               >
                 <PhoneCall className="w-3.5 h-3.5 text-[#D98E3A]" />
-                <span>Call +919690941439</span>
+                <span>Call +1 (800) 540-TECH</span>
               </a>
               <button
                 onClick={() => navigate('contact')}
