@@ -169,7 +169,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
     <>
       <header
         id="main-navbar"
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out ${
+        className={`fixed top-0 left-0 right-0 z-50
+    h-16
+    sm:h-[68px]
+    md:h-[72px]
+    lg:h-[76px]
+    xl:h-[80px]
+    transition-all duration-300 ease-out ${
           isScrolled
             ? 'bg-white/95 backdrop-blur-xl shadow-md py-2 sm:py-2.5 border-b border-slate-200/90'
             : 'bg-white/95 backdrop-blur-md py-2.5 sm:py-3 border-b border-slate-200/80 shadow-xs'
