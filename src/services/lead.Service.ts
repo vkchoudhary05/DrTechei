@@ -2,7 +2,8 @@
 // Sends lead and estimate data directly to Google Apps Script Webhook
 // Which automatically writes to Google Sheets and sends confirmation emails to clients via Gmail.
 
-export const GOOGLE_SCRIPT_WEBHOOK_URL: string = import.meta.env.VITE_GOOGLE_SCRIPT_URL || '';
+export const GOOGLE_SCRIPT_WEBHOOK_URL: string =
+  'https://script.google.com/macros/s/AKfycbxDYWYqa2KsfnZrP06-j8yo_4D_yHuyNHu_0LGbCfN1W7jQh0fkK_O7IQG6_0XLcqGH/exec';
 
 export interface EstimateSubmissionPayload {
   type: 'estimate';
