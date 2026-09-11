@@ -122,11 +122,11 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
                 </span>
                 <span className="text-slate-300">•</span>
                 <a
-                  href="mailto:wearedrtechie@gmail.com"
+                  href="mailto:hello@drtechei.com"
                   className="text-[#2D2575] hover:text-[#D98E3A] font-bold flex items-center gap-1 transition-colors"
                 >
                   <Mail className="w-3.5 h-3.5 text-[#D98E3A]" />
-                  <span>wearedrtechie@gmail.com</span>
+                  <span>hello@drtechei.com</span>
                 </a>
               </div>
 

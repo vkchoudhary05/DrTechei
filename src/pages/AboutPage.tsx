@@ -88,11 +88,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenQuoteModal }) => {
               <div className="mt-4 flex flex-wrap items-center gap-y-2 gap-x-4 text-xs text-slate-600 font-medium">
                 <span className="text-slate-400">Direct Inquiries:</span>
                 <a
-                  href="mailto:wearedrtechie@gmail.com"
+                  href="mailto:hello@drtechei.com"
                   className="text-[#2D2575] hover:text-[#D98E3A] font-bold flex items-center gap-1 transition-colors"
                 >
                   <Mail className="w-3.5 h-3.5 text-[#D98E3A]" />
-                  <span>wearedrtechie@gmail.com</span>
+                  <span>hello@drtechei.com</span>
                 </a>
                 <span className="text-slate-300">•</span>
                 <a
@@ -100,7 +100,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenQuoteModal }) => {
                   className="text-slate-700 hover:text-[#2D2575] font-semibold flex items-center gap-1 transition-colors"
                 >
                   <PhoneCall className="w-3.5 h-3.5 text-[#D98E3A]" />
-                  <span>+1 (800) 540-TECH</span>
+                  <span>+919690941439</span>
                 </a>
               </div>
 

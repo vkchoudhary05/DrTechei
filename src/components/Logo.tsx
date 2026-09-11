@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 interface LogoProps {
@@ -19,8 +20,8 @@ export const Logo: React.FC<LogoProps> = ({
         alt="DrTechei"
         className="
           block
-          w-[130px]
-          h-[52px]
+          w-[140px]
+          h-[55px]
           sm:w-[155px]
           sm:h-[50px]
           md:w-[175px]

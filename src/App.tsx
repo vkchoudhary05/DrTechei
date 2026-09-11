@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { RouterProvider, useRouter } from './context/RouterContext';
 import { HeroThemeProvider } from './context/HeroThemeContext';
+import { SEOHead } from './components/SEOHead';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { QuoteEstimatorModal } from './components/QuoteEstimatorModal';
@@ -17,6 +18,8 @@ import { TestimonialsPage } from './pages/TestimonialsPage';
 import { FAQPage } from './pages/FAQPage';
 import { ContactPage } from './pages/ContactPage';
 import { ServiceItem, PortfolioProject } from './types';
+import { initGlobalGsapScroll } from './utils/gsapScroll';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 function AppContent() {
   const { currentPage, navigate } = useRouter();
@@ -25,6 +28,19 @@ function AppContent() {
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
   const [selectedProject, setSelectedProject] = useState<PortfolioProject | null>(null);
   const [preselectedContactService, setPreselectedContactService] = useState<string>('Website Development');
+
+  // Activate GSAP scroll animations smoothly across every page and route transition
+  useEffect(() => {
+    const cleanup = initGlobalGsapScroll();
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 120);
+
+    return () => {
+      cleanup();
+      clearTimeout(timer);
+    };
+  }, [currentPage]);
 
   const handleOpenQuoteWithService = (serviceName: string) => {
     setPreselectedContactService(serviceName);
@@ -106,6 +122,9 @@ function AppContent() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FAFBFD] text-slate-900 font-sans selection:bg-[#D98E3A]/20 selection:text-[#2D2575]">
+      {/* Dynamic SEO Meta Tags, Keywords & JSON-LD Structured Data for Every Page */}
+      <SEOHead />
+
       {/* 1. Global Responsive & Accessible Sticky Navbar */}
       <Navbar
         onOpenQuoteModal={() => setIsQuoteModalOpen(true)}
@@ -125,9 +144,15 @@ function AppContent() {
       <QuoteEstimatorModal
         isOpen={isQuoteModalOpen}
         onClose={() => setIsQuoteModalOpen(false)}
-        onSelectServiceAndScroll={(service) => {
-          setPreselectedContactService(service);
+        onSelectServiceAndScroll={(serviceName) => {
+          setPreselectedContactService(serviceName);
           navigate('contact');
+          setTimeout(() => {
+            const el = document.getElementById('contact-form-section') || document.getElementById('contact-fullName');
+            if (el) {
+              el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }, 150);
         }}
       />
 

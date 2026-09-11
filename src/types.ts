@@ -74,3 +74,16 @@ export interface ProjectEstimateConfig {
   timeline: string;
   targetBudget: string;
 }
+
+export interface EstimatedScopeAttachment {
+  serviceTitle: string;
+  billingModel: 'fixed' | 'hourly';
+  totalEstimate: number;
+  timeline: string;
+  budgetCategory: string;
+  selectedFeatures?: string[];
+  hourlyRate?: number;
+  weeklyHours?: number;
+  milestones?: string;
+  detailsSummary: string;
+}
