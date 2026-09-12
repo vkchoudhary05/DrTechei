@@ -54,7 +54,7 @@ export const Footer: React.FC = () => {
       address: 'Level 6, Vandhna Building, Tolstoy Marg, Connaught Place, New Delhi 110001',
       corridor: 'Connaught Place • Gurgaon • Noida',
       timezone: 'IST (UTC+5:30)',
-      email: 'hello@drtechei.comdrtechei.com',
+      email: 'india@drtechei.com',
       actionLabel: 'View India Partner Hub',
       tags: ['Pan-India HQ', '100% IP Ownership', 'Architecture'],
       route: 'technology-partner-india' as PageRoute
@@ -70,7 +70,7 @@ export const Footer: React.FC = () => {
       address: 'IT Park, Sahastradhara Road, Dehradun, Uttarakhand 248001',
       corridor: 'Software Engineering & Cloud Labs',
       timezone: 'IST (UTC+5:30)',
-      email: 'hello@drtechei.comdrtechei.com',
+      email: 'india@drtechei.com',
       actionLabel: 'View Delivery Hub',
       tags: ['Next.js 15 Labs', 'Full-Stack Squads', 'Core Web Vitals'],
       route: 'technology-partner-india' as PageRoute
@@ -90,7 +90,7 @@ export const Footer: React.FC = () => {
       serviceDesc: 'Dedicated Next.js & React agile squads for Irish startups and scaleups across Dublin (Silicon Docks), Cork, and Galway with 100% IP handover.',
       corridor: 'Dublin • Cork • Galway • London',
       timezone: 'GMT / Irish Time (UTC+0 / +1)',
-      email: 'hello@drtechei.comdrtechei.com',
+      email: 'ireland@drtechei.com',
       actionLabel: 'View Ireland Partner Portal',
       tags: ['Silicon Docks Standards', 'Full GMT Overlap', 'GDPR Ready'],
       route: 'technology-partner-ireland' as PageRoute
@@ -106,7 +106,7 @@ export const Footer: React.FC = () => {
       serviceDesc: 'Dedicated cloud engineering, headless CMS, and sub-second web performance squads serving Helsinki, Espoo, and Tampere with strict GDPR compliance.',
       corridor: 'Helsinki • Espoo • Tampere • Nordics',
       timezone: 'EET / Helsinki Time (UTC+2 / +3)',
-      email: 'hello@drtechei.comdrtechei.com',
+      email: 'nordics@drtechei.com',
       actionLabel: 'View Finland Partner Portal',
       tags: ['Nordic Quality', 'EET Timezone Overlap', 'Sub-Second Speed'],
       route: 'technology-partner-finland' as PageRoute
@@ -115,11 +115,246 @@ export const Footer: React.FC = () => {
 
   return (
     <>
-      <footer className="bg-[#0A0E17] text-slate-400 pt-16 pb-12 border-t border-[#1C2436] relative">
-        <div className="max-w-7xl 2xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
+      <footer className="bg-gradient-to-b from-[#0E1322] via-[#090D17] to-[#05070D] text-slate-400 pt-16 pb-12 border-t border-[#1F293D] relative overflow-hidden">
+        {/* Subtle Ambient Background Glow matching project identity */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[320px] bg-gradient-to-b from-[#2D2575]/30 to-transparent blur-3xl pointer-events-none" />
+        <div className="absolute top-24 right-12 w-96 h-96 bg-[#D98E3A]/8 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="relative z-10 max-w-7xl 2xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
           
-          {/* Main Top Navigation Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-14 border-b border-[#1C2436]">
+          {/* SECTION 1 (SECOND TO LAST ON PAGE): Corporate Headquarters & Dedicated Global Services Bento Grid */}
+          <div className="pb-10">
+            {/* Master Grid Container - Framed in modern dark indigo glass styling */}
+            <div className="rounded-2xl bg-gradient-to-b from-[#121829]/95 to-[#0D1220]/95 border border-[#223048] p-5 sm:p-7 shadow-2xl relative overflow-hidden backdrop-blur-md">
+              {/* Subtle ambient lighting effect */}
+              <div className="absolute top-0 right-0 w-80 h-80 bg-[#2D2575]/20 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#D98E3A]/10 rounded-full blur-3xl pointer-events-none" />
+
+              {/* Master Header Inside Grid */}
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-6 border-b border-[#1E2B42] relative z-10">
+                <div>
+                  <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#182338] border border-[#283955] text-[#F2BC7B] text-xs font-semibold mb-2">
+                    <Building2 className="w-3.5 h-3.5 text-[#D98E3A]" />
+                    <span>Global Delivery Architecture</span>
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+                    Corporate Headquarters &amp; Dedicated Global Services
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl leading-relaxed">
+                    Registered Corporate Headquarters &amp; R&amp;D Hub in India, providing dedicated engineering services to clients across Ireland and Finland.
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2 shrink-0">
+                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#141E32] border border-[#22334E] text-xs text-slate-300">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="font-medium">Active Real-Time Corridors</span>
+                    <span className="font-mono text-slate-400 text-[11px]">(IST • GMT • EET)</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Two Column Bento Grid: Left = India Registered HQ, Right = Dedicated International Services */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-6 relative z-10">
+                
+                {/* Column 1: Registered Corporate Headquarters (India) */}
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center justify-between px-1">
+                    <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400">
+                      <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                      <span>Registered Corporate Offices (India)</span>
+                    </div>
+                    <span className="text-[10px] font-semibold uppercase px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
+                      Official Entity
+                    </span>
+                  </div>
+
+                  {/* 2 India Cards */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 h-full">
+                    {registeredOffices.map((office) => (
+                      <div
+                        key={office.title}
+                        className="p-4 rounded-xl bg-[#141C2E]/90 hover:bg-[#182338] border border-[#223149] hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between group shadow-sm"
+                      >
+                        <div className="space-y-2.5">
+                          {/* Top Row: Flag, Title, Badge */}
+                          <div className="flex items-start justify-between gap-2">
+                            <div className="flex items-center gap-2">
+                              <span className="text-xl">{office.flag}</span>
+                              <div>
+                                <h4 className="font-bold text-sm text-white group-hover:text-emerald-300 transition-colors">
+                                  {office.title}
+                                </h4>
+                                <span className="text-[11px] text-slate-400">{office.city}</span>
+                              </div>
+                            </div>
+                            <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 shrink-0 whitespace-nowrap">
+                              {office.badge}
+                            </span>
+                          </div>
+
+                          {/* Address details */}
+                          <div className="pt-0.5">
+                            <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 block mb-1">
+                              Registered Address:
+                            </span>
+                            <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                              {office.address}
+                            </p>
+                          </div>
+
+                          {/* Feature tags */}
+                          <div className="flex flex-wrap gap-1 pt-1">
+                            {office.tags.map((tag) => (
+                              <span key={tag} className="text-[10px] px-1.5 py-0.5 rounded bg-[#172235] text-slate-300 border border-[#263753]">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Bottom Actions */}
+                        <div className="mt-3.5 pt-3 border-t border-[#1F2C43]">
+                          <div className="flex items-center justify-between text-[11px] text-slate-400 mb-2">
+                            <span className="font-mono text-emerald-400/90">{office.timezone}</span>
+                            <span className="text-slate-400">{office.email}</span>
+                          </div>
+                          <a
+                            href={`/${office.route}`}
+                            onClick={(e) => handleNavClick(e, office.route)}
+                            className="w-full py-2 px-2.5 rounded-lg bg-[#182336] hover:bg-[#202E47] border border-[#273752] hover:border-emerald-500/60 text-xs font-semibold text-emerald-300 hover:text-white transition-all flex items-center justify-between group/link cursor-pointer"
+                          >
+                            <span>{office.actionLabel}</span>
+                            <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform text-emerald-400" />
+                          </a>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Column 2: Dedicated International Engineering Services (Ireland & Finland) */}
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center justify-between px-1">
+                    <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#D98E3A]">
+                      <Zap className="w-4 h-4 text-[#D98E3A]" />
+                      <span>Dedicated Engineering Services (International)</span>
+                    </div>
+                    <span className="text-[10px] font-semibold uppercase px-2 py-0.5 rounded bg-[#D98E3A]/10 text-[#F2BC7B] border border-[#D98E3A]/30">
+                      Agile Squads
+                    </span>
+                  </div>
+
+                  {/* 2 International Service Cards */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 h-full">
+                    {internationalServices.map((service) => (
+                      <div
+                        key={service.title}
+                        className="p-4 rounded-xl bg-[#141C2E]/90 hover:bg-[#182338] border border-[#223149] hover:border-[#D98E3A]/50 transition-all duration-300 flex flex-col justify-between group shadow-sm"
+                      >
+                        <div className="space-y-2.5">
+                          {/* Top Row: Flag, Title, Badge */}
+                          <div className="flex items-start justify-between gap-2">
+                            <div className="flex items-center gap-2">
+                              <span className="text-xl">{service.flag}</span>
+                              <div>
+                                <h4 className="font-bold text-sm text-white group-hover:text-[#F2BC7B] transition-colors">
+                                  {service.title}
+                                </h4>
+                                <span className="text-[11px] text-slate-400">{service.city}</span>
+                              </div>
+                            </div>
+                            <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-[#D98E3A]/10 text-[#F2BC7B] border border-[#D98E3A]/30 shrink-0 whitespace-nowrap">
+                              {service.badge}
+                            </span>
+                          </div>
+
+                          {/* Service Scope */}
+                          <div className="pt-0.5">
+                            <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 block mb-1">
+                              Service Scope &amp; Delivery:
+                            </span>
+                            <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                              {service.serviceDesc}
+                            </p>
+                          </div>
+
+                          {/* Feature tags */}
+                          <div className="flex flex-wrap gap-1 pt-1">
+                            {service.tags.map((tag) => (
+                              <span key={tag} className="text-[10px] px-1.5 py-0.5 rounded bg-[#172235] text-slate-300 border border-[#263753]">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Bottom Actions */}
+                        <div className="mt-3.5 pt-3 border-t border-[#1F2C43]">
+                          <div className="flex items-center justify-between text-[11px] text-slate-400 mb-2">
+                            <span className="font-mono text-[#F2BC7B]">{service.timezone}</span>
+                            <span className="text-slate-400">{service.email}</span>
+                          </div>
+                          <a
+                            href={`/${service.route}`}
+                            onClick={(e) => handleNavClick(e, service.route)}
+                            className="w-full py-2 px-2.5 rounded-lg bg-[#182336] hover:bg-[#202E47] border border-[#273752] hover:border-[#D98E3A]/60 text-xs font-semibold text-[#D98E3A] hover:text-white transition-all flex items-center justify-between group/link cursor-pointer"
+                          >
+                            <span>{service.actionLabel}</span>
+                            <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform text-[#D98E3A]" />
+                          </a>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          {/* Regional Technology Partners Quick Access Bar */}
+          <div className="pb-12">
+            <div className="p-4 rounded-xl bg-[#121828] border border-[#212E44] flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="flex items-center gap-2.5 text-xs">
+                <Globe2 className="w-4 h-4 text-[#D98E3A] shrink-0" />
+                <span className="text-slate-200 font-semibold">Dedicated Regional Technology Partner Portals:</span>
+                <span className="text-slate-400 hidden sm:inline">Country-tailored squads &amp; local currency billing</span>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
+                <button
+                  type="button"
+                  onClick={(e) => handleNavClick(e, 'technology-partner-india')}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#182236] hover:bg-[#22304C] border border-[#293A58] text-slate-200 hover:text-white text-xs font-semibold transition-all cursor-pointer"
+                >
+                  <span>🇮🇳</span>
+                  <span>Partner India (Delhi NCR &amp; Bengaluru)</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={(e) => handleNavClick(e, 'technology-partner-ireland')}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#182236] hover:bg-[#22304C] border border-[#293A58] text-slate-200 hover:text-white text-xs font-semibold transition-all cursor-pointer"
+                >
+                  <span>🇮🇪</span>
+                  <span>Partner Ireland (Silicon Docks Dublin)</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={(e) => handleNavClick(e, 'technology-partner-finland')}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#182236] hover:bg-[#22304C] border border-[#293A58] text-slate-200 hover:text-white text-xs font-semibold transition-all cursor-pointer"
+                >
+                  <span>🇫🇮</span>
+                  <span>Partner Finland (Helsinki &amp; Espoo)</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* SECTION 2 (FINAL FOOTER): Main Navigation Grid & Brand Directory */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pt-12 pb-14 border-t border-[#1C263B]">
             
             {/* Brand & Direct Contact Column */}
             <div className="sm:col-span-2 lg:col-span-4 space-y-5">
@@ -158,7 +393,7 @@ export const Footer: React.FC = () => {
                     href="tel:+18005408324" 
                     className="text-slate-200 hover:text-[#F2BC7B] transition-colors font-medium"
                   >
-                    +919690941439
+                    +1 (800) 540-TECH
                   </a>
                 </div>
               </div>
@@ -170,31 +405,31 @@ export const Footer: React.FC = () => {
                 </p>
                 <div className="flex flex-wrap items-center gap-2">
                   <a
-                    href="https://instagram.com"
+                    href="https://www.instagram.com/drtechei"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Follow DrTechei on Instagram"
-                    className="w-9 h-9 rounded-xl bg-[#131926] hover:bg-[#D98E3A] text-slate-400 hover:text-white border border-[#222C3E] hover:border-[#D98E3A] flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105"
+                    className="w-9 h-9 rounded-xl bg-[#141C2C] hover:bg-[#D98E3A] text-slate-400 hover:text-white border border-[#243249] hover:border-[#D98E3A] flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105"
                     title="Instagram"
                   >
                     <Instagram className="w-4 h-4" />
                   </a>
                   <a
-                    href="https://facebook.com"
+                    href="https://www.facebook.com/share/18q6rHiHPp/"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Follow DrTechei on Facebook"
-                    className="w-9 h-9 rounded-xl bg-[#131926] hover:bg-[#1877F2] text-slate-400 hover:text-white border border-[#222C3E] hover:border-[#1877F2] flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105"
+                    className="w-9 h-9 rounded-xl bg-[#141C2C] hover:bg-[#1877F2] text-slate-400 hover:text-white border border-[#243249] hover:border-[#1877F2] flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105"
                     title="Facebook"
                   >
                     <Facebook className="w-4 h-4" />
                   </a>
                   <a
-                    href="https://linkedin.com"
+                    href="https://www.linkedin.com/company/drtechei/"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Connect with DrTechei on LinkedIn"
-                    className="w-9 h-9 rounded-xl bg-[#131926] hover:bg-[#0A66C2] text-slate-400 hover:text-white border border-[#222C3E] hover:border-[#0A66C2] flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105"
+                    className="w-9 h-9 rounded-xl bg-[#141C2C] hover:bg-[#0A66C2] text-slate-400 hover:text-white border border-[#243249] hover:border-[#0A66C2] flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105"
                     title="LinkedIn"
                   >
                     <Linkedin className="w-4 h-4" />
@@ -204,7 +439,7 @@ export const Footer: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Follow DrTechei on X / Twitter"
-                    className="w-9 h-9 rounded-xl bg-[#131926] hover:bg-white text-slate-400 hover:text-black border border-[#222C3E] hover:border-white flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105"
+                    className="w-9 h-9 rounded-xl bg-[#141C2C] hover:bg-white text-slate-400 hover:text-black border border-[#243249] hover:border-white flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105"
                     title="Twitter / X"
                   >
                     <Twitter className="w-4 h-4" />
@@ -214,7 +449,7 @@ export const Footer: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="View DrTechei Open Source on GitHub"
-                    className="w-9 h-9 rounded-xl bg-[#131926] hover:bg-[#24292F] text-slate-400 hover:text-white border border-[#222C3E] hover:border-slate-500 flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105"
+                    className="w-9 h-9 rounded-xl bg-[#141C2C] hover:bg-[#24292F] text-slate-400 hover:text-white border border-[#243249] hover:border-slate-500 flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105"
                     title="GitHub"
                   >
                     <Github className="w-4 h-4" />
@@ -224,7 +459,7 @@ export const Footer: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Watch DrTechei Architecture Breakdowns on YouTube"
-                    className="w-9 h-9 rounded-xl bg-[#131926] hover:bg-[#FF0000] text-slate-400 hover:text-white border border-[#222C3E] hover:border-[#FF0000] flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105"
+                    className="w-9 h-9 rounded-xl bg-[#141C2C] hover:bg-[#FF0000] text-slate-400 hover:text-white border border-[#243249] hover:border-[#FF0000] flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105"
                     title="YouTube"
                   >
                     <Youtube className="w-4 h-4" />
@@ -377,14 +612,14 @@ export const Footer: React.FC = () => {
                 {['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS', 'Node.js', 'PostgreSQL', 'GraphQL', 'Docker', 'AWS / Vercel'].map((tech) => (
                   <span
                     key={tech}
-                    className="px-2.5 py-1 rounded-md bg-[#131926] border border-[#222C3E] text-slate-300 font-mono text-[11px]"
+                    className="px-2.5 py-1 rounded-md bg-[#141C2C] border border-[#243249] text-slate-300 font-mono text-[11px]"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
 
-              <div className="pt-3 p-4 rounded-xl bg-[#121825] border border-[#222C3E]">
+              <div className="pt-3 p-4 rounded-xl bg-[#131B2B] border border-[#233149]">
                 <div className="text-xs font-bold text-white mb-1">
                   Ready to Build or Scale?
                 </div>
@@ -404,239 +639,8 @@ export const Footer: React.FC = () => {
 
           </div>
 
-          {/* Corporate Headquarters & Dedicated Global Services Bento Grid Section */}
-          <div className="py-10 border-b border-[#1C2436]">
-            {/* Master Grid Container - Everything neatly framed inside this attractive bento box */}
-            <div className="rounded-2xl bg-gradient-to-b from-[#0F1626] to-[#0A0F1A] border border-[#1E293B] p-5 sm:p-7 shadow-2xl relative overflow-hidden">
-              {/* Subtle ambient lighting effect */}
-              <div className="absolute top-0 right-0 w-80 h-80 bg-[#2D2575]/15 rounded-full blur-3xl pointer-events-none" />
-              <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#D98E3A]/10 rounded-full blur-3xl pointer-events-none" />
-
-              {/* Master Header Inside Grid */}
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-6 border-b border-[#1D293F] relative z-10">
-                <div>
-                  <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#162134] border border-[#263752] text-[#F2BC7B] text-xs font-semibold mb-2">
-                    <Building2 className="w-3.5 h-3.5 text-[#D98E3A]" />
-                    <span>Global Delivery Architecture</span>
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
-                    Corporate Headquarters &amp; Dedicated Global Services
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl leading-relaxed">
-                    Registered Corporate Headquarters &amp; R&amp;D Hub in India, providing dedicated engineering services to clients across Ireland and Finland.
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-2 shrink-0">
-                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#141E30] border border-[#21304A] text-xs text-slate-300">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    <span className="font-medium">Active Real-Time Corridors</span>
-                    <span className="font-mono text-slate-400 text-[11px]">(IST • GMT • EET)</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Two Column Bento Grid: Left = India Registered HQ, Right = Dedicated International Services */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-6 relative z-10">
-                
-                {/* Column 1: Registered Corporate Headquarters (India) */}
-                <div className="flex flex-col gap-3">
-                  <div className="flex items-center justify-between px-1">
-                    <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400">
-                      <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                      <span>Registered Corporate Offices (India)</span>
-                    </div>
-                    <span className="text-[10px] font-semibold uppercase px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
-                      Official Entity
-                    </span>
-                  </div>
-
-                  {/* 2 India Cards */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 h-full">
-                    {registeredOffices.map((office) => (
-                      <div
-                        key={office.title}
-                        className="p-4 rounded-xl bg-[#111726]/90 hover:bg-[#141C2E] border border-[#1F2B3E] hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between group shadow-sm"
-                      >
-                        <div className="space-y-2.5">
-                          {/* Top Row: Flag, Title, Badge */}
-                          <div className="flex items-start justify-between gap-2">
-                            <div className="flex items-center gap-2">
-                              <span className="text-xl">{office.flag}</span>
-                              <div>
-                                <h4 className="font-bold text-sm text-white group-hover:text-emerald-300 transition-colors">
-                                  {office.title}
-                                </h4>
-                                <span className="text-[11px] text-slate-400">{office.city}</span>
-                              </div>
-                            </div>
-                            <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 shrink-0 whitespace-nowrap">
-                              {office.badge}
-                            </span>
-                          </div>
-
-                          {/* Address details */}
-                          <div className="pt-0.5">
-                            <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 block mb-1">
-                              Registered Address:
-                            </span>
-                            <p className="text-xs text-slate-300 leading-relaxed font-normal">
-                              {office.address}
-                            </p>
-                          </div>
-
-                          {/* Feature tags */}
-                          <div className="flex flex-wrap gap-1 pt-1">
-                            {office.tags.map((tag) => (
-                              <span key={tag} className="text-[10px] px-1.5 py-0.5 rounded bg-[#162032] text-slate-300 border border-[#23314B]">
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Bottom Actions */}
-                        <div className="mt-3.5 pt-3 border-t border-[#1C283B]">
-                          <div className="flex items-center justify-between text-[11px] text-slate-400 mb-2">
-                            <span className="font-mono text-emerald-400/90">{office.timezone}</span>
-                            <span className="text-slate-400">{office.email}</span>
-                          </div>
-                          <a
-                            href={`/${office.route}`}
-                            onClick={(e) => handleNavClick(e, office.route)}
-                            className="w-full py-2 px-2.5 rounded-lg bg-[#162133] hover:bg-[#1E2D44] border border-[#253650] hover:border-emerald-500/60 text-xs font-semibold text-emerald-300 hover:text-white transition-all flex items-center justify-between group/link cursor-pointer"
-                          >
-                            <span>{office.actionLabel}</span>
-                            <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform text-emerald-400" />
-                          </a>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Column 2: Dedicated International Engineering Services (Ireland & Finland) */}
-                <div className="flex flex-col gap-3">
-                  <div className="flex items-center justify-between px-1">
-                    <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#D98E3A]">
-                      <Zap className="w-4 h-4 text-[#D98E3A]" />
-                      <span>Dedicated Engineering Services (International)</span>
-                    </div>
-                    <span className="text-[10px] font-semibold uppercase px-2 py-0.5 rounded bg-[#D98E3A]/10 text-[#F2BC7B] border border-[#D98E3A]/30">
-                      Agile Squads
-                    </span>
-                  </div>
-
-                  {/* 2 International Service Cards */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 h-full">
-                    {internationalServices.map((service) => (
-                      <div
-                        key={service.title}
-                        className="p-4 rounded-xl bg-[#111726]/90 hover:bg-[#141C2E] border border-[#1F2B3E] hover:border-[#D98E3A]/50 transition-all duration-300 flex flex-col justify-between group shadow-sm"
-                      >
-                        <div className="space-y-2.5">
-                          {/* Top Row: Flag, Title, Badge */}
-                          <div className="flex items-start justify-between gap-2">
-                            <div className="flex items-center gap-2">
-                              <span className="text-xl">{service.flag}</span>
-                              <div>
-                                <h4 className="font-bold text-sm text-white group-hover:text-[#F2BC7B] transition-colors">
-                                  {service.title}
-                                </h4>
-                                <span className="text-[11px] text-slate-400">{service.city}</span>
-                              </div>
-                            </div>
-                            <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-[#D98E3A]/10 text-[#F2BC7B] border border-[#D98E3A]/30 shrink-0 whitespace-nowrap">
-                              {service.badge}
-                            </span>
-                          </div>
-
-                          {/* Service Scope */}
-                          <div className="pt-0.5">
-                            <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 block mb-1">
-                              Service Scope &amp; Delivery:
-                            </span>
-                            <p className="text-xs text-slate-300 leading-relaxed font-normal">
-                              {service.serviceDesc}
-                            </p>
-                          </div>
-
-                          {/* Feature tags */}
-                          <div className="flex flex-wrap gap-1 pt-1">
-                            {service.tags.map((tag) => (
-                              <span key={tag} className="text-[10px] px-1.5 py-0.5 rounded bg-[#162032] text-slate-300 border border-[#23314B]">
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Bottom Actions */}
-                        <div className="mt-3.5 pt-3 border-t border-[#1C283B]">
-                          <div className="flex items-center justify-between text-[11px] text-slate-400 mb-2">
-                            <span className="font-mono text-[#F2BC7B]">{service.timezone}</span>
-                            <span className="text-slate-400">{service.email}</span>
-                          </div>
-                          <a
-                            href={`/${service.route}`}
-                            onClick={(e) => handleNavClick(e, service.route)}
-                            className="w-full py-2 px-2.5 rounded-lg bg-[#162133] hover:bg-[#1E2D44] border border-[#253650] hover:border-[#D98E3A]/60 text-xs font-semibold text-[#D98E3A] hover:text-white transition-all flex items-center justify-between group/link cursor-pointer"
-                          >
-                            <span>{service.actionLabel}</span>
-                            <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform text-[#D98E3A]" />
-                          </a>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          {/* Regional Technology Partners Fast Navigation Strip */}
-          <div className="py-6 border-b border-[#1C2436]">
-            <div className="p-4 rounded-xl bg-[#111724] border border-[#20293A] flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-              <div className="flex items-center gap-2.5 text-xs">
-                <Globe2 className="w-4 h-4 text-[#D98E3A] shrink-0" />
-                <span className="text-slate-200 font-semibold">Dedicated Regional Technology Partner Portals:</span>
-                <span className="text-slate-400 hidden sm:inline">Country-tailored squads &amp; local currency billing</span>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
-                <button
-                  type="button"
-                  onClick={(e) => handleNavClick(e, 'technology-partner-india')}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#182132] hover:bg-[#222E46] border border-[#27354E] text-slate-200 hover:text-white text-xs font-semibold transition-all cursor-pointer"
-                >
-                  <span>🇮🇳</span>
-                  <span>Partner India (Delhi NCR &amp; Bengaluru)</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={(e) => handleNavClick(e, 'technology-partner-ireland')}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#182132] hover:bg-[#222E46] border border-[#27354E] text-slate-200 hover:text-white text-xs font-semibold transition-all cursor-pointer"
-                >
-                  <span>🇮🇪</span>
-                  <span>Partner Ireland (Silicon Docks Dublin)</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={(e) => handleNavClick(e, 'technology-partner-finland')}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#182132] hover:bg-[#222E46] border border-[#27354E] text-slate-200 hover:text-white text-xs font-semibold transition-all cursor-pointer"
-                >
-                  <span>🇫🇮</span>
-                  <span>Partner Finland (Helsinki &amp; Espoo)</span>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom Legal & Copyright Bar */}
-          <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+          {/* SECTION 3: Bottom Legal & Copyright Bar */}
+          <div className="pt-6 border-t border-[#182235] flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
             <div className="flex items-center gap-2 text-slate-400">
               <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />
               <span>© {new Date().getFullYear()} DrTechei IT Solutions. All Rights Reserved. 100% Client IP Ownership.</span>
