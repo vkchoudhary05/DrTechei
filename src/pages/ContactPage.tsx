@@ -151,7 +151,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                     <div className="min-w-0 flex-1">
                       <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">Toll-Free Senior Tech Lead</div>
                       <div className="font-bold text-[#111622] group-hover:text-[#D98E3A] transition-colors text-xs sm:text-sm break-all">
-                        +1 (800) 540-TECH
+                        +919690941439
                       </div>
                     </div>
                   </a>

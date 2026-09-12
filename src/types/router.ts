@@ -122,7 +122,7 @@ export const PAGE_SEO_DATA: Record<PageRoute, PageSEO> = {
   },
   contact: {
     title: 'Contact DrTechei | Book Free Technical Discovery Call & Estimate',
-    description: 'Connect with our senior technical architects. Get a comprehensive project blueprint and transparent proposal within 24 business hours. Call +1 (800) 540-TECH.',
+    description: 'Connect with our senior technical architects. Get a comprehensive project blueprint and transparent proposal within 24 business hours. Call +919690941439.',
     keywords: 'Contact DrTechei, Hire Web Developers, Get Project Quote, Discovery Consultation, Web Agency Contact',
     canonicalPath: '/contact',
     ogType: 'website',

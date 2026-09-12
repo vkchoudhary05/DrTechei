@@ -199,7 +199,7 @@ const availableFeatures = [
                            DRTECHEI IT SOLUTIONS
            Enterprise Full-Stack Engineering & Cloud Architecture
           Website: https://wearedrtechie.com | Email: wearedrtechie@gmail.com
-              Engineering Desk: +1 (800) 540-TECH | Delhi NCR • London • Toronto
+              Engineering Desk: +919690941439 | Delhi NCR • London • Toronto
 ================================================================================
               OFFICIAL FIXED PRICE ENGINEERING QUOTATION & SCOPE
 ================================================================================
@@ -249,7 +249,7 @@ Corporate Signature: DrTechei IT Solutions | Global Enterprise Engineering Desk`
                            DRTECHEI IT SOLUTIONS
            Enterprise Full-Stack Engineering & Cloud Architecture
           Website: https://wearedrtechie.com | Email: wearedrtechie@gmail.com
-              Engineering Desk: +1 (800) 540-TECH | Delhi NCR • London • Toronto
+              Engineering Desk: +919690941439 | Delhi NCR • London • Toronto
 ================================================================================
           OFFICIAL DEDICATED HOURLY SQUAD QUOTATION ($25 TO $50 / HR)
 ================================================================================

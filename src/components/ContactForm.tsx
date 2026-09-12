@@ -213,7 +213,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                         href="tel:+18005408324"
                         className="text-xs sm:text-sm font-bold text-white hover:text-[#F2BC7B] transition-colors break-all block mt-0.5"
                       >
-                        +1 (800) 540-TECH
+                        +919690941439
                       </a>
                     </div>
                   </div>

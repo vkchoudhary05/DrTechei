@@ -432,7 +432,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
                         </div>
 
                         <div className="text-xs font-bold text-[#111622] bg-slate-50 p-2 rounded-lg border border-slate-200/80 my-1.5 font-mono">
-                          +1 (800) 540-TECH
+                          +919690941439
                         </div>
 
                         <p className="text-[11px] text-slate-500 mb-2.5 leading-relaxed">
@@ -748,7 +748,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
                           className="flex items-center gap-2 text-xs font-semibold text-[#111622] hover:text-[#D98E3A] transition-colors"
                         >
                           <PhoneCall className="w-4 h-4 text-[#D98E3A]" />
-                          <span>+1 (800) 540-TECH</span>
+                          <span>+919690941439</span>
                         </a>
                       </div>
                     </div>

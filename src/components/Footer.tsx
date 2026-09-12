@@ -54,7 +54,7 @@ export const Footer: React.FC = () => {
       address: 'Level 6, Vandhna Building, Tolstoy Marg, Connaught Place, New Delhi 110001',
       corridor: 'Connaught Place • Gurgaon • Noida',
       timezone: 'IST (UTC+5:30)',
-      email: 'india@drtechei.com',
+      email: 'hello@drtechei.comdrtechei.com',
       actionLabel: 'View India Partner Hub',
       tags: ['Pan-India HQ', '100% IP Ownership', 'Architecture'],
       route: 'technology-partner-india' as PageRoute
@@ -70,7 +70,7 @@ export const Footer: React.FC = () => {
       address: 'IT Park, Sahastradhara Road, Dehradun, Uttarakhand 248001',
       corridor: 'Software Engineering & Cloud Labs',
       timezone: 'IST (UTC+5:30)',
-      email: 'india@drtechei.com',
+      email: 'hello@drtechei.comdrtechei.com',
       actionLabel: 'View Delivery Hub',
       tags: ['Next.js 15 Labs', 'Full-Stack Squads', 'Core Web Vitals'],
       route: 'technology-partner-india' as PageRoute
@@ -90,7 +90,7 @@ export const Footer: React.FC = () => {
       serviceDesc: 'Dedicated Next.js & React agile squads for Irish startups and scaleups across Dublin (Silicon Docks), Cork, and Galway with 100% IP handover.',
       corridor: 'Dublin • Cork • Galway • London',
       timezone: 'GMT / Irish Time (UTC+0 / +1)',
-      email: 'ireland@drtechei.com',
+      email: 'hello@drtechei.comdrtechei.com',
       actionLabel: 'View Ireland Partner Portal',
       tags: ['Silicon Docks Standards', 'Full GMT Overlap', 'GDPR Ready'],
       route: 'technology-partner-ireland' as PageRoute
@@ -106,7 +106,7 @@ export const Footer: React.FC = () => {
       serviceDesc: 'Dedicated cloud engineering, headless CMS, and sub-second web performance squads serving Helsinki, Espoo, and Tampere with strict GDPR compliance.',
       corridor: 'Helsinki • Espoo • Tampere • Nordics',
       timezone: 'EET / Helsinki Time (UTC+2 / +3)',
-      email: 'nordics@drtechei.com',
+      email: 'hello@drtechei.comdrtechei.com',
       actionLabel: 'View Finland Partner Portal',
       tags: ['Nordic Quality', 'EET Timezone Overlap', 'Sub-Second Speed'],
       route: 'technology-partner-finland' as PageRoute
@@ -158,7 +158,7 @@ export const Footer: React.FC = () => {
                     href="tel:+18005408324" 
                     className="text-slate-200 hover:text-[#F2BC7B] transition-colors font-medium"
                   >
-                    +1 (800) 540-TECH
+                    +919690941439
                   </a>
                 </div>
               </div>
