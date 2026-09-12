@@ -11,6 +11,7 @@ import {
   PhoneCall,
   Sparkles,
   Globe,
+  Globe2,
   Briefcase,
   Cpu,
   Award,
@@ -150,6 +151,27 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
       route: 'faq',
       desc: 'Core Web Vitals, code ownership, pricing & SLAs',
       icon: HelpCircle,
+    },
+    {
+      name: 'Technology Partner Finland',
+      route: 'technology-partner-finland',
+      desc: 'Helsinki & Espoo dedicated Next.js squads, EET & GDPR',
+      icon: Globe2,
+      badge: 'Finland 🇫🇮',
+    },
+    {
+      name: 'Technology Partner Ireland',
+      route: 'technology-partner-ireland',
+      desc: 'Silicon Docks Dublin squads, GMT hours & rapid scale',
+      icon: Globe2,
+      badge: 'Ireland 🇮🇪',
+    },
+    {
+      name: 'Technology Partner India',
+      route: 'technology-partner-india',
+      desc: 'Delhi NCR, Bengaluru & Mumbai senior engineering hub',
+      icon: Globe2,
+      badge: 'India 🇮🇳',
     },
     {
       name: 'Contact & Consultation',
@@ -410,7 +432,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
                         </div>
 
                         <div className="text-xs font-bold text-[#111622] bg-slate-50 p-2 rounded-lg border border-slate-200/80 my-1.5 font-mono">
-                          +919690941439
+                          +1 (800) 540-TECH
                         </div>
 
                         <p className="text-[11px] text-slate-500 mb-2.5 leading-relaxed">
@@ -726,7 +748,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
                           className="flex items-center gap-2 text-xs font-semibold text-[#111622] hover:text-[#D98E3A] transition-colors"
                         >
                           <PhoneCall className="w-4 h-4 text-[#D98E3A]" />
-                          <span>+919690941439</span>
+                          <span>+1 (800) 540-TECH</span>
                         </a>
                       </div>
                     </div>

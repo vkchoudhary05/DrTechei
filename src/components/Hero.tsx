@@ -8,14 +8,8 @@ import {
   Terminal,
   ShieldCheck,
   Zap,
-  Sparkles,
-  Layers,
-  Cpu,
-  Activity,
-  Globe2,
-  Rocket,
-  Star
 } from 'lucide-react';
+import { KineticTicker } from './KineticTicker';
 
 interface HeroProps {
   onStartProject: () => void;
@@ -133,14 +127,17 @@ export const cms = createClient({
   return (
     <section 
       id="hero-section"
-      className="relative bg-gradient-to-b from-white via-[#FAFBFD] to-white text-slate-900 border-b border-slate-200/90 py-8 sm:py-12 md:py-16 lg:py-20 overflow-hidden"
+      className="relative transition-colors duration-500 overflow-hidden bg-gradient-to-b from-[#111622] via-[#1A1842] to-[#2D2575] text-white border-b border-[#2D2575]/60"
     >
-      {/* Ambient background glow accents */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-tr from-[#2D2575]/10 via-[#6366F1]/5 to-[#D98E3A]/10 rounded-full blur-3xl pointer-events-none -z-10" />
-      <div className="absolute top-10 right-10 w-72 h-72 bg-[#D98E3A]/10 rounded-full blur-2xl pointer-events-none -z-10" />
+      {/* Background Dot Matrix (Identical to technology-partner-finland hero) */}
+      <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#F2BC7B_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-12 gap-6 lg:gap-10 xl:gap-12 items-center">
+      {/* Ambient background glow accents */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-tr from-[#2D2575]/40 via-[#6366F1]/20 to-[#D98E3A]/20 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute top-10 right-10 w-72 h-72 bg-[#D98E3A]/15 rounded-full blur-2xl pointer-events-none -z-10" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 md:py-20">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
           {/* LEFT COLUMN: Animated Headline, Badges & Value Proposition */}
           <motion.div 
@@ -149,83 +146,87 @@ export const cms = createClient({
             transition={{ duration: 0.5, ease: 'easeOut' }}
             className="lg:col-span-7 flex flex-col text-left"
           >
-            {/* Animated Badge - Simplified */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.1 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-[#EEEDFA] text-[#2D2575] border border-[#2D2575]/15 self-start mb-4 sm:mb-5"
-            >
+            {/* Animated Eyebrow Badge with High-Rank Keywords */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold self-start mb-5 shadow-2xs border border-white/15 bg-white/10 backdrop-blur-md text-[#F2BC7B]">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
               </span>
-              <span className="font-bold">DrTechei IT Solutions</span>
-            </motion.div>
+              <span className="font-bold">#1 Global Tech Partner</span>
+              <span className="text-[#D98E3A]">•</span>
+              <span className="text-slate-200">
+                Europe • Australia • Canada • All India
+              </span>
+            </div>
 
             {/* Clear, High-Impact Big Headline */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] xl:text-[58px] font-extrabold text-[#111622] tracking-tight leading-[1.1] sm:leading-[1.15]">
-              High Performance Web Apps{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2D2575] via-[#4338CA] to-[#D98E3A]">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-extrabold tracking-tight leading-[1.12] text-white">
+              High-Performance Web Apps,{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#818CF8] via-[#F2BC7B] to-[#D98E3A]">
                 Headless CMS
               </span>{' '}
               &amp; Digital Engineering
             </h1>
 
             {/* Value Proposition */}
-            <p className="mt-4 sm:mt-5 text-sm sm:text-base lg:text-lg text-slate-600 leading-relaxed max-w-2xl font-normal">
-              We engineer fast Next.js 15 web applications, custom React 19 frontends, scalable Node.js APIs, and headless CMS platforms. Guaranteed 95+ PageSpeed scores, sub-second load times, and 100% source code ownership.
+            <p className="mt-5 text-base sm:text-lg leading-relaxed max-w-2xl font-normal text-slate-200">
+              We engineer fast Next.js 15 web applications, custom React 19 frontends, scalable Node.js APIs, and headless CMS platforms. As your dedicated technology partner, we guarantee 95+ PageSpeed scores, sub-second load times, and 100% source code ownership.
             </p>
 
-            {/* Tech Chips - Responsive */}
-            <div className="mt-3 sm:mt-4 flex flex-wrap items-center gap-1.5 sm:gap-2">
+            {/* Floating Tech Chips Strip */}
+            <div className="mt-4 flex flex-wrap items-center gap-2">
               {[
-                { name: 'Next.js 15', color: 'bg-slate-900 text-white border-slate-800' },
-                { name: 'React 19', color: 'bg-sky-50 text-sky-800 border-sky-200' },
-                { name: 'TypeScript', color: 'bg-blue-50 text-blue-800 border-blue-200' },
-                { name: 'Shopify Plus', color: 'bg-emerald-50 text-emerald-800 border-emerald-200' },
-                { name: 'WordPress / Sanity', color: 'bg-amber-50 text-amber-800 border-amber-200' },
-                { name: 'Node.js', color: 'bg-emerald-50 text-emerald-800 border-emerald-200' },
+                { name: 'Next.js 15', color: 'bg-[#121826] text-white border-[#243048]' },
+                { name: 'React 19', color: 'bg-cyan-950/60 text-cyan-300 border-cyan-800' },
+                { name: 'TypeScript', color: 'bg-blue-950/60 text-blue-300 border-blue-800' },
+                { name: 'Shopify Plus', color: 'bg-emerald-950/60 text-emerald-300 border-emerald-800' },
+                { name: 'WordPress / Sanity CMS', color: 'bg-amber-950/60 text-amber-300 border-amber-800' },
+                { name: 'Node.js Edge', color: 'bg-indigo-950/60 text-indigo-300 border-indigo-800' },
               ].map((tech) => (
                 <span
                   key={tech.name}
-                  className={`text-[10px] sm:text-[11px] font-semibold px-2 sm:px-2.5 py-0.5 rounded-md border ${tech.color} shadow-sm`}
+                  className={`text-[11px] font-semibold px-2.5 py-0.5 rounded-md border ${tech.color} shadow-2xs`}
                 >
                   {tech.name}
                 </span>
               ))}
             </div>
 
-            {/* Global Hubs - Responsive */}
-            <div className="mt-3 sm:mt-4 flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs text-slate-500 font-medium">
-              <span className="font-semibold text-slate-700 text-[11px] sm:text-xs">🌍 Delivery Hubs:</span>
-              <span className="px-2 py-0.5 rounded-lg bg-white text-slate-800 font-semibold border border-slate-200/90 shadow-sm flex items-center gap-1">
+            {/* Global Hubs Strip (All India + Europe + Australia + Canada) */}
+            <div className="mt-4 flex flex-wrap items-center gap-2 sm:gap-3 text-xs font-medium text-slate-300">
+              <span className="font-semibold text-slate-200">Delivery Hubs:</span>
+              <span className="px-2.5 py-0.5 rounded-lg font-semibold border border-white/15 bg-white/10 text-slate-100 flex items-center gap-1.5 shadow-2xs">
                 <span>🇮🇳</span>
-                <span>Delhi HQ</span>
+                <span>Delhi NCR (HQ) &amp; Pan-India</span>
               </span>
-              <span className="text-slate-300">•</span>
-              <span className="px-2 py-0.5 rounded-lg bg-white text-slate-800 font-semibold border border-slate-200/90 shadow-sm flex items-center gap-1">
-                <span>🇫🇮</span>
-                <span>Helsinki</span>
+              <span className="text-slate-400">•</span>
+              <span className="px-2.5 py-0.5 rounded-lg font-semibold border border-white/15 bg-white/10 text-slate-100 flex items-center gap-1.5 shadow-2xs">
+                <span>🇪🇺</span>
+                <span>London &amp; Dublin</span>
               </span>
-              <span className="text-slate-300">•</span>
-              <span className="px-2 py-0.5 rounded-lg bg-white text-slate-800 font-semibold border border-slate-200/90 shadow-sm flex items-center gap-1">
-                <span>🇮🇪</span>
-                <span>Dublin</span>
+              <span className="text-slate-400">•</span>
+              <span className="px-2.5 py-0.5 rounded-lg font-semibold border border-white/15 bg-white/10 text-slate-100 flex items-center gap-1.5 shadow-2xs">
+                <span>🇦🇺</span>
+                <span>Sydney</span>
+              </span>
+              <span className="text-slate-400">•</span>
+              <span className="px-2.5 py-0.5 rounded-lg font-semibold border border-white/15 bg-white/10 text-slate-100 flex items-center gap-1.5 shadow-2xs">
+                <span>🇨🇦</span>
+                <span>Toronto</span>
               </span>
             </div>
 
-            {/* Primary Action Buttons - Responsive */}
-            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            {/* Primary Action Buttons */}
+            <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
               <motion.button
                 id="hero-primary-cta"
                 type="button"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={onStartProject}
-                className="group relative inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-[#2D2575] via-[#3B308D] to-[#D98E3A] hover:from-[#231C61] hover:to-[#B26E20] shadow-md shadow-[#2D2575]/20 hover:shadow-lg hover:shadow-[#D98E3A]/25 transition-all cursor-pointer overflow-hidden min-h-[48px] sm:min-h-[52px]"
+                className="group relative inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-[#D98E3A] to-[#B26E20] hover:from-[#E59B48] hover:to-[#C67E2C] shadow-lg shadow-[#D98E3A]/25 hover:shadow-xl hover:shadow-[#D98E3A]/30 transition-all cursor-pointer overflow-hidden"
               >
-                <span>Get Free Project Estimate</span>
+                <span>Hire Tech Partner / Get Quote</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </motion.button>
 
@@ -235,65 +236,65 @@ export const cms = createClient({
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={onViewWork}
-                className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-xl text-sm font-bold text-[#2D2575] bg-white hover:bg-[#EEEDFA]/50 border border-slate-300 hover:border-[#2D2575]/40 transition-all shadow-sm hover:shadow-md cursor-pointer min-h-[48px] sm:min-h-[52px]"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold transition-all shadow-2xs cursor-pointer text-white bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md"
               >
                 <span>Explore Client Work</span>
               </motion.button>
             </div>
 
-            {/* Core Reassurances - Responsive */}
-            <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-slate-200/80 flex flex-wrap items-center gap-y-2 gap-x-4 sm:gap-x-6 text-xs text-slate-600 font-medium">
+            {/* Core Reassurances Strip */}
+            <div className="mt-8 pt-6 border-t border-white/15 flex flex-wrap items-center gap-y-2.5 gap-x-6 text-xs font-medium text-slate-200">
               <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                <span className="font-semibold text-slate-800 text-[11px] sm:text-xs">100% Client Code Ownership</span>
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span className="font-semibold text-white">100% Client Code Ownership</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#D98E3A] shrink-0" />
-                <span className="font-semibold text-slate-800 text-[11px] sm:text-xs">95+ PageSpeed Guaranteed</span>
+                <CheckCircle2 className="w-4 h-4 text-[#D98E3A] shrink-0" />
+                <span className="font-semibold text-white">95+ PageSpeed Guaranteed</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#2D2575] shrink-0" />
-                <span className="font-semibold text-slate-800 text-[11px] sm:text-xs">Sub-Second Load Times</span>
+                <CheckCircle2 className="w-4 h-4 text-indigo-300 shrink-0" />
+                <span className="font-semibold text-white">Sub-Second Load Times</span>
               </div>
             </div>
           </motion.div>
 
-          {/* RIGHT COLUMN: Interactive Architecture Card */}
+          {/* RIGHT COLUMN: Interactive Architecture Card & Speed Dial */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.15, ease: 'easeOut' }}
-            className="lg:col-span-5 relative mt-6 lg:mt-0"
+            className="lg:col-span-5 relative mt-4 lg:mt-0"
           >
-            <div className="rounded-2xl border border-slate-200/90 bg-white shadow-xl shadow-slate-200/60 overflow-hidden text-left relative">
+            <div className="rounded-2xl border border-white/15 overflow-hidden text-left relative transition-all duration-300 bg-[#0F1422]/90 backdrop-blur-xl shadow-2xl shadow-black/40">
               
               {/* Card Header Bar */}
-              <div className="px-3 sm:px-4 py-2.5 sm:py-3 bg-gradient-to-r from-slate-50 via-white to-slate-50 border-b border-slate-200/80 flex items-center justify-between gap-2">
+              <div className="px-4 py-3 border-b border-white/10 flex items-center justify-between gap-2 bg-slate-900/90">
                 <div className="flex items-center gap-1.5">
-                  <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-rose-400" />
-                  <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-amber-400" />
-                  <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-emerald-400" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-rose-400" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
                 </div>
 
-                <div className="flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-600 text-[10px] sm:text-xs font-mono">
-                  <Lock className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-emerald-600 shrink-0" />
-                  <span className="truncate max-w-[80px] sm:max-w-none">drtechei.com</span>
+                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-mono border border-slate-800 bg-slate-950 text-slate-300">
+                  <Lock className="w-3 h-3 text-emerald-400 shrink-0" />
+                  <span className="truncate">drtechei.com/diagnostics</span>
                 </div>
 
-                <div className="flex items-center gap-1 text-[10px] sm:text-[11px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 sm:px-2 sm:py-0.5 rounded-full border border-emerald-200">
-                  <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  <span>Live</span>
+                <div className="flex items-center gap-1 text-[11px] font-bold text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>Live Audit</span>
                 </div>
               </div>
 
-              {/* Summary Metrics Bar */}
-              <div className="p-3 sm:p-4 border-b border-slate-100 flex flex-wrap items-center justify-between gap-2 bg-gradient-to-br from-[#FAFBFD] to-white">
-                <div className="flex items-center gap-2.5 sm:gap-3.5">
+              {/* Summary Metrics Bar with Animated Gauge Dial */}
+              <div className="p-4 border-b border-white/10 flex items-center justify-between gap-3 bg-slate-900/60">
+                <div className="flex items-center gap-3.5">
                   {/* Circular Speed Dial */}
-                  <div className="relative w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center shrink-0">
+                  <div className="relative w-12 h-12 flex items-center justify-center shrink-0">
                     <svg className="w-full h-full -rotate-90" viewBox="0 0 36 36">
                       <path
-                        className="text-slate-100"
+                        className="text-slate-800"
                         strokeWidth="3.5"
                         stroke="currentColor"
                         fill="none"
@@ -304,7 +305,7 @@ export const cms = createClient({
                         initial={{ strokeDasharray: '0, 100' }}
                         animate={{ strokeDasharray: `${currentArch.score}, 100` }}
                         transition={{ duration: 0.8, ease: 'easeOut' }}
-                        className="text-emerald-500"
+                        className="text-emerald-400"
                         strokeWidth="3.5"
                         strokeDasharray="99, 100"
                         strokeLinecap="round"
@@ -313,34 +314,34 @@ export const cms = createClient({
                         d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                       />
                     </svg>
-                    <div className="absolute inset-0 flex flex-col items-center justify-center font-mono font-black text-[9px] sm:text-xs text-[#2D2575]">
+                    <div className="absolute inset-0 flex flex-col items-center justify-center font-mono font-black text-xs text-emerald-400">
                       <span>{currentArch.score}</span>
-                      <span className="text-[6px] sm:text-[7px] text-slate-400 font-normal">PERF</span>
+                      <span className="text-[7px] text-slate-400 font-normal">PERF</span>
                     </div>
                   </div>
 
-                  <div className="min-w-0">
-                    <div className="text-[10px] sm:text-xs font-bold text-slate-900 flex items-center gap-1">
-                      <span className="truncate">Lighthouse 100/100</span>
-                      <Gauge className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#D98E3A] shrink-0" />
+                  <div>
+                    <div className="text-xs font-bold flex items-center gap-1.5 text-white">
+                      <span>Lighthouse 100/100 Core</span>
+                      <Gauge className="w-3.5 h-3.5 text-[#D98E3A]" />
                     </div>
-                    <div className="text-[9px] sm:text-[11px] text-slate-500 font-mono truncate">
-                      LCP {currentArch.vitals.lcp} • INP {currentArch.vitals.inp}
+                    <div className="text-[11px] text-slate-300 font-mono mt-0.5">
+                      LCP {currentArch.vitals.lcp} • INP {currentArch.vitals.inp} • CLS {currentArch.vitals.cls}
                     </div>
                   </div>
                 </div>
 
                 {/* Sub-view mode toggles */}
-                <div className="flex items-center gap-1 p-0.5 sm:p-1 rounded-xl bg-slate-100 border border-slate-200/80">
+                <div className="flex items-center gap-1 p-1 rounded-xl border border-slate-800 bg-slate-950">
                   {(['specs', 'code', 'vitals'] as const).map((mode) => (
                     <button
                       key={mode}
                       type="button"
                       onClick={() => setViewMode(mode)}
-                      className={`px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-lg text-[9px] sm:text-[11px] font-bold capitalize transition-all cursor-pointer ${
+                      className={`px-2.5 py-1 rounded-lg text-[11px] font-bold capitalize transition-all cursor-pointer ${
                         viewMode === mode
-                          ? 'bg-white text-[#2D2575] shadow-sm'
-                          : 'text-slate-600 hover:text-slate-900'
+                          ? 'bg-[#2D2575] text-white shadow-xs'
+                          : 'text-slate-400 hover:text-white'
                       }`}
                     >
                       {mode}
@@ -350,8 +351,8 @@ export const cms = createClient({
               </div>
 
               {/* Framework Switcher Tabs */}
-              <div className="p-3 sm:p-5">
-                <div className="grid grid-cols-4 gap-1 p-0.5 sm:p-1 rounded-xl mb-3 sm:mb-4 bg-slate-100 text-center border border-slate-200/60">
+              <div className="p-4 sm:p-5">
+                <div className="grid grid-cols-4 gap-1.5 p-1 rounded-xl mb-4 text-center border border-slate-800 bg-slate-950">
                   {(['nextjs', 'react', 'nodejs', 'headless'] as const).map((tabKey) => {
                     const isSelected = activeTab === tabKey;
                     const labels = {
@@ -366,10 +367,10 @@ export const cms = createClient({
                         key={tabKey}
                         type="button"
                         onClick={() => setActiveTab(tabKey)}
-                        className={`py-1 px-0.5 sm:py-1.5 sm:px-1 rounded-lg text-[10px] sm:text-xs transition-all cursor-pointer font-bold truncate ${
+                        className={`py-1.5 px-1 rounded-lg text-xs transition-all cursor-pointer font-bold truncate ${
                           isSelected
-                            ? 'bg-[#2D2575] text-white shadow-sm'
-                            : 'text-slate-600 hover:text-[#2D2575] hover:bg-white/60'
+                            ? 'bg-gradient-to-r from-[#D98E3A] to-[#B26E20] text-white shadow-xs'
+                            : 'text-slate-400 hover:text-white hover:bg-white/5'
                         }`}
                       >
                         <span className="sm:hidden">{labels[tabKey].short}</span>
@@ -388,23 +389,25 @@ export const cms = createClient({
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -6 }}
                       transition={{ duration: 0.15 }}
-                      className="p-3 sm:p-4 rounded-xl bg-[#FAFBFD] border border-slate-200/90 space-y-2 sm:space-y-3"
+                      className="p-4 rounded-xl border border-slate-800 bg-slate-950/70 space-y-3"
                     >
                       <div className="flex items-start justify-between gap-2">
-                        <div className="min-w-0">
-                          <h4 className="text-xs sm:text-sm font-bold text-slate-900 truncate">{currentArch.name}</h4>
-                          <p className="text-[10px] sm:text-xs text-slate-500 font-medium mt-0.5 truncate">{currentArch.category}</p>
+                        <div>
+                          <h4 className="text-sm font-bold text-white">
+                            {currentArch.name}
+                          </h4>
+                          <p className="text-xs text-slate-400 font-medium mt-0.5">{currentArch.category}</p>
                         </div>
-                        <span className="text-[10px] sm:text-xs font-mono font-bold px-1.5 sm:px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 whitespace-nowrap">
+                        <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-emerald-950/60 border border-emerald-800 text-emerald-400">
                           {currentArch.speed}
                         </span>
                       </div>
 
-                      <div className="space-y-1 pt-0.5">
+                      <div className="space-y-1.5 pt-1">
                         {currentArch.features.map((feat, idx) => (
-                          <div key={idx} className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs text-slate-700">
-                            <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-emerald-600 shrink-0" />
-                            <span className="truncate">{feat}</span>
+                          <div key={idx} className="flex items-center gap-2 text-xs text-slate-300">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                            <span>{feat}</span>
                           </div>
                         ))}
                       </div>
@@ -418,17 +421,17 @@ export const cms = createClient({
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -6 }}
                       transition={{ duration: 0.15 }}
-                      className="p-2.5 sm:p-3.5 rounded-xl bg-slate-900 text-slate-200 font-mono text-[9px] sm:text-[11px] overflow-x-auto leading-relaxed border border-slate-800"
+                      className="p-3.5 rounded-xl bg-slate-950 text-slate-200 font-mono text-[11px] overflow-x-auto leading-relaxed border border-slate-800"
                     >
-                      <div className="flex flex-wrap items-center justify-between pb-1.5 sm:pb-2 mb-1.5 sm:mb-2 border-b border-slate-800 text-[8px] sm:text-[10px] text-slate-400">
-                        <span className="flex items-center gap-1 text-emerald-400 font-semibold">
-                          <Terminal className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5" />
-                          <span>Production</span>
+                      <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-800 text-[10px] text-slate-400">
+                        <span className="flex items-center gap-1.5 text-emerald-400 font-semibold">
+                          <Terminal className="w-3.5 h-3.5" />
+                          <span>Production Implementation</span>
                         </span>
-                        <span className="text-[#D98E3A] font-bold text-[8px] sm:text-[10px]">TypeSafe 5.8</span>
+                        <span className="text-[#D98E3A] font-bold">TypeSafe 5.8</span>
                       </div>
                       <pre className="overflow-x-auto">
-                        <code className="text-[8px] sm:text-[11px]">{currentArch.codeSnippet}</code>
+                        <code>{currentArch.codeSnippet}</code>
                       </pre>
                     </motion.div>
                   )}
@@ -440,73 +443,82 @@ export const cms = createClient({
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -6 }}
                       transition={{ duration: 0.15 }}
-                      className="p-3 sm:p-4 rounded-xl bg-[#FAFBFD] border border-slate-200/90 space-y-2 sm:space-y-3"
+                      className="p-4 rounded-xl border border-slate-800 bg-slate-950/70 space-y-3"
                     >
-                      <div className="flex flex-wrap items-center justify-between gap-1 text-[10px] sm:text-xs font-bold text-slate-900">
+                      <div className="flex items-center justify-between text-xs font-bold text-white">
                         <span>Core Web Vitals Pass</span>
-                        <span className="text-[8px] sm:text-[10px] font-bold text-emerald-700 bg-emerald-100/60 px-1.5 sm:px-2 py-0.5 rounded-full">
-                          ✅ Zero Penalties
+                        <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800">
+                          Zero Penalties
                         </span>
                       </div>
 
-                      <div className="grid grid-cols-2 gap-1.5 sm:gap-2 text-left">
-                        {[
-                          { label: 'LCP', value: currentArch.vitals.lcp },
-                          { label: 'INP', value: currentArch.vitals.inp },
-                          { label: 'CLS', value: currentArch.vitals.cls },
-                          { label: 'TTFB', value: currentArch.vitals.ttfb },
-                        ].map((item) => (
-                          <div key={item.label} className="p-1.5 sm:p-2.5 rounded-lg bg-white border border-slate-200">
-                            <div className="text-[8px] sm:text-[10px] text-slate-500 font-medium">{item.label}</div>
-                            <div className="text-[11px] sm:text-sm font-mono font-bold text-emerald-600">{item.value}</div>
-                          </div>
-                        ))}
+                      <div className="grid grid-cols-2 gap-2 text-left">
+                        <div className="p-2.5 rounded-lg border border-slate-800 bg-slate-900/80">
+                          <div className="text-[10px] text-slate-400 font-medium">LCP (Load Speed)</div>
+                          <div className="text-sm font-mono font-bold text-emerald-400">{currentArch.vitals.lcp}</div>
+                        </div>
+                        <div className="p-2.5 rounded-lg border border-slate-800 bg-slate-900/80">
+                          <div className="text-[10px] text-slate-400 font-medium">INP (Interaction)</div>
+                          <div className="text-sm font-mono font-bold text-emerald-400">{currentArch.vitals.inp}</div>
+                        </div>
+                        <div className="p-2.5 rounded-lg border border-slate-800 bg-slate-900/80">
+                          <div className="text-[10px] text-slate-400 font-medium">CLS (Layout Shift)</div>
+                          <div className="text-sm font-mono font-bold text-emerald-400">{currentArch.vitals.cls}</div>
+                        </div>
+                        <div className="p-2.5 rounded-lg border border-slate-800 bg-slate-900/80">
+                          <div className="text-[10px] text-slate-400 font-medium">TTFB (Response)</div>
+                          <div className="text-sm font-mono font-bold text-emerald-400">{currentArch.vitals.ttfb}</div>
+                        </div>
                       </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
 
                 {/* Card Footer */}
-                <div className="mt-3 sm:mt-3.5 pt-2.5 sm:pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-[10px] sm:text-xs text-slate-500">
-                  <div className="flex items-center gap-1 font-medium">
-                    <ShieldCheck className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-emerald-600 shrink-0" />
-                    <span className="hidden xs:inline">Tested Architecture</span>
-                    <span className="xs:hidden">Tested ✓</span>
+                <div className="mt-3.5 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                  <div className="flex items-center gap-1.5 font-medium">
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span>Tested Production Architecture</span>
                   </div>
 
                   <button
                     type="button"
                     onClick={onStartProject}
-                    className="text-[10px] sm:text-xs font-bold text-[#2D2575] hover:text-[#D98E3A] inline-flex items-center gap-1 cursor-pointer group transition-colors"
+                    className="text-xs font-bold text-[#D98E3A] hover:text-[#F2BC7B] inline-flex items-center gap-1 cursor-pointer group"
                   >
                     <span>Request Spec</span>
-                    <ArrowRight className="w-2.5 h-2.5 sm:w-3 sm:h-3 transition-transform group-hover:translate-x-1 text-[#D98E3A]" />
+                    <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
                   </button>
                 </div>
               </div>
             </div>
 
-            {/* Floating Latency Badge - Responsive */}
+            {/* Floating Latency Badge with Multi-Region Live Pings */}
             <motion.div 
               animate={{ y: [0, -4, 0] }}
               transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
-              className="mt-3 sm:mt-0 sm:absolute sm:-bottom-4 sm:-left-4 p-2.5 sm:p-3 rounded-xl border border-slate-200/90 bg-white/95 backdrop-blur-md shadow-lg flex items-center gap-2 text-left"
+              className="mt-3 sm:mt-0 sm:absolute sm:-bottom-4 sm:-left-4 p-3 rounded-xl border border-white/15 bg-slate-950/90 text-white backdrop-blur-md shadow-lg flex items-center gap-2.5 text-left"
             >
-              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#EEEDFA] text-[#2D2575] flex items-center justify-center font-bold shrink-0">
-                <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D98E3A]" />
+              <div className="w-8 h-8 rounded-lg bg-[#2D2575] text-[#D98E3A] flex items-center justify-center font-bold shrink-0">
+                <Zap className="w-4 h-4" />
               </div>
               <div>
-                <div className="text-[10px] sm:text-xs font-bold text-[#111622] flex items-center gap-1">
-                  <span>Sub-Second Delivery</span>
-                  <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-emerald-500 animate-ping" />
+                <div className="text-xs font-bold flex items-center gap-1">
+                  <span>Sub-Second Global Edge Latency</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
                 </div>
-                <div className="text-[9px] sm:text-[11px] text-slate-500">Global Edge • &lt;40ms TTFB</div>
+                <div className="text-[11px] text-slate-300 font-mono">
+                  London: 24ms • Sydney: 32ms • Delhi: 12ms
+                </div>
               </div>
             </motion.div>
           </motion.div>
 
         </div>
       </div>
+
+      {/* Kinetic Scrolling Text Banner (Three.js Style Smooth Continuous Ticker) */}
+      <KineticTicker theme="dark" speed="normal" />
     </section>
   );
 };

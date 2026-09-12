@@ -17,6 +17,9 @@ import { AboutPage } from './pages/AboutPage';
 import { TestimonialsPage } from './pages/TestimonialsPage';
 import { FAQPage } from './pages/FAQPage';
 import { ContactPage } from './pages/ContactPage';
+import { TechPartnerFinlandPage } from './pages/TechPartnerFinlandPage';
+import { TechPartnerIrelandPage } from './pages/TechPartnerIrelandPage';
+import { TechPartnerIndiaPage } from './pages/TechPartnerIndiaPage';
 import { ServiceItem, PortfolioProject } from './types';
 import { initGlobalGsapScroll } from './utils/gsapScroll';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -104,6 +107,24 @@ function AppContent() {
         return (
           <ContactPage
             preselectedService={preselectedContactService}
+          />
+        );
+      case 'technology-partner-finland':
+        return (
+          <TechPartnerFinlandPage
+            onOpenQuoteModal={() => setIsQuoteModalOpen(true)}
+          />
+        );
+      case 'technology-partner-ireland':
+        return (
+          <TechPartnerIrelandPage
+            onOpenQuoteModal={() => setIsQuoteModalOpen(true)}
+          />
+        );
+      case 'technology-partner-india':
+        return (
+          <TechPartnerIndiaPage
+            onOpenQuoteModal={() => setIsQuoteModalOpen(true)}
           />
         );
       case 'home':

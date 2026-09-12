@@ -8,7 +8,10 @@ export type PageRoute =
   | 'about'
   | 'testimonials'
   | 'faq'
-  | 'contact';
+  | 'contact'
+  | 'technology-partner-finland'
+  | 'technology-partner-ireland'
+  | 'technology-partner-india';
 
 export interface PageSEO {
   title: string;
@@ -119,13 +122,46 @@ export const PAGE_SEO_DATA: Record<PageRoute, PageSEO> = {
   },
   contact: {
     title: 'Contact DrTechei | Book Free Technical Discovery Call & Estimate',
-    description: 'Connect with our senior technical architects. Get a comprehensive project blueprint and transparent proposal within 24 business hours. Call +919690941439.',
+    description: 'Connect with our senior technical architects. Get a comprehensive project blueprint and transparent proposal within 24 business hours. Call +1 (800) 540-TECH.',
     keywords: 'Contact DrTechei, Hire Web Developers, Get Project Quote, Discovery Consultation, Web Agency Contact',
     canonicalPath: '/contact',
     ogType: 'website',
     breadcrumbs: [
       { name: 'Home', path: 'home' },
       { name: 'Contact', path: 'contact' },
+    ],
+  },
+  'technology-partner-finland': {
+    title: 'Technology Partner Finland | Dedicated Software Development & Tech Squads',
+    description: 'DrTechei is a dedicated technology partner for Finnish companies in Helsinki, Espoo, and Tampere. Certified Next.js 15 architects, 100% GDPR compliance, and full EET timezone alignment.',
+    keywords: 'technology partner finland, software development partner finland, hire dedicated developers finland, nextjs development helsinki, offshore tech partner nordic, gdpr compliant engineering',
+    canonicalPath: '/technology-partner-finland',
+    ogType: 'website',
+    breadcrumbs: [
+      { name: 'Home', path: 'home' },
+      { name: 'Technology Partner Finland', path: 'technology-partner-finland' },
+    ],
+  },
+  'technology-partner-ireland': {
+    title: 'Technology Partner Ireland | Dedicated Software Engineering & Startup Squads',
+    description: 'Silicon Docks standard technology partner for Irish startups and enterprises in Dublin, Cork, and Galway. Fast squad deployment, GMT/IST alignment, and 100% IP code handover.',
+    keywords: 'technology partner ireland, software development partner dublin, hire dedicated developers ireland, tech partner startups ireland, nextjs react development ireland, silicon docks tech partner',
+    canonicalPath: '/technology-partner-ireland',
+    ogType: 'website',
+    breadcrumbs: [
+      { name: 'Home', path: 'home' },
+      { name: 'Technology Partner Ireland', path: 'technology-partner-ireland' },
+    ],
+  },
+  'technology-partner-india': {
+    title: 'Technology Partner India | Elite Senior Full-Stack Engineering & Offshore Hub',
+    description: 'Premier technology partner in India for global startups and domestic enterprises. Dedicated Next.js 15 squads, top 1% senior talent, and 99+ Core Web Vitals guarantees.',
+    keywords: 'technology partner india, software development partner india, hire dedicated development team india, offshore tech partner india, nextjs engineering partner india, top IT company india',
+    canonicalPath: '/technology-partner-india',
+    ogType: 'website',
+    breadcrumbs: [
+      { name: 'Home', path: 'home' },
+      { name: 'Technology Partner India', path: 'technology-partner-india' },
     ],
   },
 };

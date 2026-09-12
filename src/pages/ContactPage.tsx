@@ -126,7 +126,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                 <div className="space-y-2.5 text-xs w-full">
                   {/* Email Box */}
                   <a
-                    href="mailto:wearedrtechie@gmail.com"
+                    href="mailto:hello@drtechei.com"
                     className="p-3 rounded-xl bg-[#FAFBFD] border border-slate-200/80 hover:border-[#D98E3A]/60 transition-colors flex items-center gap-3 group block w-full min-w-0"
                   >
                     <div className="w-9 h-9 rounded-lg bg-[#EEEDFA] text-[#2D2575] flex items-center justify-center shrink-0">
@@ -135,7 +135,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                     <div className="min-w-0 flex-1">
                       <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">Direct RFPs &amp; Project Scopes</div>
                       <div className="font-bold text-[#111622] group-hover:text-[#D98E3A] transition-colors text-xs sm:text-sm break-all">
-                        wearedrtechie@gmail.com
+                        hello@drtechei.com
                       </div>
                     </div>
                   </a>
@@ -189,6 +189,106 @@ export const ContactPage: React.FC<ContactPageProps> = ({
           preselectedService={preselectedService}
         />
       </div>
+
+      {/* Global Engineering Desks & Physical Addresses Section */}
+      <section className="py-12 sm:py-16 bg-white border-y border-slate-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-[#2D2575]/10 text-[#2D2575] mb-3">
+              <MapPin className="w-3.5 h-3.5 text-[#D98E3A]" />
+              <span>Worldwide Presence &amp; Registered Offices</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#111622] tracking-tight">
+              Our Physical Desks in India, Ireland &amp; Finland
+            </h2>
+            <p className="text-sm text-slate-600 mt-2">
+              Meet our senior architects on-site or schedule a virtual discovery call. Fully registered local operations.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {/* Delhi NCR HQ */}
+            <div className="p-5 rounded-2xl bg-[#FAFBFD] border border-slate-200 hover:border-[#2D2575]/40 hover:shadow-md transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-2xl">🇮🇳</span>
+                  <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">
+                    Executive HQ
+                  </span>
+                </div>
+                <h3 className="text-base font-bold text-[#111622]">Delhi NCR HQ</h3>
+                <p className="text-xs font-medium text-slate-500 mb-2">New Delhi, India</p>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Level 6, Vandhna Building, Tolstoy Marg, Connaught Place, New Delhi, Delhi 110001
+                </p>
+              </div>
+              <div className="pt-4 mt-4 border-t border-slate-200/60 text-[11px] text-slate-500">
+                <span className="font-semibold text-slate-700">Hub coverage:</span> Delhi NCR, Mumbai, Bengaluru, Hyderabad, Pune, Ahmedabad
+              </div>
+            </div>
+
+            {/* Dehradun Delivery Center */}
+            <div className="p-5 rounded-2xl bg-[#FAFBFD] border border-slate-200 hover:border-[#2D2575]/40 hover:shadow-md transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-2xl">🇮🇳</span>
+                  <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                    Delivery Hub
+                  </span>
+                </div>
+                <h3 className="text-base font-bold text-[#111622]">Dehradun Delivery Hub</h3>
+                <p className="text-xs font-medium text-slate-500 mb-2">Uttarakhand, India</p>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  IT Park, Sahastradhara Road, Dehradun, Uttarakhand 248001
+                </p>
+              </div>
+              <div className="pt-4 mt-4 border-t border-slate-200/60 text-[11px] text-slate-500">
+                <span className="font-semibold text-slate-700">Specialization:</span> Dedicated Next.js squads, QA automation &amp; cloud DevOps
+              </div>
+            </div>
+
+            {/* Dublin Silicon Docks */}
+            <div className="p-5 rounded-2xl bg-[#FAFBFD] border border-slate-200 hover:border-[#2D2575]/40 hover:shadow-md transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-2xl">🇮🇪</span>
+                  <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200">
+                    Silicon Docks
+                  </span>
+                </div>
+                <h3 className="text-base font-bold text-[#111622]">Ireland Tech Desk</h3>
+                <p className="text-xs font-medium text-slate-500 mb-2">Dublin, Ireland</p>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Silicon Docks, 2 Grand Canal Square, Grand Canal Dock, Dublin 2, D02 A342
+                </p>
+              </div>
+              <div className="pt-4 mt-4 border-t border-slate-200/60 text-[11px] text-slate-500">
+                <span className="font-semibold text-slate-700">Hub coverage:</span> Dublin, Cork, Galway, Limerick, Waterford
+              </div>
+            </div>
+
+            {/* Helsinki Kamppi */}
+            <div className="p-5 rounded-2xl bg-[#FAFBFD] border border-slate-200 hover:border-[#2D2575]/40 hover:shadow-md transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-2xl">🇫🇮</span>
+                  <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-sky-50 text-sky-800 border border-sky-200">
+                    Nordic Desk
+                  </span>
+                </div>
+                <h3 className="text-base font-bold text-[#111622]">Finland Tech Desk</h3>
+                <p className="text-xs font-medium text-slate-500 mb-2">Helsinki, Finland</p>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Mannerheimintie 12 B, Kamppi, 00100 Helsinki, Finland
+                </p>
+              </div>
+              <div className="pt-4 mt-4 border-t border-slate-200/60 text-[11px] text-slate-500">
+                <span className="font-semibold text-slate-700">Hub coverage:</span> Helsinki, Espoo, Tampere, Vantaa, Oulu, Turku
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Technical FAQ */}
       <div className="w-full max-w-full overflow-hidden">

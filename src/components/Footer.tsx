@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Logo } from './Logo';
 import { useRouter } from '../context/RouterContext';
 import { PageRoute } from '../types/router';
@@ -16,97 +16,16 @@ import {
   Twitter,
   Github,
   Youtube,
-  Eye,
-  Users,
-  Activity,
-  Sparkles,
-  Radio,
-  Globe2
+  Globe2,
+  Clock,
+  ArrowRight,
+  Building2,
+  Zap
 } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const { navigate } = useRouter();
   const [legalModal, setLegalModal] = useState<'privacy' | 'terms' | null>(null);
-
-  // Live Website Visitor Telemetry State
-  const [totalVisits, setTotalVisits] = useState<number>(38492);
-  const [todayVisits, setTodayVisits] = useState<number>(1428);
-  const [activeOnline, setActiveOnline] = useState<number>(18);
-  const [userVisits, setUserVisits] = useState<number>(1);
-  const [recentLocation, setRecentLocation] = useState<string>('London, UK');
-
-  useEffect(() => {
-    const STORAGE_KEY = 'drtechei_visit_stats';
-    const SESSION_KEY = 'drtechei_session_active';
-    const BASE_TOTAL = 38490;
-    const BASE_TODAY = 1420;
-
-    const locations = [
-      'London, UK',
-      'Dublin, Ireland',
-      'Frankfurt, Germany',
-      'Helsinki, Finland',
-      'Sydney, Australia',
-      'Toronto, Canada',
-      'Delhi NCR, India',
-      'Bangalore, India',
-      'San Francisco, US',
-      'Melbourne, Australia'
-    ];
-
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      let stats = {
-        total: BASE_TOTAL,
-        userVisits: 1,
-        today: BASE_TODAY,
-        lastDate: new Date().toDateString(),
-      };
-
-      if (stored) {
-        const parsed = JSON.parse(stored);
-        stats = { ...stats, ...parsed };
-      }
-
-      // Reset today count if new day
-      const todayStr = new Date().toDateString();
-      if (stats.lastDate !== todayStr) {
-        stats.today = BASE_TODAY;
-        stats.lastDate = todayStr;
-      }
-
-      // Increment if new browser session
-      const isNewSession = !sessionStorage.getItem(SESSION_KEY);
-      if (isNewSession) {
-        sessionStorage.setItem(SESSION_KEY, 'true');
-        stats.total += 1;
-        stats.userVisits = (stats.userVisits || 0) + 1;
-        stats.today = (stats.today || BASE_TODAY) + 1;
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(stats));
-      }
-
-      setTotalVisits(stats.total);
-      setTodayVisits(stats.today);
-      setUserVisits(stats.userVisits);
-    } catch {
-      // Graceful fallback if storage unavailable
-    }
-
-    // Dynamic Live Telemetry Fluctuations (simulating real global traffic activity)
-    const interval = setInterval(() => {
-      // Fluctuate active online users between 15 and 24
-      setActiveOnline((prev) => {
-        const change = (Math.random() > 0.5 ? 1 : -1) * (Math.random() > 0.7 ? 1 : 0);
-        return Math.min(Math.max(prev + change, 14), 26);
-      });
-
-      // Random global location ping
-      const randomLoc = locations[Math.floor(Math.random() * locations.length)];
-      setRecentLocation(randomLoc);
-    }, 12000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -114,16 +33,96 @@ export const Footer: React.FC = () => {
 
   const handleNavClick = (e: React.MouseEvent, route: PageRoute) => {
     e.preventDefault();
-    navigate(route);
+    window.scrollTo(0, 0);
+    if (typeof document !== 'undefined') {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }
+    navigate(route, { scrollToTop: true });
   };
+
+  // Registered Corporate Headquarters & Core Engineering Labs (India)
+  const registeredOffices = [
+    {
+      country: 'India',
+      flag: '🇮🇳',
+      city: 'New Delhi',
+      title: 'Delhi NCR Corporate HQ',
+      badge: 'Registered Office',
+      badgeType: 'registered' as const,
+      isRegistered: true,
+      address: 'Level 6, Vandhna Building, Tolstoy Marg, Connaught Place, New Delhi 110001',
+      corridor: 'Connaught Place • Gurgaon • Noida',
+      timezone: 'IST (UTC+5:30)',
+      email: 'india@drtechei.com',
+      actionLabel: 'View India Partner Hub',
+      tags: ['Pan-India HQ', '100% IP Ownership', 'Architecture'],
+      route: 'technology-partner-india' as PageRoute
+    },
+    {
+      country: 'India',
+      flag: '🇮🇳',
+      city: 'Dehradun',
+      title: 'Dehradun Delivery Hub',
+      badge: 'R&D Center',
+      badgeType: 'registered' as const,
+      isRegistered: true,
+      address: 'IT Park, Sahastradhara Road, Dehradun, Uttarakhand 248001',
+      corridor: 'Software Engineering & Cloud Labs',
+      timezone: 'IST (UTC+5:30)',
+      email: 'india@drtechei.com',
+      actionLabel: 'View Delivery Hub',
+      tags: ['Next.js 15 Labs', 'Full-Stack Squads', 'Core Web Vitals'],
+      route: 'technology-partner-india' as PageRoute
+    }
+  ];
+
+  // Dedicated International Engineering Services & Regional Client Desks
+  const internationalServices = [
+    {
+      country: 'Ireland',
+      flag: '🇮🇪',
+      city: 'Dublin & UK Corridor',
+      title: 'Ireland Client Services',
+      badge: 'Dedicated Services',
+      badgeType: 'service' as const,
+      isRegistered: false,
+      serviceDesc: 'Dedicated Next.js & React agile squads for Irish startups and scaleups across Dublin (Silicon Docks), Cork, and Galway with 100% IP handover.',
+      corridor: 'Dublin • Cork • Galway • London',
+      timezone: 'GMT / Irish Time (UTC+0 / +1)',
+      email: 'ireland@drtechei.com',
+      actionLabel: 'View Ireland Partner Portal',
+      tags: ['Silicon Docks Standards', 'Full GMT Overlap', 'GDPR Ready'],
+      route: 'technology-partner-ireland' as PageRoute
+    },
+    {
+      country: 'Finland',
+      flag: '🇫🇮',
+      city: 'Helsinki & Nordics Corridor',
+      title: 'Finland Client Services',
+      badge: 'Dedicated Services',
+      badgeType: 'service' as const,
+      isRegistered: false,
+      serviceDesc: 'Dedicated cloud engineering, headless CMS, and sub-second web performance squads serving Helsinki, Espoo, and Tampere with strict GDPR compliance.',
+      corridor: 'Helsinki • Espoo • Tampere • Nordics',
+      timezone: 'EET / Helsinki Time (UTC+2 / +3)',
+      email: 'nordics@drtechei.com',
+      actionLabel: 'View Finland Partner Portal',
+      tags: ['Nordic Quality', 'EET Timezone Overlap', 'Sub-Second Speed'],
+      route: 'technology-partner-finland' as PageRoute
+    }
+  ];
 
   return (
     <>
-      <footer className="bg-[#0D121B] text-slate-400 pt-16 pb-12 border-t border-[#1E2638] relative">
+      <footer className="bg-[#0A0E17] text-slate-400 pt-16 pb-12 border-t border-[#1C2436] relative">
         <div className="max-w-7xl 2xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
-          <div className="grid grid-cols-2 md:grid-cols-12 gap-8 lg:gap-12 pb-14 border-b border-[#1E2638]">
-            {/* Brand Column */}
-            <div className="col-span-2 md:col-span-4 space-y-4">
+          
+          {/* Main Top Navigation Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-14 border-b border-[#1C2436]">
+            
+            {/* Brand & Direct Contact Column */}
+            <div className="sm:col-span-2 lg:col-span-4 space-y-5">
               <button
                 type="button"
                 onClick={(e) => handleNavClick(e, 'home')}
@@ -134,18 +133,40 @@ export const Footer: React.FC = () => {
               </button>
 
               <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-sm">
-                Building modern digital experiences for growing businesses. High-performance Next.js architectures, headless CMS implementations, and custom web applications that scale effortlessly.
+                Next-generation software engineering consultancy. Building high-performance Next.js architectures, headless CMS implementations, and dedicated engineering squads that scale globally.
               </p>
 
-              <div className="pt-2 flex items-center gap-3 text-xs">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#D98E3A] animate-pulse" />
-                <span className="text-slate-300 font-medium">Accepting New Client Projects for Q3/Q4</span>
+              <div className="flex items-center gap-2.5 text-xs text-slate-300">
+                <span className="w-2 h-2 rounded-full bg-[#D98E3A] animate-pulse" />
+                <span className="font-medium">Accepting New Client Projects for Q3/Q4</span>
+              </div>
+
+              {/* Contact Direct Strip */}
+              <div className="space-y-2 pt-1 text-xs">
+                <div className="flex items-center gap-2.5">
+                  <Mail className="w-4 h-4 text-[#D98E3A] shrink-0" />
+                  <a 
+                    href="mailto:hello@drtechei.com" 
+                    className="text-slate-200 hover:text-[#F2BC7B] transition-colors font-medium"
+                  >
+                    hello@drtechei.com
+                  </a>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <Phone className="w-4 h-4 text-[#D98E3A] shrink-0" />
+                  <a 
+                    href="tel:+18005408324" 
+                    className="text-slate-200 hover:text-[#F2BC7B] transition-colors font-medium"
+                  >
+                    +1 (800) 540-TECH
+                  </a>
+                </div>
               </div>
 
               {/* Social Channels Strip */}
               <div className="pt-2">
                 <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2.5">
-                  Follow & Connect With Us
+                  Follow &amp; Connect With Us
                 </p>
                 <div className="flex flex-wrap items-center gap-2">
                   <a
@@ -153,7 +174,7 @@ export const Footer: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Follow DrTechei on Instagram"
-                    className="w-9 h-9 rounded-xl bg-[#141B28] hover:bg-[#D98E3A] text-slate-400 hover:text-white border border-[#232C3D] hover:border-[#D98E3A] flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105 group"
+                    className="w-9 h-9 rounded-xl bg-[#131926] hover:bg-[#D98E3A] text-slate-400 hover:text-white border border-[#222C3E] hover:border-[#D98E3A] flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105"
                     title="Instagram"
                   >
                     <Instagram className="w-4 h-4" />
@@ -163,7 +184,7 @@ export const Footer: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Follow DrTechei on Facebook"
-                    className="w-9 h-9 rounded-xl bg-[#141B28] hover:bg-[#1877F2] text-slate-400 hover:text-white border border-[#232C3D] hover:border-[#1877F2] flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105 group"
+                    className="w-9 h-9 rounded-xl bg-[#131926] hover:bg-[#1877F2] text-slate-400 hover:text-white border border-[#222C3E] hover:border-[#1877F2] flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105"
                     title="Facebook"
                   >
                     <Facebook className="w-4 h-4" />
@@ -173,7 +194,7 @@ export const Footer: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Connect with DrTechei on LinkedIn"
-                    className="w-9 h-9 rounded-xl bg-[#141B28] hover:bg-[#0A66C2] text-slate-400 hover:text-white border border-[#232C3D] hover:border-[#0A66C2] flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105 group"
+                    className="w-9 h-9 rounded-xl bg-[#131926] hover:bg-[#0A66C2] text-slate-400 hover:text-white border border-[#222C3E] hover:border-[#0A66C2] flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105"
                     title="LinkedIn"
                   >
                     <Linkedin className="w-4 h-4" />
@@ -183,7 +204,7 @@ export const Footer: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Follow DrTechei on X / Twitter"
-                    className="w-9 h-9 rounded-xl bg-[#141B28] hover:bg-white text-slate-400 hover:text-black border border-[#232C3D] hover:border-white flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105 group"
+                    className="w-9 h-9 rounded-xl bg-[#131926] hover:bg-white text-slate-400 hover:text-black border border-[#222C3E] hover:border-white flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105"
                     title="Twitter / X"
                   >
                     <Twitter className="w-4 h-4" />
@@ -193,7 +214,7 @@ export const Footer: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="View DrTechei Open Source on GitHub"
-                    className="w-9 h-9 rounded-xl bg-[#141B28] hover:bg-[#24292F] text-slate-400 hover:text-white border border-[#232C3D] hover:border-slate-500 flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105 group"
+                    className="w-9 h-9 rounded-xl bg-[#131926] hover:bg-[#24292F] text-slate-400 hover:text-white border border-[#222C3E] hover:border-slate-500 flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105"
                     title="GitHub"
                   >
                     <Github className="w-4 h-4" />
@@ -203,7 +224,7 @@ export const Footer: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Watch DrTechei Architecture Breakdowns on YouTube"
-                    className="w-9 h-9 rounded-xl bg-[#141B28] hover:bg-[#FF0000] text-slate-400 hover:text-white border border-[#232C3D] hover:border-[#FF0000] flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105 group"
+                    className="w-9 h-9 rounded-xl bg-[#131926] hover:bg-[#FF0000] text-slate-400 hover:text-white border border-[#222C3E] hover:border-[#FF0000] flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105"
                     title="YouTube"
                   >
                     <Youtube className="w-4 h-4" />
@@ -213,7 +234,7 @@ export const Footer: React.FC = () => {
             </div>
 
             {/* Company Column */}
-            <div className="col-span-1 md:col-span-2">
+            <div className="col-span-1 lg:col-span-2">
               <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">
                 Company
               </h4>
@@ -233,7 +254,7 @@ export const Footer: React.FC = () => {
                     onClick={(e) => handleNavClick(e, 'portfolio')}
                     className="hover:text-[#F2BC7B] transition-colors cursor-pointer text-left"
                   >
-                    Portfolio
+                    Portfolio &amp; Work
                   </button>
                 </li>
                 <li>
@@ -251,7 +272,7 @@ export const Footer: React.FC = () => {
                     onClick={(e) => handleNavClick(e, 'process')}
                     className="hover:text-[#F2BC7B] transition-colors cursor-pointer text-left"
                   >
-                    Our Process
+                    Our Delivery Process
                   </button>
                 </li>
                 <li>
@@ -260,7 +281,7 @@ export const Footer: React.FC = () => {
                     onClick={(e) => handleNavClick(e, 'testimonials')}
                     className="hover:text-[#F2BC7B] transition-colors cursor-pointer text-left"
                   >
-                    Testimonials
+                    Client Testimonials
                   </button>
                 </li>
                 <li>
@@ -269,25 +290,25 @@ export const Footer: React.FC = () => {
                     onClick={(e) => handleNavClick(e, 'faq')}
                     className="hover:text-[#F2BC7B] transition-colors cursor-pointer text-left"
                   >
-                    FAQ & Specs
+                    FAQ &amp; Architecture
                   </button>
                 </li>
                 <li>
                   <button
                     type="button"
                     onClick={(e) => handleNavClick(e, 'contact')}
-                    className="hover:text-[#F2BC7B] transition-colors cursor-pointer text-left"
+                    className="hover:text-[#F2BC7B] transition-colors cursor-pointer text-left font-semibold text-slate-200"
                   >
-                    Contact
+                    Contact &amp; Estimate
                   </button>
                 </li>
               </ul>
             </div>
 
             {/* Services Column */}
-            <div className="col-span-1 md:col-span-2">
+            <div className="col-span-1 lg:col-span-3">
               <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">
-                Services
+                Engineering Services
               </h4>
               <ul className="space-y-2.5 text-xs">
                 <li>
@@ -296,7 +317,7 @@ export const Footer: React.FC = () => {
                     onClick={(e) => handleNavClick(e, 'services')}
                     className="hover:text-[#F2BC7B] transition-colors cursor-pointer text-left"
                   >
-                    Web Development
+                    Full-Stack Web Development
                   </button>
                 </li>
                 <li>
@@ -305,7 +326,7 @@ export const Footer: React.FC = () => {
                     onClick={(e) => handleNavClick(e, 'services')}
                     className="hover:text-[#F2BC7B] transition-colors cursor-pointer text-left"
                   >
-                    Next.js 15 Apps
+                    Next.js 15 &amp; App Router Engineering
                   </button>
                 </li>
                 <li>
@@ -314,7 +335,7 @@ export const Footer: React.FC = () => {
                     onClick={(e) => handleNavClick(e, 'services')}
                     className="hover:text-[#F2BC7B] transition-colors cursor-pointer text-left"
                   >
-                    React UI Frontends
+                    React 19 Interactive Frontends
                   </button>
                 </li>
                 <li>
@@ -323,7 +344,7 @@ export const Footer: React.FC = () => {
                     onClick={(e) => handleNavClick(e, 'services')}
                     className="hover:text-[#F2BC7B] transition-colors cursor-pointer text-left"
                   >
-                    Node.js & APIs
+                    Node.js, Express &amp; Microservices
                   </button>
                 </li>
                 <li>
@@ -332,7 +353,7 @@ export const Footer: React.FC = () => {
                     onClick={(e) => handleNavClick(e, 'services')}
                     className="hover:text-[#F2BC7B] transition-colors cursor-pointer text-left"
                   >
-                    Headless CMS
+                    Headless CMS (Sanity, Strapi, Contentful)
                   </button>
                 </li>
                 <li>
@@ -341,216 +362,287 @@ export const Footer: React.FC = () => {
                     onClick={(e) => handleNavClick(e, 'services')}
                     className="hover:text-[#F2BC7B] transition-colors cursor-pointer text-left"
                   >
-                    Core Web Vitals SEO
+                    Sub-Second Core Web Vitals &amp; SEO
                   </button>
                 </li>
               </ul>
             </div>
 
-            {/* Technologies Column */}
-            <div className="col-span-1 md:col-span-2">
+            {/* Technologies & Fast Action Column */}
+            <div className="sm:col-span-2 lg:col-span-3 space-y-4">
               <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">
-                Technologies
+                Core Tech Stack
               </h4>
-              <ul className="space-y-2.5 text-xs">
-                <li>
-                  <button
-                    type="button"
-                    onClick={(e) => handleNavClick(e, 'technologies')}
-                    className="hover:text-[#F2BC7B] transition-colors cursor-pointer text-left"
+              <div className="flex flex-wrap gap-1.5 text-xs">
+                {['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS', 'Node.js', 'PostgreSQL', 'GraphQL', 'Docker', 'AWS / Vercel'].map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-2.5 py-1 rounded-md bg-[#131926] border border-[#222C3E] text-slate-300 font-mono text-[11px]"
                   >
-                    Next.js 15
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    onClick={(e) => handleNavClick(e, 'technologies')}
-                    className="hover:text-[#F2BC7B] transition-colors cursor-pointer text-left"
-                  >
-                    React 19
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    onClick={(e) => handleNavClick(e, 'technologies')}
-                    className="hover:text-[#F2BC7B] transition-colors cursor-pointer text-left"
-                  >
-                    Node.js
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    onClick={(e) => handleNavClick(e, 'technologies')}
-                    className="hover:text-[#F2BC7B] transition-colors cursor-pointer text-left"
-                  >
-                    TypeScript
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    onClick={(e) => handleNavClick(e, 'technologies')}
-                    className="hover:text-[#F2BC7B] transition-colors cursor-pointer text-left"
-                  >
-                    Tailwind CSS
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    onClick={(e) => handleNavClick(e, 'technologies')}
-                    className="hover:text-[#F2BC7B] transition-colors cursor-pointer text-left"
-                  >
-                    GraphQL & REST
-                  </button>
-                </li>
-              </ul>
-            </div>
+                    {tech}
+                  </span>
+                ))}
+              </div>
 
-            {/* Contact & Offices Column */}
-            <div className="col-span-2 md:col-span-2 space-y-3">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">
-                Global Offices
-              </h4>
-              <ul className="space-y-3 text-xs">
-                <li className="flex items-start gap-2.5">
-                  <Mail className="w-4 h-4 text-[#D98E3A] shrink-0 mt-0.5" />
-                  <a href="mailto:hello@drtechei.com" className="hover:text-white transition-colors truncate font-semibold text-slate-200">
-                    hello@drtechei.com
-                  </a>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <Phone className="w-4 h-4 text-[#D98E3A] shrink-0 mt-0.5" />
-                  <a href="tel:+18005408324" className="hover:text-white transition-colors">
-                    +919690941439
-                  </a>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <MapPin className="w-4 h-4 text-[#D98E3A] shrink-0 mt-0.5" />
-                  <div className="space-y-1.5">
-                    <div className="flex items-center gap-1.5 text-slate-200 font-medium">
-                      <span>🇮🇳</span>
-                      <span>India (Delhi NCR)</span>
-                    </div>
-                    <div className="flex items-center gap-1.5 text-slate-200 font-medium">
-                      <span>🇫🇮</span>
-                      <span>Finland (Helsinki)</span>
-                    </div>
-                    <div className="flex items-center gap-1.5 text-slate-200 font-medium">
-                      <span>🇮🇪</span>
-                      <span>Ireland (Dublin)</span>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-
-              <div className="pt-2">
+              <div className="pt-3 p-4 rounded-xl bg-[#121825] border border-[#222C3E]">
+                <div className="text-xs font-bold text-white mb-1">
+                  Ready to Build or Scale?
+                </div>
+                <p className="text-[11px] text-slate-400 mb-3 leading-relaxed">
+                  Book a direct 30-minute technical roadmap discovery with our senior architecture lead.
+                </p>
                 <button
                   type="button"
                   onClick={(e) => handleNavClick(e, 'contact')}
-                  className="w-full py-2 px-3 rounded-lg text-xs font-bold text-center text-white bg-[#2D2575] hover:bg-[#3D3395] transition-colors cursor-pointer block"
+                  className="w-full py-2 px-3 rounded-lg text-xs font-bold text-white bg-gradient-to-r from-[#2D2575] to-[#4F46E5] hover:from-[#3D3395] hover:to-[#6366F1] transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm"
                 >
-                  Schedule Discovery Call
+                  <span>Schedule Discovery Call</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Corporate Headquarters & Dedicated Global Services Bento Grid Section */}
+          <div className="py-10 border-b border-[#1C2436]">
+            {/* Master Grid Container - Everything neatly framed inside this attractive bento box */}
+            <div className="rounded-2xl bg-gradient-to-b from-[#0F1626] to-[#0A0F1A] border border-[#1E293B] p-5 sm:p-7 shadow-2xl relative overflow-hidden">
+              {/* Subtle ambient lighting effect */}
+              <div className="absolute top-0 right-0 w-80 h-80 bg-[#2D2575]/15 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#D98E3A]/10 rounded-full blur-3xl pointer-events-none" />
+
+              {/* Master Header Inside Grid */}
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-6 border-b border-[#1D293F] relative z-10">
+                <div>
+                  <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#162134] border border-[#263752] text-[#F2BC7B] text-xs font-semibold mb-2">
+                    <Building2 className="w-3.5 h-3.5 text-[#D98E3A]" />
+                    <span>Global Delivery Architecture</span>
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+                    Corporate Headquarters &amp; Dedicated Global Services
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl leading-relaxed">
+                    Registered Corporate Headquarters &amp; R&amp;D Hub in India, providing dedicated engineering services to clients across Ireland and Finland.
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2 shrink-0">
+                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#141E30] border border-[#21304A] text-xs text-slate-300">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="font-medium">Active Real-Time Corridors</span>
+                    <span className="font-mono text-slate-400 text-[11px]">(IST • GMT • EET)</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Two Column Bento Grid: Left = India Registered HQ, Right = Dedicated International Services */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-6 relative z-10">
+                
+                {/* Column 1: Registered Corporate Headquarters (India) */}
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center justify-between px-1">
+                    <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400">
+                      <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                      <span>Registered Corporate Offices (India)</span>
+                    </div>
+                    <span className="text-[10px] font-semibold uppercase px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
+                      Official Entity
+                    </span>
+                  </div>
+
+                  {/* 2 India Cards */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 h-full">
+                    {registeredOffices.map((office) => (
+                      <div
+                        key={office.title}
+                        className="p-4 rounded-xl bg-[#111726]/90 hover:bg-[#141C2E] border border-[#1F2B3E] hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between group shadow-sm"
+                      >
+                        <div className="space-y-2.5">
+                          {/* Top Row: Flag, Title, Badge */}
+                          <div className="flex items-start justify-between gap-2">
+                            <div className="flex items-center gap-2">
+                              <span className="text-xl">{office.flag}</span>
+                              <div>
+                                <h4 className="font-bold text-sm text-white group-hover:text-emerald-300 transition-colors">
+                                  {office.title}
+                                </h4>
+                                <span className="text-[11px] text-slate-400">{office.city}</span>
+                              </div>
+                            </div>
+                            <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 shrink-0 whitespace-nowrap">
+                              {office.badge}
+                            </span>
+                          </div>
+
+                          {/* Address details */}
+                          <div className="pt-0.5">
+                            <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 block mb-1">
+                              Registered Address:
+                            </span>
+                            <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                              {office.address}
+                            </p>
+                          </div>
+
+                          {/* Feature tags */}
+                          <div className="flex flex-wrap gap-1 pt-1">
+                            {office.tags.map((tag) => (
+                              <span key={tag} className="text-[10px] px-1.5 py-0.5 rounded bg-[#162032] text-slate-300 border border-[#23314B]">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Bottom Actions */}
+                        <div className="mt-3.5 pt-3 border-t border-[#1C283B]">
+                          <div className="flex items-center justify-between text-[11px] text-slate-400 mb-2">
+                            <span className="font-mono text-emerald-400/90">{office.timezone}</span>
+                            <span className="text-slate-400">{office.email}</span>
+                          </div>
+                          <a
+                            href={`/${office.route}`}
+                            onClick={(e) => handleNavClick(e, office.route)}
+                            className="w-full py-2 px-2.5 rounded-lg bg-[#162133] hover:bg-[#1E2D44] border border-[#253650] hover:border-emerald-500/60 text-xs font-semibold text-emerald-300 hover:text-white transition-all flex items-center justify-between group/link cursor-pointer"
+                          >
+                            <span>{office.actionLabel}</span>
+                            <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform text-emerald-400" />
+                          </a>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Column 2: Dedicated International Engineering Services (Ireland & Finland) */}
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center justify-between px-1">
+                    <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#D98E3A]">
+                      <Zap className="w-4 h-4 text-[#D98E3A]" />
+                      <span>Dedicated Engineering Services (International)</span>
+                    </div>
+                    <span className="text-[10px] font-semibold uppercase px-2 py-0.5 rounded bg-[#D98E3A]/10 text-[#F2BC7B] border border-[#D98E3A]/30">
+                      Agile Squads
+                    </span>
+                  </div>
+
+                  {/* 2 International Service Cards */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 h-full">
+                    {internationalServices.map((service) => (
+                      <div
+                        key={service.title}
+                        className="p-4 rounded-xl bg-[#111726]/90 hover:bg-[#141C2E] border border-[#1F2B3E] hover:border-[#D98E3A]/50 transition-all duration-300 flex flex-col justify-between group shadow-sm"
+                      >
+                        <div className="space-y-2.5">
+                          {/* Top Row: Flag, Title, Badge */}
+                          <div className="flex items-start justify-between gap-2">
+                            <div className="flex items-center gap-2">
+                              <span className="text-xl">{service.flag}</span>
+                              <div>
+                                <h4 className="font-bold text-sm text-white group-hover:text-[#F2BC7B] transition-colors">
+                                  {service.title}
+                                </h4>
+                                <span className="text-[11px] text-slate-400">{service.city}</span>
+                              </div>
+                            </div>
+                            <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-[#D98E3A]/10 text-[#F2BC7B] border border-[#D98E3A]/30 shrink-0 whitespace-nowrap">
+                              {service.badge}
+                            </span>
+                          </div>
+
+                          {/* Service Scope */}
+                          <div className="pt-0.5">
+                            <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 block mb-1">
+                              Service Scope &amp; Delivery:
+                            </span>
+                            <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                              {service.serviceDesc}
+                            </p>
+                          </div>
+
+                          {/* Feature tags */}
+                          <div className="flex flex-wrap gap-1 pt-1">
+                            {service.tags.map((tag) => (
+                              <span key={tag} className="text-[10px] px-1.5 py-0.5 rounded bg-[#162032] text-slate-300 border border-[#23314B]">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Bottom Actions */}
+                        <div className="mt-3.5 pt-3 border-t border-[#1C283B]">
+                          <div className="flex items-center justify-between text-[11px] text-slate-400 mb-2">
+                            <span className="font-mono text-[#F2BC7B]">{service.timezone}</span>
+                            <span className="text-slate-400">{service.email}</span>
+                          </div>
+                          <a
+                            href={`/${service.route}`}
+                            onClick={(e) => handleNavClick(e, service.route)}
+                            className="w-full py-2 px-2.5 rounded-lg bg-[#162133] hover:bg-[#1E2D44] border border-[#253650] hover:border-[#D98E3A]/60 text-xs font-semibold text-[#D98E3A] hover:text-white transition-all flex items-center justify-between group/link cursor-pointer"
+                          >
+                            <span>{service.actionLabel}</span>
+                            <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform text-[#D98E3A]" />
+                          </a>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          {/* Regional Technology Partners Fast Navigation Strip */}
+          <div className="py-6 border-b border-[#1C2436]">
+            <div className="p-4 rounded-xl bg-[#111724] border border-[#20293A] flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="flex items-center gap-2.5 text-xs">
+                <Globe2 className="w-4 h-4 text-[#D98E3A] shrink-0" />
+                <span className="text-slate-200 font-semibold">Dedicated Regional Technology Partner Portals:</span>
+                <span className="text-slate-400 hidden sm:inline">Country-tailored squads &amp; local currency billing</span>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
+                <button
+                  type="button"
+                  onClick={(e) => handleNavClick(e, 'technology-partner-india')}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#182132] hover:bg-[#222E46] border border-[#27354E] text-slate-200 hover:text-white text-xs font-semibold transition-all cursor-pointer"
+                >
+                  <span>🇮🇳</span>
+                  <span>Partner India (Delhi NCR &amp; Bengaluru)</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={(e) => handleNavClick(e, 'technology-partner-ireland')}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#182132] hover:bg-[#222E46] border border-[#27354E] text-slate-200 hover:text-white text-xs font-semibold transition-all cursor-pointer"
+                >
+                  <span>🇮🇪</span>
+                  <span>Partner Ireland (Silicon Docks Dublin)</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={(e) => handleNavClick(e, 'technology-partner-finland')}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#182132] hover:bg-[#222E46] border border-[#27354E] text-slate-200 hover:text-white text-xs font-semibold transition-all cursor-pointer"
+                >
+                  <span>🇫🇮</span>
+                  <span>Partner Finland (Helsinki &amp; Espoo)</span>
                 </button>
               </div>
             </div>
           </div>
 
-          {/* Live Website Traffic & Visitor Counter Strip */}
-          <div className="pt-8 pb-4">
-            <div className="p-4 sm:p-5 rounded-2xl bg-[#121825] border border-[#1F293D] shadow-inner flex flex-col lg:flex-row items-center justify-between gap-4 text-xs">
-              
-              {/* Left Group: Total Visits + Active Now */}
-              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 w-full lg:w-auto">
-                {/* Total Website Visits Primary Badge */}
-                <div className="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-[#192234] border border-[#263550] shadow-xs">
-                  <div className="w-7 h-7 rounded-lg bg-[#D98E3A]/15 border border-[#D98E3A]/30 flex items-center justify-center text-[#D98E3A]">
-                    <Eye className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="text-[10px] uppercase font-bold tracking-wider text-slate-400">Total Website Visits</div>
-                    <div className="font-mono font-black text-white text-base tracking-wide flex items-center gap-1.5">
-                      <span>{totalVisits.toLocaleString()}</span>
-                      <span className="text-[10px] font-normal text-emerald-400 font-sans bg-emerald-950/60 px-1.5 py-0.2 rounded border border-emerald-800/40">
-                        +12% this week
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Today's Visits */}
-                <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-[#151D2C] border border-[#212E44]">
-                  <Users className="w-4 h-4 text-sky-400 shrink-0" />
-                  <div>
-                    <div className="text-[10px] text-slate-400 font-medium">Today's Visits</div>
-                    <div className="font-mono font-bold text-slate-200 text-xs">
-                      {todayVisits.toLocaleString()}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Live Browsers Active */}
-                <div className="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-emerald-950/40 border border-emerald-700/40 text-emerald-400 shadow-2xs">
-                  <span className="relative flex h-2.5 w-2.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-                  </span>
-                  <div>
-                    <div className="text-[10px] text-emerald-300/80 font-bold uppercase tracking-wider">Live On Site</div>
-                    <div className="font-mono font-bold text-xs">
-                      {activeOnline} Users Online Now
-                    </div>
-                  </div>
-                </div>
-
-                {/* Personal Visit Badge */}
-                <div className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#151D2C] border border-[#212E44] text-[11px] text-slate-300">
-                  <Sparkles className="w-3.5 h-3.5 text-[#D98E3A]" />
-                  <span>Your Session: <strong className="font-mono text-white">Visit #{userVisits}</strong></span>
-                </div>
-              </div>
-
-              {/* Right Group: Real-time Global Origin Ping & Edge Telemetry */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-end gap-3 text-[11px] text-slate-400 w-full lg:w-auto">
-                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#151D2C] border border-[#212E44]">
-                  <Globe2 className="w-3.5 h-3.5 text-[#D98E3A]" />
-                  <span>Recent visit: <strong className="text-slate-200 font-medium">{recentLocation}</strong></span>
-                </div>
-
-                <div className="flex items-center gap-1.5 text-slate-400">
-                  <Activity className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Live Edge Telemetry</span>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
           {/* Bottom Legal & Copyright Bar */}
-          <div className="pt-4 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
-            <div className="flex flex-wrap items-center gap-3">
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span>© {new Date().getFullYear()} DrTechei IT Solutions. All Rights Reserved. 100% Client IP Ownership.</span>
-              </div>
-
-              {/* Quick Compact Visitor Counter Pill */}
-              <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-md bg-[#141B28] border border-[#232C3D] text-[11px] font-mono text-slate-300">
-                <Eye className="w-3 h-3 text-[#D98E3A]" />
-                <span className="text-white font-bold">{totalVisits.toLocaleString()}</span>
-                <span className="text-slate-500">visits</span>
-                <span className="text-slate-600">•</span>
-                <span className="flex items-center gap-1 text-emerald-400 font-semibold">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  {activeOnline} online
-                </span>
-              </div>
+          <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+            <div className="flex items-center gap-2 text-slate-400">
+              <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />
+              <span>© {new Date().getFullYear()} DrTechei IT Solutions. All Rights Reserved. 100% Client IP Ownership.</span>
             </div>
 
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-6 text-slate-400">
               <button
                 onClick={() => setLegalModal('privacy')}
                 className="hover:text-white transition-colors cursor-pointer"
@@ -573,6 +665,7 @@ export const Footer: React.FC = () => {
               </button>
             </div>
           </div>
+
         </div>
       </footer>
 
@@ -604,7 +697,7 @@ export const Footer: React.FC = () => {
                   <p>We collect information you voluntarily provide to us when submitting project estimates, contact requests, or scheduling consultations (such as your name, business email, company name, website URL, and project requirements).</p>
                   <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider pt-2">2. How We Use Your Information</h4>
                   <p>We use your information solely to respond to inquiries, prepare technical proposals, manage client contracts, and deliver custom software engineering projects. We never sell, rent, or trade client information to third parties.</p>
-                  <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider pt-2">3. Confidentiality & IP Protection</h4>
+                  <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider pt-2">3. Confidentiality &amp; IP Protection</h4>
                   <p>All client communications, code repositories, and project specifications are treated under strict confidentiality. We execute mutual Non-Disclosure Agreements (NDAs) prior to architectural reviews upon request.</p>
                 </>
               ) : (
@@ -613,9 +706,9 @@ export const Footer: React.FC = () => {
                   <p>Welcome to DrTechei IT Solutions. By accessing this website or engaging our development services, you agree to comply with and be bound by the following terms and conditions.</p>
                   <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider pt-2">1. Intellectual Property Ownership</h4>
                   <p>Upon final milestone payment, 100% ownership of custom source code, documentation, and digital assets developed specifically for your project is transferred to your company without recurring licensing fees.</p>
-                  <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider pt-2">2. Scope & Delivery Framework</h4>
+                  <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider pt-2">2. Scope &amp; Delivery Framework</h4>
                   <p>Project scopes, timelines, and deliverables are documented in individual Statements of Work (SOW) executed between DrTechei and the client. Development proceeds in sprint milestones with staged approval gates.</p>
-                  <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider pt-2">3. Performance & Warranty</h4>
+                  <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider pt-2">3. Performance &amp; Warranty</h4>
                   <p>We provide a 30-day post-launch warranty period to resolve any functional defects or performance regressions within the approved project specifications.</p>
                 </>
               )}
@@ -635,3 +728,4 @@ export const Footer: React.FC = () => {
     </>
   );
 };
+

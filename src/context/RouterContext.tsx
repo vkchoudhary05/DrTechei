@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { PageRoute, PAGE_SEO_DATA } from '../types/router';
+import { initGoogleAnalytics, trackPageView } from '../utils/analytics';
 
 interface RouterContextType {
   currentPage: PageRoute;
@@ -121,7 +122,14 @@ export const RouterProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     script.text = JSON.stringify(breadcrumbSchema);
     document.head.appendChild(script);
 
+    // 8. Google Analytics 4 Pageview Tracking
+    trackPageView(currentPage, seo.title);
   }, [currentPage]);
+
+  // Initialize GA4 on application mount
+  useEffect(() => {
+    initGoogleAnalytics();
+  }, []);
 
   // Handle browser back/forward history navigation
   useEffect(() => {
@@ -130,7 +138,11 @@ export const RouterProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         ? normalizePath(window.location.hash)
         : normalizePath(window.location.pathname);
       setCurrentPage(newPage);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo(0, 0);
+      if (typeof document !== 'undefined') {
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      }
     };
 
     window.addEventListener('popstate', handlePopState);
@@ -158,7 +170,11 @@ export const RouterProvider: React.FC<{ children: React.ReactNode }> = ({ childr
           }
         }, 100);
       } else if (options?.scrollToTop !== false) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo(0, 0);
+        if (typeof document !== 'undefined') {
+          document.documentElement.scrollTop = 0;
+          document.body.scrollTop = 0;
+        }
       }
 
       setTimeout(() => {

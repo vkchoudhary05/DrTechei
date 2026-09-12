@@ -246,5 +246,165 @@ export const SEO_DATA: Record<string, PageSEO> = {
       name: 'Hire DrTechei Tech Partner',
       description: 'Contact DrTechei IT Solutions for software engineering, web development, and dedicated tech partnership.'
     }
+  },
+
+  'technology-partner-finland': {
+    title: 'Technology Partner Finland | Dedicated Software Development & Tech Squads (Helsinki, Espoo)',
+    description: 'Dedicated technology partner for Finnish companies in Helsinki, Espoo, and Tampere. Certified Next.js 15 architects, 100% GDPR compliance, full EET timezone alignment, and transparent Euro billing at 60% lower costs than domestic consultancies.',
+    keywords: 'technology partner finland, software development partner finland, dedicated software team helsinki, hire nextjs developers espoo, offshore tech partner nordic, gdpr compliant web engineering, it consulting finland, tampere software agency, oulu software company',
+    canonical: 'https://drtechei.com/technology-partner-finland',
+    ogTitle: 'Technology Partner Finland | DrTechei IT Solutions',
+    ogDescription: 'Nordic quality engineering with full EET timezone alignment, GDPR compliance, and 100% source code ownership.',
+    ogType: 'website',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ProfessionalService',
+      name: 'DrTechei Technology Partner Finland',
+      url: 'https://drtechei.com/technology-partner-finland',
+      description: 'Senior dedicated Next.js, React, and cloud engineering squads for Finnish startups and enterprises.',
+      telephone: '+1-800-540-8324',
+      email: 'hello@drtechei.com',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Mannerheimintie 12 B, Kamppi',
+        addressLocality: 'Helsinki',
+        postalCode: '00100',
+        addressCountry: 'FI'
+      },
+      areaServed: [
+        { '@type': 'Country', name: 'Finland' },
+        { '@type': 'City', name: 'Helsinki' },
+        { '@type': 'City', name: 'Espoo' },
+        { '@type': 'City', name: 'Tampere' },
+        { '@type': 'City', name: 'Vantaa' },
+        { '@type': 'City', name: 'Oulu' },
+        { '@type': 'City', name: 'Turku' }
+      ],
+      priceRange: '€€',
+      currenciesAccepted: 'EUR',
+      paymentAccepted: 'SEPA, Bank Transfer, Credit Card',
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Finland Tech Partnership Services',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Dedicated Next.js 15 & React Squads for Finland',
+              description: 'Senior software engineering squads aligned with EET Helsinki business hours and EU GDPR data privacy regulations.'
+            }
+          }
+        ]
+      }
+    }
+  },
+
+  'technology-partner-ireland': {
+    title: 'Technology Partner Ireland | Dedicated Software Engineering & Startup Squads (Dublin, Cork)',
+    description: 'Silicon Docks standard technology partner for Irish startups, scaleups, and enterprises in Dublin, Cork, and Galway. Fast squad deployment, GMT/IST alignment, and 100% IP code handover.',
+    keywords: 'technology partner ireland, software development partner dublin, hire dedicated developers ireland, tech partner startups dublin, nextjs react development ireland, silicon docks tech partner, cork software development, galway tech agency',
+    canonical: 'https://drtechei.com/technology-partner-ireland',
+    ogTitle: 'Technology Partner Ireland | DrTechei IT Solutions',
+    ogDescription: 'Scale your engineering capacity in Dublin without recruitment bottlenecks. Top 1% senior Next.js & React squads.',
+    ogType: 'website',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ProfessionalService',
+      name: 'DrTechei Technology Partner Ireland',
+      url: 'https://drtechei.com/technology-partner-ireland',
+      description: 'Silicon Docks standard software engineering partner for Irish startups and enterprise scaleups.',
+      telephone: '+1-800-540-8324',
+      email: 'hello@drtechei.com',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Silicon Docks, 2 Grand Canal Square, Grand Canal Dock',
+        addressLocality: 'Dublin',
+        postalCode: 'D02 A342',
+        addressCountry: 'IE'
+      },
+      areaServed: [
+        { '@type': 'Country', name: 'Ireland' },
+        { '@type': 'City', name: 'Dublin' },
+        { '@type': 'City', name: 'Cork' },
+        { '@type': 'City', name: 'Galway' },
+        { '@type': 'City', name: 'Limerick' },
+        { '@type': 'City', name: 'Waterford' }
+      ],
+      priceRange: '€€',
+      currenciesAccepted: 'EUR, GBP',
+      paymentAccepted: 'SEPA, Bank Transfer, Credit Card',
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Ireland Tech Partnership Services',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Startup & Enterprise Squads for Ireland',
+              description: 'Full-stack engineering teams synchronized with Dublin GMT/Irish Standard Time and compliant with Irish legal standards.'
+            }
+          }
+        ]
+      }
+    }
+  },
+
+  'technology-partner-india': {
+    title: 'Technology Partner India | Elite Senior Full-Stack Engineering & Offshore Hub (Delhi NCR, Bengaluru)',
+    description: 'Premier technology partner in India for global startups and domestic enterprises. Dedicated Next.js 15 squads, top 1% senior talent, and 99+ Core Web Vitals guarantees across Delhi NCR, Bengaluru, and Mumbai.',
+    keywords: 'technology partner india, software development partner india, hire dedicated development team india, offshore tech partner india, nextjs engineering partner india, top IT company india, delhi ncr tech agency, bangalore software partner, dehradun it company',
+    canonical: 'https://drtechei.com/technology-partner-india',
+    ogTitle: 'Technology Partner India | DrTechei IT Solutions',
+    ogDescription: 'India’s top 1% senior engineering partner for global scale. Next.js 15, React 19, and cloud architectures.',
+    ogType: 'website',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ProfessionalService',
+      name: 'DrTechei Technology Partner India',
+      url: 'https://drtechei.com/technology-partner-india',
+      description: 'Elite senior software engineering partner based in India serving global and domestic innovators.',
+      telephone: '+1-800-540-8324',
+      email: 'hello@drtechei.com',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Level 6, Vandhna Building, Tolstoy Marg, Connaught Place',
+        addressLocality: 'New Delhi',
+        addressRegion: 'Delhi',
+        postalCode: '110001',
+        addressCountry: 'IN'
+      },
+      areaServed: [
+        { '@type': 'Country', name: 'India' },
+        { '@type': 'City', name: 'Delhi NCR' },
+        { '@type': 'City', name: 'New Delhi' },
+        { '@type': 'City', name: 'Dehradun' },
+        { '@type': 'City', name: 'Mumbai' },
+        { '@type': 'City', name: 'Bengaluru' },
+        { '@type': 'City', name: 'Hyderabad' },
+        { '@type': 'City', name: 'Chennai' },
+        { '@type': 'City', name: 'Kolkata' },
+        { '@type': 'City', name: 'Pune' },
+        { '@type': 'City', name: 'Ahmedabad' }
+      ],
+      priceRange: '$$',
+      currenciesAccepted: 'INR, USD, EUR',
+      paymentAccepted: 'NEFT, IMPS, RTGS, Wire Transfer, Credit Card',
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'India Tech Partnership Services',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Dedicated Full-Stack Next.js Squads',
+              description: 'Senior full-stack developers delivering sub-second performance web applications with 100% source code ownership.'
+            }
+          }
+        ]
+      }
+    }
   }
 };
