@@ -305,17 +305,17 @@ export const cms = createClient({
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
               </span>
 
-              <span className="font-bold whitespace-nowrap">
-                #1 Global Tech Partner
-              </span>
+   <span className="font-bold whitespace-nowrap">
+  #1 Global Tech Partner
+</span>
 
-              <span className="text-orange-500">
-                •
-              </span>
+<span className="text-orange-500">
+  •
+</span>
 
-              <span className="text-slate-600 truncate">
-                Europe • Australia • Canada • India
-              </span>
+<span className="text-slate-600 truncate">
+  Serving Clients Worldwide
+</span>
             </div>
 
             {/* HEADLINE */}

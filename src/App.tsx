@@ -5,6 +5,7 @@ import { SEOHead } from './components/SEOHead';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { QuoteEstimatorModal } from './components/QuoteEstimatorModal';
+import { ProjectLeadModal } from './components/ProjectLeadModel';
 import { ServiceDetailModal } from './components/ServiceDetailModal';
 import { ProjectDetailModal } from './components/ProjectDetailModal';
 import { HomePage } from './pages/HomePage';
@@ -190,6 +191,19 @@ function AppContent() {
           setPreselectedContactService(`Similar to ${projectTitle}`);
           navigate('contact');
         }}
+      />
+
+      {/* 5. Timed Visitor Lead Generation Pop-Up (Triggers after 3.5s) */}
+      <ProjectLeadModal
+        onNavigateToContact={(prefillService) => {
+          if (prefillService) setPreselectedContactService(prefillService);
+          navigate('contact');
+          setTimeout(() => {
+            const el = document.getElementById('contact-form-section') || document.getElementById('contact-fullName');
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 150);
+        }}
+        onOpenQuoteEstimator={() => setIsQuoteModalOpen(true)}
       />
     </div>
   );
