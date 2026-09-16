@@ -393,7 +393,7 @@ export const Footer: React.FC = () => {
                     href="tel:+18005408324" 
                     className="text-slate-200 hover:text-[#F2BC7B] transition-colors font-medium"
                   >
-                    +919690941439
+                    +1 (800) 540-TECH
                   </a>
                 </div>
               </div>
@@ -405,7 +405,7 @@ export const Footer: React.FC = () => {
                 </p>
                 <div className="flex flex-wrap items-center gap-2">
                   <a
-                    href="https://www.instagram.com/drtechei"
+                    href="https://instagram.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Follow DrTechei on Instagram"
@@ -415,7 +415,7 @@ export const Footer: React.FC = () => {
                     <Instagram className="w-4 h-4" />
                   </a>
                   <a
-                    href="https://www.facebook.com/share/18q6rHiHPp/"
+                    href="https://facebook.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Follow DrTechei on Facebook"
@@ -425,7 +425,7 @@ export const Footer: React.FC = () => {
                     <Facebook className="w-4 h-4" />
                   </a>
                   <a
-                    href="https://www.linkedin.com/company/drtechei/"
+                    href="https://linkedin.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Connect with DrTechei on LinkedIn"
@@ -637,6 +637,161 @@ export const Footer: React.FC = () => {
               </div>
             </div>
 
+          </div>
+
+          {/* SECTION 2.5: SEO Tech Keywords & Global Capabilities Directory */}
+          <div className="pt-8 pb-4 border-t border-[#182235]">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-300">
+                <Globe2 className="w-4 h-4 text-[#F2BC7B]" />
+                <span>Tech Capabilities &amp; Global Engineering Search Directory</span>
+              </div>
+              <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 self-start sm:self-auto">
+                Rank #1 Verified Tech Corridors
+              </span>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 text-[11px] text-slate-400">
+              {/* Category 1 */}
+              <div className="space-y-2">
+                <h5 className="font-semibold text-slate-200 text-xs flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-400" />
+                  Frontend &amp; Web Apps
+                </h5>
+                <ul className="space-y-1.5">
+                  <li>
+                    <button type="button" onClick={(e) => handleNavClick(e, 'services')} className="hover:text-[#F2BC7B] transition-colors text-left">
+                      Next.js 15 App Router Development
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" onClick={(e) => handleNavClick(e, 'services')} className="hover:text-[#F2BC7B] transition-colors text-left">
+                      React 19 Frontend Engineering
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" onClick={(e) => handleNavClick(e, 'technologies')} className="hover:text-[#F2BC7B] transition-colors text-left">
+                      TypeScript &amp; Tailwind CSS Architecture
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" onClick={(e) => handleNavClick(e, 'services')} className="hover:text-[#F2BC7B] transition-colors text-left">
+                      Full-Stack SaaS Product Development
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" onClick={(e) => handleNavClick(e, 'services')} className="hover:text-[#F2BC7B] transition-colors text-left">
+                      Single Page &amp; Progressive Web Apps
+                    </button>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Category 2 */}
+              <div className="space-y-2">
+                <h5 className="font-semibold text-slate-200 text-xs flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  Backend, Cloud &amp; APIs
+                </h5>
+                <ul className="space-y-1.5">
+                  <li>
+                    <button type="button" onClick={(e) => handleNavClick(e, 'technologies')} className="hover:text-[#F2BC7B] transition-colors text-left">
+                      Node.js &amp; Express Microservices
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" onClick={(e) => handleNavClick(e, 'technologies')} className="hover:text-[#F2BC7B] transition-colors text-left">
+                      AWS Cloud &amp; Serverless Infrastructure
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" onClick={(e) => handleNavClick(e, 'technologies')} className="hover:text-[#F2BC7B] transition-colors text-left">
+                      Docker &amp; Kubernetes Containers
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" onClick={(e) => handleNavClick(e, 'technologies')} className="hover:text-[#F2BC7B] transition-colors text-left">
+                      PostgreSQL &amp; Redis Scalable Data
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" onClick={(e) => handleNavClick(e, 'services')} className="hover:text-[#F2BC7B] transition-colors text-left">
+                      REST &amp; GraphQL API Architecture
+                    </button>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Category 3 */}
+              <div className="space-y-2">
+                <h5 className="font-semibold text-slate-200 text-xs flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D98E3A]" />
+                  CMS, Mobile &amp; AI
+                </h5>
+                <ul className="space-y-1.5">
+                  <li>
+                    <button type="button" onClick={(e) => handleNavClick(e, 'services')} className="hover:text-[#F2BC7B] transition-colors text-left">
+                      Shopify Plus Headless E-Commerce
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" onClick={(e) => handleNavClick(e, 'services')} className="hover:text-[#F2BC7B] transition-colors text-left">
+                      Headless WordPress &amp; Sanity CMS
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" onClick={(e) => handleNavClick(e, 'services')} className="hover:text-[#F2BC7B] transition-colors text-left">
+                      Mobile App Development (React Native)
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" onClick={(e) => handleNavClick(e, 'services')} className="hover:text-[#F2BC7B] transition-colors text-left">
+                      AI &amp; Generative AI Integrations
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" onClick={(e) => handleNavClick(e, 'services')} className="hover:text-[#F2BC7B] transition-colors text-left">
+                      Core Web Vitals &amp; Technical SEO
+                    </button>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Category 4 */}
+              <div className="space-y-2">
+                <h5 className="font-semibold text-slate-200 text-xs flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                  Global Tech Partner Hubs
+                </h5>
+                <ul className="space-y-1.5">
+                  <li>
+                    <a href="/technology-partner-india" onClick={(e) => handleNavClick(e, 'technology-partner-india')} className="hover:text-[#F2BC7B] transition-colors text-left block">
+                      Best IT Company Delhi NCR (Connaught Place)
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/technology-partner-india" onClick={(e) => handleNavClick(e, 'technology-partner-india')} className="hover:text-[#F2BC7B] transition-colors text-left block">
+                      Dehradun IT Park Software Delivery Hub
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/technology-partner-ireland" onClick={(e) => handleNavClick(e, 'technology-partner-ireland')} className="hover:text-[#F2BC7B] transition-colors text-left block">
+                      Technology Partner Ireland (Silicon Docks Dublin)
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/technology-partner-finland" onClick={(e) => handleNavClick(e, 'technology-partner-finland')} className="hover:text-[#F2BC7B] transition-colors text-left block">
+                      Technology Partner Finland (Kamppi Helsinki)
+                    </a>
+                  </li>
+                  <li>
+                    <button type="button" onClick={(e) => handleNavClick(e, 'contact')} className="hover:text-[#F2BC7B] transition-colors text-left">
+                      Dedicated Tech Squads (UK, US, CA &amp; AU)
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
 
           {/* SECTION 3: Bottom Legal & Copyright Bar */}

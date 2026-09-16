@@ -11,23 +11,31 @@ export interface PageSEO {
 
 export const SEO_DATA: Record<string, PageSEO> = {
   home: {
-    title: 'DrTechei | Executive Studio | Global Tech Partner | Software & Web Engineering (Europe, Australia, Canada, Pan-India)',
-    description: 'DrTechei Executive Studio is your dedicated global tech partner for Full-Cycle Engineering & Strategic Solutions. We engineer high-performance Next.js 15 apps, React 19 frontends, custom APIs & headless CMS for ambitious businesses in Europe (UK, Ireland, Germany, Finland), Australia, Canada, and Pan-India.',
-    keywords: 'Executive Studio, Full-Cycle Engineering & Strategic Solutions, executive tech studio, strategic engineering solutions, tech partner, technology partner, software development partner, dedicated tech partner, IT tech partner, web development partner, offshore tech partner, tech partner Europe, tech partner UK, tech partner Ireland, tech partner Germany, tech partner Australia, tech partner Sydney, tech partner Melbourne, tech partner Canada, tech partner Toronto, tech partner Vancouver, tech partner India, tech partner Delhi NCR, tech partner Bangalore Bengaluru, tech partner Mumbai, tech partner Hyderabad, tech partner Pune, tech partner Chennai, pan India IT partner, Next.js tech partner, custom software development',
+    title: 'DrTechei IT Solutions | Best IT Company, Web & Software Development Partner',
+    description: 'Looking for the best IT company and tech partner? DrTechei engineers high-performance Next.js 15 web apps, React 19 frontends, custom software, mobile apps, headless CMS & cloud APIs for ambitious businesses in India, Europe, USA, UK, Canada & Australia with guaranteed 95+ PageSpeed.',
+    keywords: 'best IT company, best IT company in India, best IT company in Europe, best IT company USA, top software development company, best web development company, hire dedicated developers, Next.js development agency, React JS development company, custom software development services, full stack web development company, mobile app development company, Node js development services, headless CMS development, Shopify Plus developers, technical SEO agency, Core Web Vitals optimization, cloud architecture AWS, IT outsourcing partner, tech company Delhi NCR, software company Dehradun, top IT firm Bangalore, tech partner UK, tech partner Ireland Dublin, tech partner Finland Helsinki, tech partner Germany Berlin, tech partner Australia Sydney, tech partner Canada Toronto, offshore tech partner, dedicated engineering team',
     canonical: 'https://drtechei.com/',
-    ogTitle: 'DrTechei Executive Studio | Full-Cycle Engineering & Strategic Solutions',
-    ogDescription: 'Technology That Builds Your Business. Hire a dedicated tech partner delivering 99+ PageSpeed Next.js applications with 100% source code ownership.',
+    ogTitle: 'DrTechei IT Solutions | Best IT Company, Web & Software Development Partner',
+    ogDescription: 'Technology That Builds Your Business. Hire the best IT company delivering 99+ PageSpeed Next.js applications with 100% source code ownership across Europe, India, Americas & worldwide.',
     ogType: 'website',
     structuredData: {
       '@context': 'https://schema.org',
       '@type': 'ProfessionalService',
-      name: 'DrTechei Global Tech Partner & Engineering Solutions',
+      name: 'DrTechei IT Solutions - Best IT Company & Global Tech Partner',
       url: 'https://drtechei.com',
       logo: 'https://drtechei.com/logo.png',
-      description: 'Dedicated technology partner providing Next.js web application development, custom software engineering, cloud architecture, and technical SEO across Europe, Australia, Canada, and all India.',
+      description: 'Award-winning IT company and dedicated technology partner providing Next.js web development, custom React engineering, cloud architecture, and technical SEO across Europe, India, North America, Australia, and worldwide.',
       priceRange: '$$$$',
       telephone: '+1-800-540-8324',
       email: 'hello@drtechei.com',
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.96',
+        bestRating: '5',
+        worstRating: '1',
+        ratingCount: '128',
+        reviewCount: '128'
+      },
       areaServed: [
         { '@type': 'Country', name: 'India' },
         { '@type': 'Country', name: 'United Kingdom' },

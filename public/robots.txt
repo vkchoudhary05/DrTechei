@@ -1,6 +1,15 @@
+# Allow all search engine crawlers
 User-agent: *
 Allow: /
 
-# Priority Sitemaps
+# Googlebot specific directives
+User-agent: Googlebot
+Allow: /
+
+# Bingbot specific directives
+User-agent: Bingbot
+Allow: /
+
+# Priority Sitemaps & Host
 Sitemap: https://drtechei.com/sitemap.xml
 Host: https://drtechei.com
