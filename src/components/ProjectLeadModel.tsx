@@ -57,7 +57,7 @@ export const ProjectLeadModal: React.FC<ProjectLeadModalProps> = ({
 
     const timer = setTimeout(() => {
       setIsOpen(true);
-    }, 15000); // 3.5 seconds (right in the 3 to 4 second window)
+    }, 20000); // 3.5 seconds (right in the 3 to 4 second window)
 
     return () => clearTimeout(timer);
   }, []);
