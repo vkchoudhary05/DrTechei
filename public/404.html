@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DrTechei IT Solutions | Global Tech Partner</title>
+    <!-- Single Page App (SPA) Deep-Linking Router Fix for Static Hosting -->
+    <!-- Preserves path and query parameters for Googlebot and direct visitors -->
+    <script>
+      (function() {
+        var path = window.location.pathname;
+        var search = window.location.search;
+        var hash = window.location.hash;
+        // Redirect back to root with query parameter or hash so the SPA router restores the exact page
+        var redirectUrl = '/' + (path && path !== '/' ? '#' + path.replace(/^\//, '') : '') + search + hash;
+        window.location.replace(redirectUrl);
+      })();
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to requested page...</p>
+  </body>
+</html>

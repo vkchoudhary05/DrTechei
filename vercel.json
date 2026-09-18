@@ -1,0 +1,9 @@
+{
+  "routes": [
+    {
+      "src": "^/((?!assets/|robots\\.txt|sitemap\\.xml|404\\.html|_redirects).*)$",
+      "dest": "/index.html"
+    }
+  ]
+}
+

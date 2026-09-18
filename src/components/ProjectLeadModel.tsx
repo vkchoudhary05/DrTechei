@@ -57,7 +57,7 @@ export const ProjectLeadModal: React.FC<ProjectLeadModalProps> = ({
 
     const timer = setTimeout(() => {
       setIsOpen(true);
-    }, 6000); // 3.5 seconds (right in the 3 to 4 second window)
+    }, 15000); // 3.5 seconds (right in the 3 to 4 second window)
 
     return () => clearTimeout(timer);
   }, []);
@@ -155,28 +155,28 @@ export const ProjectLeadModal: React.FC<ProjectLeadModalProps> = ({
             <div className="absolute -top-24 -left-20 w-60 h-60 bg-[#D98E3A]/20 rounded-full blur-3xl pointer-events-none" />
             <div className="absolute -top-24 -right-20 w-60 h-60 bg-[#2D2575]/40 rounded-full blur-3xl pointer-events-none" />
 
-            {/* Close Button */}
+            {/* Close Button - Optimized for Mobile and Desktop */}
             <button
               type="button"
               id="close-lead-popup-btn"
               onClick={handleClose}
-              className="absolute top-4 right-4 p-2 rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-colors z-20 cursor-pointer"
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 z-30 p-2 sm:p-2.5 rounded-full text-slate-300 hover:text-white bg-white/10 hover:bg-white/20 active:scale-95 transition-all cursor-pointer border border-white/15 shadow-md flex items-center justify-center min-w-[36px] min-h-[36px]"
               aria-label="Close popup"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5 text-slate-200 hover:text-white" />
             </button>
 
             {!isSubmitted ? (
-              <div className="p-6 sm:p-8">
-                {/* Header Badge & Title */}
-                <div className="flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold self-start mb-3 border border-white/15 bg-white/10 backdrop-blur-md text-[#F2BC7B] w-fit">
-                  <Sparkles className="w-3.5 h-3.5 text-[#F2BC7B] animate-pulse" />
-                  <span>Free Technical Discovery &amp; Quick Quote</span>
+              <div className="p-5 sm:p-8">
+                {/* Header Badge & Title - Prudent right padding on mobile so text never collides with close button */}
+                <div className="flex items-center gap-2 px-3 py-1 rounded-full text-[11px] sm:text-xs font-semibold self-start mb-3 border border-white/15 bg-white/10 backdrop-blur-md text-[#F2BC7B] w-fit max-w-[calc(100%-48px)] sm:max-w-none">
+                  <Sparkles className="w-3.5 h-3.5 text-[#F2BC7B] animate-pulse shrink-0" />
+                  <span className="truncate">Free Technical Discovery &amp; Quick Quote</span>
                 </div>
 
                 <h3 
                   id="lead-popup-title"
-                  className="text-xl sm:text-2xl font-black text-white tracking-tight leading-snug"
+                  className="text-lg sm:text-2xl font-black text-white tracking-tight leading-snug pr-8 sm:pr-0"
                 >
                   Have a Project or App in Mind?
                 </h3>

@@ -19,9 +19,17 @@ function normalizePath(rawPath: string): PageRoute {
     }
   }
 
-  // Check pathname (e.g. /services, /portfolio)
-  const cleanPath = rawPath.replace(/^\//, '').split('?')[0].split('#')[0].toLowerCase();
-  if (cleanPath === '' || cleanPath === 'home') {
+  // Check pathname (e.g. /services, /services/, /portfolio)
+  let cleanPath = rawPath
+    .split('?')[0]
+    .split('#')[0]
+    .toLowerCase()
+    .trim();
+
+  // Strip leading and trailing slashes
+  cleanPath = cleanPath.replace(/^\/+/, '').replace(/\/+$/, '');
+
+  if (cleanPath === '' || cleanPath === 'home' || cleanPath === 'index.html' || cleanPath === 'index') {
     return 'home';
   }
   if (cleanPath in PAGE_SEO_DATA) {
