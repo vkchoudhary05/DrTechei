@@ -61,76 +61,9 @@ export const RouterProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   useEffect(() => {
     const seo = PAGE_SEO_DATA[currentPage] || PAGE_SEO_DATA.home;
 
-    // 1. Title
-    document.title = seo.title;
-
-    // 2. Meta Description
-    let metaDesc = document.querySelector('meta[name="description"]');
-    if (!metaDesc) {
-      metaDesc = document.createElement('meta');
-      metaDesc.setAttribute('name', 'description');
-      document.head.appendChild(metaDesc);
-    }
-    metaDesc.setAttribute('content', seo.description);
-
-    // 3. Meta Keywords
-    let metaKeywords = document.querySelector('meta[name="keywords"]');
-    if (metaKeywords && seo.keywords) {
-      metaKeywords.setAttribute('content', seo.keywords);
-    }
-
-    // 4. Canonical URL
-    let canonical = document.querySelector('link[rel="canonical"]');
-    const fullCanonicalUrl = `https://drtechei.com${seo.canonicalPath === '/' ? '' : seo.canonicalPath}`;
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute('href', fullCanonicalUrl);
-
-    // 5. Open Graph Meta Tags
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute('content', seo.title);
-
-    const ogDesc = document.querySelector('meta[property="og:description"]');
-    if (ogDesc) ogDesc.setAttribute('content', seo.description);
-
-    const ogUrl = document.querySelector('meta[property="og:url"]');
-    if (ogUrl) ogUrl.setAttribute('content', fullCanonicalUrl);
-
-    // 6. Twitter Meta Tags
-    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
-    if (twitterTitle) twitterTitle.setAttribute('content', seo.title);
-
-    const twitterDesc = document.querySelector('meta[name="twitter:description"]');
-    if (twitterDesc) twitterDesc.setAttribute('content', seo.description);
-
-    // 7. Dynamic JSON-LD Breadcrumb Schema per page
-    const existingBreadcrumbScript = document.getElementById('page-breadcrumb-schema');
-    if (existingBreadcrumbScript) {
-      existingBreadcrumbScript.remove();
-    }
-
-    const breadcrumbs = seo.breadcrumbs || [{ name: 'Home', path: 'home' }];
-    const breadcrumbSchema = {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      'itemListElement': breadcrumbs.map((crumb, idx) => ({
-        '@type': 'ListItem',
-        'position': idx + 1,
-        'name': crumb.name,
-        'item': `https://drtechei.com${getPathForRoute(crumb.path)}`,
-      })),
-    };
-
-    const script = document.createElement('script');
-    script.id = 'page-breadcrumb-schema';
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(breadcrumbSchema);
-    document.head.appendChild(script);
-
-    // 8. Google Analytics 4 Pageview Tracking
+    // SEO metadata is centrally managed by SEOHead so titles, canonical URLs,
+    // social previews and structured data cannot overwrite one another.
+    // Google Analytics 4 pageview tracking remains route-aware here.
     trackPageView(currentPage, seo.title);
   }, [currentPage]);
 

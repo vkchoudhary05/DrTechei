@@ -45,7 +45,7 @@ export const PAGE_SEO_DATA: Record<PageRoute, PageSEO> = {
   },
   portfolio: {
     title: 'Case Studies & Featured Client Projects | DrTechei IT Solutions',
-    description: 'Discover proven results and live client builds. See how DrTechei engineered high-converting web apps with +180% PageSpeed acceleration and +65% lead conversion.',
+    description: 'Explore selected web applications and product experiences delivered by DrTechei, with a focus on performance, clarity and scalable engineering.',
     keywords: 'Web Development Case Studies, Next.js Portfolio, React Web Apps, Client Projects, Performance Benchmarks, DrTechei Work',
     canonicalPath: '/portfolio',
     ogType: 'website',
@@ -67,7 +67,7 @@ export const PAGE_SEO_DATA: Record<PageRoute, PageSEO> = {
   },
   'why-us': {
     title: 'Why Choose DrTechei | Senior Engineering & Diagnostic Precision',
-    description: 'Why leading brands partner with DrTechei: 100% client source code IP ownership, direct senior engineer collaboration, sub-second performance guarantees, and zero vendor lock-in.',
+    description: 'See how DrTechei approaches senior engineering collaboration, source-code ownership, performance-focused delivery and long-term product support.',
     keywords: 'Why Choose DrTechei, Agency vs Freelancer, Enterprise Web Partner, Senior Engineers, Code Ownership, Performance Guarantees',
     canonicalPath: '/why-us',
     ogType: 'website',
@@ -111,7 +111,7 @@ export const PAGE_SEO_DATA: Record<PageRoute, PageSEO> = {
   },
   faq: {
     title: 'Technical FAQ & Engineering Standards | DrTechei IT Solutions',
-    description: 'Clear answers to technical questions about Next.js 15 architectures, PageSpeed 99+ guarantees, intellectual property ownership, Headless CMS, SLAs, and project pricing.',
+    description: 'Clear answers to common questions about Next.js architecture, performance, intellectual-property ownership, headless CMS, project delivery and support.',
     keywords: 'Technical FAQ, Web Development FAQ, Next.js Questions, Code Ownership, PageSpeed Guarantee, Project Timelines',
     canonicalPath: '/faq',
     ogType: 'website',
@@ -122,7 +122,7 @@ export const PAGE_SEO_DATA: Record<PageRoute, PageSEO> = {
   },
   contact: {
     title: 'Contact DrTechei | Book Free Technical Discovery Call & Estimate',
-    description: 'Connect with our senior technical architects. Get a comprehensive project blueprint and transparent proposal within 24 business hours. Call +919690941439.',
+    description: 'Connect with our senior technical architects. Get a comprehensive project blueprint and transparent proposal within 24 business hours. Call +91 96909 41439 or +91 98372 13181.',
     keywords: 'Contact DrTechei, Hire Web Developers, Get Project Quote, Discovery Consultation, Web Agency Contact',
     canonicalPath: '/contact',
     ogType: 'website',

@@ -142,16 +142,31 @@ export const ContactPage: React.FC<ContactPageProps> = ({
 
                   {/* Phone Box */}
                   <a
-                    href="tel:+18005408324"
+                    href="tel:+919690941439"
                     className="p-3 rounded-xl bg-[#FAFBFD] border border-slate-200/80 hover:border-[#D98E3A]/60 transition-colors flex items-center gap-3 group block w-full min-w-0"
                   >
                     <div className="w-9 h-9 rounded-lg bg-[#FDF7EF] text-[#D98E3A] flex items-center justify-center shrink-0">
                       <PhoneCall className="w-4 h-4 text-[#D98E3A]" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">Toll-Free Senior Tech Lead</div>
+                      <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">Senior Tech Lead</div>
                       <div className="font-bold text-[#111622] group-hover:text-[#D98E3A] transition-colors text-xs sm:text-sm break-all">
-                        +919690941439
+                        +91 96909 41439
+                      </div>
+                    </div>
+                  </a>
+
+                  <a
+                    href="tel:+919837213181"
+                    className="p-3 rounded-xl bg-[#FAFBFD] border border-slate-200/80 hover:border-[#D98E3A]/60 transition-colors flex items-center gap-3 group block w-full min-w-0"
+                  >
+                    <div className="w-9 h-9 rounded-lg bg-[#FDF7EF] text-[#D98E3A] flex items-center justify-center shrink-0">
+                      <PhoneCall className="w-4 h-4 text-[#D98E3A]" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">Direct Project Enquiries</div>
+                      <div className="font-bold text-[#111622] group-hover:text-[#D98E3A] transition-colors text-xs sm:text-sm break-all">
+                        +91 98372 13181
                       </div>
                     </div>
                   </a>

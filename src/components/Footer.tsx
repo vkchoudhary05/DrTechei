@@ -115,10 +115,10 @@ export const Footer: React.FC = () => {
 
   return (
     <>
-      <footer className="bg-gradient-to-b from-[#0E1322] via-[#090D17] to-[#05070D] text-slate-400 pt-16 pb-12 border-t border-[#1F293D] relative overflow-hidden">
+      <footer className="bg-gradient-to-br from-[#171D31] via-[#111622] to-[#1A1B3A] text-slate-300 pt-16 pb-12 border-t border-[#303957] relative overflow-hidden">
         {/* Subtle Ambient Background Glow matching project identity */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[320px] bg-gradient-to-b from-[#2D2575]/30 to-transparent blur-3xl pointer-events-none" />
-        <div className="absolute top-24 right-12 w-96 h-96 bg-[#D98E3A]/8 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[320px] bg-gradient-to-b from-[#2D2575]/20 to-transparent blur-3xl pointer-events-none" />
+        <div className="absolute top-24 right-12 w-96 h-96 bg-[#D98E3A]/6 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 max-w-7xl 2xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
           
@@ -361,7 +361,7 @@ export const Footer: React.FC = () => {
               <button
                 type="button"
                 onClick={(e) => handleNavClick(e, 'home')}
-                className="inline-block focus:outline-none cursor-pointer text-left"
+                className="inline-flex rounded-xl bg-white p-2.5 sm:p-3 shadow-lg shadow-black/20 ring-1 ring-white/20 transition-transform hover:scale-[1.02] focus:outline-none cursor-pointer text-left"
                 aria-label="DrTechei Home"
               >
                 <Logo variant="dark" iconSize={36} />
@@ -389,11 +389,20 @@ export const Footer: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-2.5">
                   <Phone className="w-4 h-4 text-[#D98E3A] shrink-0" />
-                  <a 
-                    href="tel:+18005408324" 
+                  <a
+                    href="tel:+919690941439"
                     className="text-slate-200 hover:text-[#F2BC7B] transition-colors font-medium"
                   >
-                    +919690941439
+                    +91 96909 41439
+                  </a>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <Phone className="w-4 h-4 text-[#D98E3A] shrink-0" />
+                  <a
+                    href="tel:+919837213181"
+                    className="text-slate-200 hover:text-[#F2BC7B] transition-colors font-medium"
+                  >
+                    +91 98372 13181
                   </a>
                 </div>
               </div>
@@ -887,4 +896,3 @@ export const Footer: React.FC = () => {
     </>
   );
 };
-

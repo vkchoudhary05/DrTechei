@@ -431,8 +431,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
                           </div>
                         </div>
 
-                        <div className="text-xs font-bold text-[#111622] bg-slate-50 p-2 rounded-lg border border-slate-200/80 my-1.5 font-mono">
-                          +919690941439
+                        <div className="text-xs font-bold text-[#111622] bg-slate-50 p-2 rounded-lg border border-slate-200/80 my-1.5 font-mono space-y-1">
+                          <a href="tel:+919690941439" className="block hover:text-[#D98E3A] transition-colors">+91 96909 41439</a>
+                          <a href="tel:+919837213181" className="block hover:text-[#D98E3A] transition-colors">+91 98372 13181</a>
                         </div>
 
                         <p className="text-[11px] text-slate-500 mb-2.5 leading-relaxed">
@@ -441,7 +442,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
 
                         <div className="pt-2 border-t border-slate-100 flex items-center gap-2">
                           <a
-                            href="tel:+18005408324"
+                            href="tel:+919690941439"
                             onClick={() => setShowContactTooltip(false)}
                             className="flex-1 py-1.5 px-2.5 rounded-lg bg-slate-100 hover:bg-slate-200/80 border border-slate-200 text-xs font-bold text-[#111622] flex items-center justify-center gap-1.5 cursor-pointer transition-colors"
                           >
@@ -744,11 +745,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
                           <span>hello@drtechei.com</span>
                         </a>
                         <a
-                          href="tel:+18005408324"
+                          href="tel:+919690941439"
                           className="flex items-center gap-2 text-xs font-semibold text-[#111622] hover:text-[#D98E3A] transition-colors"
                         >
                           <PhoneCall className="w-4 h-4 text-[#D98E3A]" />
-                          <span>+919690941439</span>
+                          <span>+91 96909 41439</span>
+                        </a>
+                        <a
+                          href="tel:+919837213181"
+                          className="flex items-center gap-2 text-xs font-semibold text-[#111622] hover:text-[#D98E3A] transition-colors"
+                        >
+                          <PhoneCall className="w-4 h-4 text-[#D98E3A]" />
+                          <span>+91 98372 13181</span>
                         </a>
                       </div>
                     </div>

@@ -1,12 +1,16 @@
 import React, { useEffect } from 'react';
 import { useRouter } from '../context/RouterContext';
-import { SEO_DATA, PageSEO } from '../utils/seoConfig';
+import { PAGE_SEO_DATA, PageRoute } from '../types/router';
+
+const SITE_URL = 'https://drtechei.com';
+const DEFAULT_OG_IMAGE = `${SITE_URL}/Dr1.png`;
 
 export const SEOHead: React.FC = () => {
   const { currentPage } = useRouter();
 
   useEffect(() => {
-    const seo: PageSEO = SEO_DATA[currentPage] || SEO_DATA.home;
+    const seo = PAGE_SEO_DATA[currentPage] || PAGE_SEO_DATA.home;
+    const canonicalUrl = `${SITE_URL}${seo.canonicalPath === '/' ? '' : seo.canonicalPath}`;
 
     // 1. Update Document Title
     document.title = seo.title;
@@ -29,18 +33,18 @@ export const SEOHead: React.FC = () => {
     setMetaTag('name', 'author', 'DrTechei IT Solutions - Global Tech Partner');
 
     // 3. Open Graph Tags
-    setMetaTag('property', 'og:title', seo.ogTitle);
-    setMetaTag('property', 'og:description', seo.ogDescription);
-    setMetaTag('property', 'og:url', seo.canonical);
-    setMetaTag('property', 'og:type', seo.ogType);
+    setMetaTag('property', 'og:title', seo.title);
+    setMetaTag('property', 'og:description', seo.description);
+    setMetaTag('property', 'og:url', canonicalUrl);
+    setMetaTag('property', 'og:type', seo.ogType || 'website');
     setMetaTag('property', 'og:site_name', 'DrTechei IT Solutions | Global Tech Partner');
-    setMetaTag('property', 'og:image', 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&h=630&q=80');
+    setMetaTag('property', 'og:image', DEFAULT_OG_IMAGE);
 
     // 4. Twitter Tags
     setMetaTag('name', 'twitter:card', 'summary_large_image');
-    setMetaTag('name', 'twitter:title', seo.ogTitle);
-    setMetaTag('name', 'twitter:description', seo.ogDescription);
-    setMetaTag('name', 'twitter:image', 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&h=630&q=80');
+    setMetaTag('name', 'twitter:title', seo.title);
+    setMetaTag('name', 'twitter:description', seo.description);
+    setMetaTag('name', 'twitter:image', DEFAULT_OG_IMAGE);
 
     // 5. Canonical Link
     let canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
@@ -49,9 +53,10 @@ export const SEOHead: React.FC = () => {
       canonicalLink.setAttribute('rel', 'canonical');
       document.head.appendChild(canonicalLink);
     }
-    canonicalLink.setAttribute('href', seo.canonical);
+    canonicalLink.setAttribute('href', canonicalUrl);
 
-    // 6. Dynamic JSON-LD Structured Data
+    // 6. Route-specific JSON-LD. This keeps visible page context, canonical URLs,
+    // and breadcrumb markup aligned for crawlers and social previews.
     let scriptTag = document.getElementById('dynamic-page-jsonld') as HTMLScriptElement | null;
     if (!scriptTag) {
       scriptTag = document.createElement('script');
@@ -59,7 +64,31 @@ export const SEOHead: React.FC = () => {
       scriptTag.type = 'application/ld+json';
       document.head.appendChild(scriptTag);
     }
-    scriptTag.textContent = JSON.stringify(seo.structuredData);
+    const breadcrumbs = seo.breadcrumbs.map((crumb, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: crumb.name,
+      item: `${SITE_URL}${PAGE_SEO_DATA[crumb.path as PageRoute].canonicalPath === '/' ? '' : PAGE_SEO_DATA[crumb.path as PageRoute].canonicalPath}`,
+    }));
+    scriptTag.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': currentPage === 'contact' ? 'ContactPage' : currentPage === 'about' ? 'AboutPage' : 'WebPage',
+          '@id': `${canonicalUrl}#webpage`,
+          url: canonicalUrl,
+          name: seo.title,
+          description: seo.description,
+          isPartOf: { '@id': `${SITE_URL}/#website` },
+          about: { '@id': `${SITE_URL}/#organization` },
+        },
+        {
+          '@type': 'BreadcrumbList',
+          '@id': `${canonicalUrl}#breadcrumb`,
+          itemListElement: breadcrumbs,
+        },
+      ],
+    });
 
     // Scroll to top on page change
     window.scrollTo({ top: 0, behavior: 'smooth' });

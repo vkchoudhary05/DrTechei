@@ -96,11 +96,19 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenQuoteModal }) => {
                 </a>
                 <span className="text-slate-300">•</span>
                 <a
-                  href="tel:+18005408324"
+                  href="tel:+919690941439"
                   className="text-slate-700 hover:text-[#2D2575] font-semibold flex items-center gap-1 transition-colors"
                 >
                   <PhoneCall className="w-3.5 h-3.5 text-[#D98E3A]" />
-                  <span>+919690941439</span>
+                  <span>+91 96909 41439</span>
+                </a>
+                <span className="text-slate-300">•</span>
+                <a
+                  href="tel:+919837213181"
+                  className="text-slate-700 hover:text-[#2D2575] font-semibold flex items-center gap-1 transition-colors"
+                >
+                  <PhoneCall className="w-3.5 h-3.5 text-[#D98E3A]" />
+                  <span>+91 98372 13181</span>
                 </a>
               </div>
 

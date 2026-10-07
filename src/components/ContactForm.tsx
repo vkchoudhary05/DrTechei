@@ -208,12 +208,18 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                       <Phone className="w-4 h-4 text-[#F2BC7B]" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <div className="text-[10px] sm:text-[11px] text-slate-400 font-medium">Global Toll-Free Engineering Line</div>
+                      <div className="text-[10px] sm:text-[11px] text-slate-400 font-medium">Speak with our engineering team</div>
                       <a
-                        href="tel:+18005408324"
+                        href="tel:+919690941439"
                         className="text-xs sm:text-sm font-bold text-white hover:text-[#F2BC7B] transition-colors break-all block mt-0.5"
                       >
-                        +919690941439
+                        +91 96909 41439
+                      </a>
+                      <a
+                        href="tel:+919837213181"
+                        className="text-xs sm:text-sm font-bold text-white hover:text-[#F2BC7B] transition-colors break-all block mt-1"
+                      >
+                        +91 98372 13181
                       </a>
                     </div>
                   </div>

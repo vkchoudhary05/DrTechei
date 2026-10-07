@@ -23,10 +23,10 @@ export const SEO_DATA: Record<string, PageSEO> = {
       '@type': 'ProfessionalService',
       name: 'DrTechei IT Solutions - Best IT Company & Global Tech Partner',
       url: 'https://drtechei.com',
-      logo: 'https://drtechei.com/logo.png',
+      logo: 'https://drtechei.com/DrTecheiLogooo.png',
       description: 'Award-winning IT company and dedicated technology partner providing Next.js web development, custom React engineering, cloud architecture, and technical SEO across Europe, India, North America, Australia, and worldwide.',
       priceRange: '$$$$',
-      telephone: '+1-800-540-8324',
+      telephone: '+91 96909 41439',
       email: 'hello@drtechei.com',
       aggregateRating: {
         '@type': 'AggregateRating',
@@ -270,7 +270,7 @@ export const SEO_DATA: Record<string, PageSEO> = {
       name: 'DrTechei Technology Partner Finland',
       url: 'https://drtechei.com/technology-partner-finland',
       description: 'Senior dedicated Next.js, React, and cloud engineering squads for Finnish startups and enterprises.',
-      telephone: '+1-800-540-8324',
+      telephone: '+91 96909 41439',
       email: 'hello@drtechei.com',
       address: {
         '@type': 'PostalAddress',
@@ -322,7 +322,7 @@ export const SEO_DATA: Record<string, PageSEO> = {
       name: 'DrTechei Technology Partner Ireland',
       url: 'https://drtechei.com/technology-partner-ireland',
       description: 'Silicon Docks standard software engineering partner for Irish startups and enterprise scaleups.',
-      telephone: '+1-800-540-8324',
+      telephone: '+91 96909 41439',
       email: 'hello@drtechei.com',
       address: {
         '@type': 'PostalAddress',
@@ -373,7 +373,7 @@ export const SEO_DATA: Record<string, PageSEO> = {
       name: 'DrTechei Technology Partner India',
       url: 'https://drtechei.com/technology-partner-india',
       description: 'Elite senior software engineering partner based in India serving global and domestic innovators.',
-      telephone: '+1-800-540-8324',
+      telephone: '+91 96909 41439',
       email: 'hello@drtechei.com',
       address: {
         '@type': 'PostalAddress',
